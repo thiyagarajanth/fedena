@@ -1,4 +1,5 @@
 
+require 'thread'
 RAILS_ROOT = "#{File.dirname(__FILE__)}/.." unless defined?(RAILS_ROOT)
 
 module Rails
@@ -9,6 +10,7 @@ module Rails
         pick_boot.run
       end
     end
+
 
     def booted?
       defined? Rails::Initializer
@@ -36,6 +38,7 @@ module Rails
       load_initializer
       Rails::Initializer.run(:set_load_path)
     end
+    
   end
 
   class VendorBoot < Boot
