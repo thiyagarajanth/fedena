@@ -23,15 +23,19 @@
       <table id="teacher" cellspacing="1">
         <tr id="weekday-header"><th></th></tr>
         <% @all_weekdays.each do |weekday| -%>
-          <tr class="batch">
-            <td class="batch_name"><%= t(Date::DAYNAMES[weekday.day_of_week].downcase).upcase -%></td>
+          <tr>
+            <td class="batch_name themed_text tte">
+              <div class="batch">
+                <%= t(Date::DAYNAMES[weekday.day_of_week].downcase).upcase -%>
+              </div>
+            </td>
           </tr>
         <% end %>
       </table>
     </div>
     <div id="table-viewer">
       <table id="timetable" cellspacing="1">
-        <tr id="period-count">
+        <tr id="period-count" class="themed_text">
           <% @all_classtimings.each do |ct| -%>
             <td class="tte">
               <%= "#{ct.start_time.strftime("%I:%M%p")} - #{ct.end_time.strftime("%I:%M%p")}" -%>
@@ -39,21 +43,62 @@
           <% end -%>
         </tr>
         <% @all_weekdays.each do |weekday| -%>
-          <tr class="batch">
+          <tr>
 
             <% @all_classtimings.each do |ct| -%>
               <td class="tte">
-                <% unless @timetable_entries[weekday.id][ct.id].blank? %>
-                  <% tte=@timetable_entries[weekday.id][ct.id] %>
-                  <% if tte.subject.elective_group.nil? %>
-                    <%= formatted_timetable_cell(tte)  -%>
-                  <% else %>
-                    <%= @electives[tte.subject.elective_group_id].first.code %>
-                  <% end %>
-                  <div class="batch_name">
-                    <%= timetable_batch (@timetable_entries[weekday.id][ct.id])  -%>
-                  </div>
-                <% end -%>
+                <div class="batch">
+                  <% unless @timetable_entries[weekday.id][ct.id].blank? %>
+                    <% if @timetable_entries[weekday.id][ct.id].size > 1 %>
+                      <div class="entries_wrapper">
+                        <div class="entries">
+                          <% @timetable_entries[weekday.id][ct.id].each_pair do |k, tte| %>
+                            <div class="sub_name">
+                              <% if tte.subject.elective_group.nil? %>
+                                <%= formatted_timetable_cell(tte)  -%>
+                              <% else %>
+                                <%= @electives[tte.subject.elective_group_id].first.code %>
+                              <% end %>
+                            </div>
+                            <div class="batch_name themed_text batch_code no_padding">
+                              <%= timetable_batch (tte)  -%>
+                            </div>
+                          <% end %>
+                        </div>
+                      </div>
+                      <% tte = @timetable_entries[weekday.id][ct.id].first %>
+                      <% unless tte.blank? %>
+                        <div class="sub_name">
+                          <% if tte.last.subject.elective_group.nil? %>
+                            <%= formatted_timetable_cell(tte.last)  -%>
+                          <% else %>
+                            <%= @electives[tte.last.subject.elective_group_id].first.code %>
+                          <% end %>
+                        </div>
+                        <div class="batch_name1 themed_text batch_code no_padding">
+                          <%= timetable_batch (tte.last)  -%>
+                        </div>
+                        <a class="themed_text add_sym">+</a>
+                      <% end %>
+                    <% else %>
+                      <% tte = @timetable_entries[weekday.id][ct.id].first %>
+                      <% unless tte.blank? %>
+                        <% if tte.last.subject.elective_group.nil? %>
+                          <div class="sub_name">
+                            <%= formatted_timetable_cell(tte.last)  -%>
+                          </div>
+                        <% else %>
+                          <div class="sub_name">
+                            <%= @electives[tte.last.subject.elective_group_id].first.code %>
+                          </div>
+                        <% end %>
+                        <div class="batch_name themed_text batch_code no_padding">
+                          <%= timetable_batch (tte.last)  -%>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  <% end -%>
+                </div>
               </td>
             <% end -%>
           </tr>

@@ -162,3 +162,12 @@ ul{
     margin-top: -2px;
     margin-left: 5px;
 }
+#added-subjects{
+    width:100%;
+    float: left;
+}
+#added-subjects li {
+    display: block;
+    width: 100%;
+    float: left;
+}

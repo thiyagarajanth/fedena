@@ -54,19 +54,8 @@
     width : 135px;
 }
 
-#submit-button input{
-    -moz-border-radius:10px;
-    -webkit-border-radius:10px;
-    background:#27292B none repeat scroll 0 0;
-    color:#FFFFFF;
-    font-family:arial;
-    font-size:14px;
-    font-weight:bold;
-    margin-right:280px;
-    margin-top:30px;
-    padding:7px 10px;
-    border:none;
-    cursor:pointer;
+a.user_button{
+    margin-top: 0 !important;
 }
 #form-content{
     width:500px;
@@ -75,6 +64,7 @@
 
 #add-payslip-category-link{
     padding-right:80px;
+    overflow: hidden;
 }
 
 #add-payslip-category-link a{
@@ -254,4 +244,26 @@ ul{
     color:#b00;
     margin-top:10px;
     margin-bottom: 20px;
+}
+
+#submit-button input{
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    background: #27292B;
+    color: white;
+    font-family: arial;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 280px;
+    margin-top: 30px;
+    padding: 7px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+#submit-button input:hover{
+    background:#373B3F;
+}
+.payslip_category_list li{
+    display: block;
 }

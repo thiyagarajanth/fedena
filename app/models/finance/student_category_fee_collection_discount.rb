@@ -22,5 +22,23 @@ class StudentCategoryFeeCollectionDiscount < FeeCollectionDiscount
   belongs_to :receiver ,:class_name=>'StudentCategory'
   validates_presence_of  :receiver_id , :message => "#{t('student_category_cant_be_blank')}"
 
+  def total_payable(student = nil)
+    if student.nil?
+    payable = finance_fee_collection.fee_category.fee_particulars.active.map(&:amount).compact.flatten.sum
+    else
+    payable = finance_fee_collection.fees_particulars(student).active.map(&:amount).compact.flatten.sum
+    end
+    payable
+  end
   
+  def discount(student = nil)
+    if is_amount == false
+      super
+    elsif is_amount == true
+      payable = student.nil? ? total_payable : total_payable(student)
+      percentage = (super.to_f / payable.to_f).to_f * 100
+      percentage
+    end
+  end
+
 end

@@ -26,4 +26,29 @@ class EmployeeAdditionalDetail < ActiveRecord::Base
     additional_detail_attributes["employee_id"] = archived_employee
     self.delete if ArchivedEmployeeAdditionalDetail.create(additional_detail_attributes)
   end
+
+  def save
+    unless self.destroyed?
+      super
+    end
+    true
+  end
+
+  def validate
+    if self.additional_field.is_mandatory == true
+      if self.additional_info.blank?
+        errors.add("additional_info","can't be blank")
+        return false
+      else
+        return true
+      end
+    else
+      if self.additional_info.blank?
+        self.destroy
+        return true
+      else
+        return true
+      end
+    end
+  end
 end

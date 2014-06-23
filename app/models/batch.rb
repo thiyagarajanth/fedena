@@ -31,7 +31,6 @@ class Batch < ActiveRecord::Base
   has_many :exam_groups
   has_many :fee_category , :class_name => "FinanceFeeCategory"
   has_many :elective_groups
-  has_many :additional_exam_groups
   has_many :finance_fee_collections
   has_many :finance_transactions, :through => :students
   has_many :batch_events
@@ -94,9 +93,15 @@ class Batch < ActiveRecord::Base
   def normal_batch_subject
     Subject.find_all_by_batch_id(self.id,:conditions=>["elective_group_id IS NULL AND is_deleted = false"])
   end
+  
   def elective_batch_subject(elect_group)
     Subject.find_all_by_batch_id_and_elective_group_id(self.id,elect_group,:conditions=>["elective_group_id IS NOT NULL AND is_deleted = false"])
   end
+
+  def all_elective_subjects
+    elective_groups.map(&:subjects).compact.flatten.select{|subject| subject.is_deleted == false}
+  end
+
   def has_own_weekday
     Weekday.find_all_by_batch_id(self.id,:conditions=>{:is_deleted=>false}).present?
   end

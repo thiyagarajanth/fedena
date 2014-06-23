@@ -18,7 +18,7 @@
 
 class UserController < ApplicationController
   layout :choose_layout
-  before_filter :login_required, :except => [:forgot_password, :login, :set_new_password, :reset_password]
+  before_filter :login_required, :except => [:forgot_password, :login, :set_new_password, :reset_password,:first_login_change_password]
   before_filter :only_admin_allowed, :only => [:edit, :create, :index, :edit_privilege, :user_change_password,:delete,:list_user,:all]
   before_filter :protect_user_data, :only => [:profile, :user_change_password]
   before_filter :check_if_loggedin, :only => [:login]
@@ -31,12 +31,12 @@ class UserController < ApplicationController
   end
   
   def all
-    @users = User.all
+    @users = User.active.all
   end
   
   def list_user
     if params[:user_type] == 'Admin'
-      @users = User.find(:all, :conditions => {:admin => true}, :order => 'first_name ASC')
+      @users = User.active.find(:all, :conditions => {:admin => true}, :order => 'first_name ASC')
       render(:update) do |page|
         page.replace_html 'users', :partial=> 'users'
         page.replace_html 'employee_user', :text => ''
@@ -50,7 +50,7 @@ class UserController < ApplicationController
           page.replace_html 'users', :text => ''
           page.replace_html 'student_user', :text => ''
         else
-          @users = User.find_all_by_employee(1)
+          @users = User.active.find_all_by_employee(1)
           page.replace_html 'users', :partial=> 'users'
           page.replace_html 'employee_user', :text => ''
           page.replace_html 'student_user', :text => ''
@@ -110,11 +110,12 @@ class UserController < ApplicationController
       if User.authenticate?(@user.username, params[:user][:old_password])
         if params[:user][:new_password] == params[:user][:confirm_password]
           @user.password = params[:user][:new_password]
-          @user.update_attributes(:password => @user.password,
-            :role => @user.role_name
-          )
-          flash[:notice] = "#{t('flash9')}"
-          redirect_to :action => 'dashboard'
+          if @user.update_attributes(:password => @user.password, :role => @user.role_name)
+            flash[:notice] = "#{t('flash9')}"
+            redirect_to :action => 'dashboard'
+          else
+            flash[:warn_notice] = "<p>#{@user.errors.full_messages}</p>"
+          end
         else
           flash[:warn_notice] = "<p>#{t('flash10')}</p>"
         end
@@ -125,7 +126,7 @@ class UserController < ApplicationController
   end
 
   def user_change_password
-    @user = User.find_by_username(params[:id])
+    @user = User.active.find_by_username(params[:id])
 
     if request.post?
       if params[:user][:new_password]=='' and params[:user][:confirm_password]==''
@@ -165,7 +166,7 @@ class UserController < ApplicationController
   end
 
   def delete
-    @user = User.find_by_username(params[:id],:conditions=>"admin = 1")
+    @user = User.active.find_by_username(params[:id],:conditions=>"admin = 1")
     unless @user.nil?
       if @user.employee_record.nil?
         flash[:notice] = "#{t('flash12')}" if @user.destroy
@@ -177,18 +178,23 @@ class UserController < ApplicationController
   def dashboard
     @user = current_user
     @config = Configuration.available_modules
-    @employee = @user.employee_record if ['employee','admin'].include?(@user.role_name.downcase)
+    @employee = @user.employee_record if ["#{t('admin')}","#{t('employee_text')}"].include?(@user.role_name)
     if @user.student?
       @student = Student.find_by_admission_no(@user.username)
     end
     if @user.parent?
       @student = Student.find_by_admission_no(@user.username[1..@user.username.length])
     end
-    #    @dash_news = News.find(:all, :limit => 3)
+    @first_time_login = Configuration.get_config_value('FirstTimeLoginEnable')
+    if  session[:user_id].present? and @first_time_login == "1" and @user.is_first_login != false
+      flash[:notice] = "#{t('first_login_attempt')}"
+      redirect_to :controller => "user",:action => "first_login_change_password",:id => @user.username
+    end
   end
 
+
   def edit
-    @user = User.find_by_username(params[:id])
+    @user = User.active.find_by_username(params[:id])
     @current_user = current_user
     if request.post? and @user.update_attributes(params[:user])
       flash[:notice] = "#{t('flash13')}"
@@ -201,7 +207,7 @@ class UserController < ApplicationController
     #    redirect_to :action=>"login"
     @network_state = Configuration.find_by_config_key("NetworkState")
     if request.post? and params[:reset_password]
-      if user = User.find_by_username(params[:reset_password][:username])
+      if user = User.active.find_by_username(params[:reset_password][:username])
         unless user.email.blank?
           user.reset_password_code = Digest::SHA1.hexdigest( "#{user.email}#{Time.now.to_s.split(//).sort_by {rand}.join}" )
           user.reset_password_code_until = 1.day.from_now
@@ -231,9 +237,9 @@ class UserController < ApplicationController
     else
       if request.post? and params[:user]
         @user = User.new(params[:user])
-        user = User.find_by_username @user.username
+        user = User.active.find_by_username @user.username
         if user.present? and User.authenticate?(@user.username, @user.password)
-          authenticated_user = user 
+          authenticated_user = user
         end
       end
     end
@@ -241,6 +247,29 @@ class UserController < ApplicationController
       successful_user_login(authenticated_user) and return
     elsif authenticated_user.blank? and request.post?
       flash[:notice] = "#{t('login_error_message')}"
+    end
+  end
+
+  def first_login_change_password
+    @user = User.active.find_by_username(params[:id])
+    @setting = Configuration.get_config_value('FirstTimeLoginEnable')
+    if @setting == "1" and @user.is_first_login != false
+      if request.post?
+        if params[:user][:new_password] == params[:user][:confirm_password]
+          if @user.update_attributes(:password => params[:user][:confirm_password],:is_first_login => false)
+            flash[:notice] = "#{t('password_update')}"
+            redirect_to :controller => "user",:action => "dashboard"
+          else
+            render :first_login_change_password
+          end
+        else
+          @user.errors.add('password','and confirm password doesnot match')
+          render :first_login_change_password
+        end
+      end
+    else
+      flash[:notice] = "#{t('not_applicable')}"
+      redirect_to :controller => "user",:action => "dashboard"
     end
   end
 
@@ -256,14 +285,14 @@ class UserController < ApplicationController
       selected_logout_hook[:name].classify.constantize.send("logout_hook",self,"/")
     else
       redirect_to :controller => 'user', :action => 'login' and return
-    end    
+    end
   end
 
   def profile
     @config = Configuration.available_modules
     @current_user = current_user
     @username = @current_user.username if session[:user_id]
-    @user = User.find_by_username(params[:id])
+    @user = User.active.find_by_username(params[:id])
     unless @user.nil?
       @employee = Employee.find_by_employee_number(@user.username)
       @student = Student.find_by_admission_no(@user.username)
@@ -276,7 +305,7 @@ class UserController < ApplicationController
   end
 
   def reset_password
-    user = User.find_by_reset_password_code(params[:id],:conditions=>"reset_password_code IS NOT NULL")
+    user = User.active.find_by_reset_password_code(params[:id],:conditions=>"reset_password_code IS NOT NULL")
     if user
       if user.reset_password_code_until > Time.now
         redirect_to :action => 'set_new_password', :id => user.reset_password_code
@@ -294,7 +323,7 @@ class UserController < ApplicationController
     unless params[:query].nil? or params[:query].empty? or params[:query] == ' '
       #      if params[:query].length>= 3
       #        @user = User.first_name_or_last_name_or_username_begins_with params[:query].split
-      @user = User.find(:all,
+      @user = User.active.find(:all,
         :conditions => "(first_name LIKE \"#{params[:query]}%\"
                        OR last_name LIKE \"#{params[:query]}%\"
                        OR (concat(first_name, \" \", last_name) LIKE \"#{params[:query]}%\")
@@ -312,7 +341,7 @@ class UserController < ApplicationController
 
   def set_new_password
     if request.post?
-      user = User.find_by_reset_password_code(params[:id],:conditions=>"reset_password_code IS NOT NULL")
+      user = User.active.find_by_reset_password_code(params[:id],:conditions=>"reset_password_code IS NOT NULL")
       if user
         if params[:set_new_password][:new_password] === params[:set_new_password][:confirm_password]
           user.password = params[:set_new_password][:new_password]
@@ -334,11 +363,12 @@ class UserController < ApplicationController
   end
 
   def edit_privilege
-    @privileges = Privilege.find(:all)
-    @user = User.find_by_username(params[:id])
+    @user = User.active.find_by_username(params[:id])
     @finance = Configuration.find_by_config_value("Finance")
-    @sms_setting = SmsSetting.new()
+    @sms_setting = SmsSetting.application_sms_status
     @hr = Configuration.find_by_config_value("HR")
+    @privilege_tags=PrivilegeTag.find(:all,:order=>"priority ASC")
+    @user_privileges=@user.privileges
     if request.post?
       new_privileges = params[:user][:privilege_ids] if params[:user]
       new_privileges ||= []

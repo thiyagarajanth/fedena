@@ -10,7 +10,7 @@ body {
 }
 #header_bg {
     height : 80px;
-    background : #b00 url(/images/application/pattern_fedena_header.png) repeat;
+    background : #b00 url(/images/application/bg_pattern.png) repeat;
 }
 #header {
     width : 980px;
@@ -102,7 +102,7 @@ body {
     border-bottom-width : 0;
     font: normal 0.9em Arial;
     line-height: 18px;
-    background: #b00 url(../../images/application/app_layout_header_bg.jpg) repeat;
+    background: #b00 url(../../images/application/bg_pattern.png) repeat;
 }
 #main-menu li:hover ul.level-1{
     visibility: visible;
@@ -146,7 +146,7 @@ body {
     border-bottom-width : 0;
     font: normal 0.9em Arial;
     line-height: 18px;
-    background: #b00 url(../../images/application/app_layout_header_bg.jpg) repeat;
+    background: #b00 url(../../images/application/bg_pattern.png) repeat;
 }
 #main-menu li ul.level-1 li:hover ul.level-2{
     visibility: visible;
@@ -336,7 +336,7 @@ body > #content_wrapper {
     font: normal 0.9em Arial;
     line-height: 18px;
     z-index: 100; /* zIndex should be greater than that of shadow's below */
-    background: #b00 url(../../../images/application/app_layout_header_bg.jpg) repeat;
+    background: #b00 url(../../../images/application/bg_pattern.png) repeat;
     width: 125px; /* default width for menu */
 }
 
@@ -518,7 +518,7 @@ body > #content_wrapper {
 /* Modalbox styles */
 
 #MB_frame #MB_header {
-    background: transparent url(../../images/modalbox/header-underline.jpg) bottom center no-repeat;
+    background: transparent url(../../images/modalbox/header-underline_rtl.jpg) bottom center no-repeat;
     height: 55px;
 }
 #MB_frame #MB_caption {
@@ -1017,4 +1017,37 @@ height: 14px;
 }
 textarea{
     font-family: Arial !important;
+}
+.user_button{
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    background:#27292B none repeat scroll 0 0;
+    color:#FFFFFF !important;
+    font-family:arial;
+    font-size:14px;
+    font-weight:bold;
+    margin:0px;
+    margin-top:30px;
+    padding:7px 10px;
+    border:none;
+    text-align:center;
+    width:auto;
+    cursor:pointer;
+    float:right;
+    margin-left:20px;
+    text-decoration: none;
+    display: block;
+}
+.user_button:hover{
+    background: #373b3f;
+    text-decoration: none !important;
+}
+.themed_text{
+    color: #B00;
+}
+.themed_hover_text:hover{
+    color: #B00;
+}
+.themed_bg {
+    background-color: #B00;
 }

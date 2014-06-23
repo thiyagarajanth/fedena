@@ -22,7 +22,40 @@ class ExamScore < ActiveRecord::Base
   belongs_to :grading_level
 
   before_save :calculate_grade
+  before_save :check_existing
 
+
+  validates_presence_of :student_id
+  validates_presence_of :exam_id,:message =>  "Name/Batch Name/Subject Code is invalid"
+  validates_numericality_of :marks,:allow_nil => true
+  
+
+
+  def check_existing
+    exam_score = ExamScore.find(:first,:conditions => {:exam_id => self.exam_id,:student_id => self.student_id})
+    if exam_score
+      self.id = exam_score.id
+      self.instance_variable_set("@new_record",false)    #If the record exists,then make the new record as a copy of the existing one and allow rails to chhose
+                                                         #the update operation instead of insert. 
+    end
+    return true
+  end
+
+  
+  def validate
+    unless self.marks.nil?
+      unless self.exam.nil?
+        if self.exam.maximum_marks.to_f < self.marks.to_f
+          errors.add('marks','cannot be greater than maximum marks')
+          return false
+        else
+          return true
+        end
+      end
+    end
+  end
+
+  
   def calculate_percentage
     percentage = self.marks.to_f * 100 / self.exam.maximum_marks.to_f
   end

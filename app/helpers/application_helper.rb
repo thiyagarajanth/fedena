@@ -20,6 +20,35 @@ module ApplicationHelper
   def get_stylesheets
     @direction = (rtl?) ? 'rtl/' : ''
     stylesheets = [] unless stylesheets
+    if controller.controller_path == 'user' and controller.action_name == 'dashboard'
+      stylesheets << @direction+'_layouts/dashboard'
+    elsif controller.controller_path == 'user' and (controller.action_name == 'login' or controller.action_name == 'set_new_password' )
+      stylesheets << @direction+"_layouts/login"
+    else
+      stylesheets << @direction+'application'
+      stylesheets << @direction+'popup.css'
+    end
+    stylesheets << @direction+'_styles/ui.all.css'
+    stylesheets << @direction+'modalbox'
+    stylesheets << @direction+'autosuggest-menu.css'
+    stylesheets << 'calendar'
+    ["#{@direction}#{controller.controller_path}/#{controller.action_name}"].each do |ss|
+      stylesheets << ss
+    end
+    plugin_css_overrides = FedenaPlugin::CSS_OVERRIDES["#{controller.controller_path}_#{controller.action_name}"]
+    stylesheets << plugin_css_overrides.collect{|p| "#{@direction}plugin_css/#{p}"}
+  end
+
+  def get_forgotpw_stylesheets
+    @direction = (rtl?) ? 'rtl/' : ''
+    stylesheets = [] unless stylesheets
+    stylesheets << @direction+"_layouts/forgotpw"
+    stylesheets << @direction+"_styles/style"
+  end
+
+  def get_pdf_stylesheets
+    @direction = (rtl?) ? 'rtl/' : ''
+    stylesheets = [] unless stylesheets
     ["#{@direction}#{controller.controller_path}/#{controller.action_name}"].each do |ss|
       stylesheets << ss
     end
@@ -92,7 +121,7 @@ module ApplicationHelper
   end
 
   def generic_hook(cntrl,act)
-    FedenaPlugin::ADDITIONAL_LINKS[:generic_hook].each do |mod| 
+    FedenaPlugin::ADDITIONAL_LINKS[:generic_hook].flatten.compact.each do |mod|
       if cntrl.to_s == mod[:source][:controller].to_s && act.to_s == mod[:source][:action].to_s
         if permitted_to? mod[:destination][:action].to_sym,mod[:destination][:controller].to_sym
           return link_to(mod[:title], :controller=>mod[:destination][:controller].to_sym,:action=>mod[:destination][:action].to_sym)
@@ -104,9 +133,9 @@ module ApplicationHelper
 
   def generic_dashboard_hook(cntrl,act)
     dashboard_links = ""
-    FedenaPlugin::ADDITIONAL_LINKS[:generic_hook].each do |mod|
+    FedenaPlugin::ADDITIONAL_LINKS[:generic_hook].compact.flatten.each do |mod|
       if cntrl.to_s == mod[:source][:controller].to_s && act.to_s == mod[:source][:action].to_s
-        if permitted_to? mod[:destination][:action].to_sym,mod[:destination][:controller].to_sym
+        if can_access_request? mod[:destination][:action].to_sym,mod[:destination][:controller].to_sym
 
           dashboard_links += <<-END_HTML
              <div class="link-box">
@@ -118,5 +147,18 @@ module ApplicationHelper
       end
     end
     return dashboard_links
+  end
+
+  def render_generic_hook
+    hooks =  []
+    FedenaPlugin::ADDITIONAL_LINKS[:generic_hook].compact.flatten.select{|h| h if (h[:source][:controller] == controller_name.to_s && h[:source][:action] == action_name.to_s)}.each do |hook|
+      if can_access_request? hook[:destination][:action].to_sym,hook[:destination][:controller].to_sym
+        h = Marshal.load(Marshal.dump(hook))
+        h[:title] = t(hook[:title])
+        h[:description] = t(hook[:description])
+        hooks << h
+      end
+    end    
+    return hooks.to_json
   end
 end

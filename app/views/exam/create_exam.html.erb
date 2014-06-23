@@ -28,7 +28,7 @@
 <div id="inner-tab-menu">
   <ul>
     <% if permitted_to? :previous_batch_exams, :exam %>
-      <li><%= link_to "#{t('previous_batch_exam')}", {:controller => "exam", :action => "previous_batch_exams"}, :class=> 'user_button' %></li>
+      <li><%= link_to "#{t('previous_batch_exam')}", {:controller => "exam", :action => "previous_batch_exams"} %></li>
     <% end %>
   </ul>
 </div>
@@ -43,7 +43,7 @@
       </label>
       <div class="text-input-bg">
         <%= select :courses, :name,
-          @course.map {|b| [b.code, b.id]},
+          @course.map {|b| [b.full_name, b.id]},
           {:prompt => "#{t('select_a_course')}"},
           {:onChange => "#{remote_function(:url => {:action => "update_batch"},
           :with => "'course_name='+ value",

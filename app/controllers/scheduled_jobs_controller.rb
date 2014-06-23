@@ -17,6 +17,8 @@
 #limitations under the License.
 
 class ScheduledJobsController < ApplicationController
+  before_filter :login_required
+  filter_access_to :all
   def index
     @jobs = Delayed::Job.all
     @all_jobs = @jobs.dup
@@ -28,10 +30,12 @@ class ScheduledJobsController < ApplicationController
           h = j.handler
           unless h.nil?
             obj = j.payload_object.class.name
-            type = j.payload_object.job_type
-            j_type = "#{obj}/#{type}"
-            if j_type == @job_type
-              @jobs.push j
+            if j.payload_object.respond_to?("job_type")
+              type = j.payload_object.job_type
+              j_type = "#{obj}/#{type}"
+              if j_type == @job_type
+                @jobs.push j
+              end
             end
           end
         end

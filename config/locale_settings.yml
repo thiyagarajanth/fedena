@@ -8,6 +8,11 @@ available:
   pt: "português"
   mr: "मराठी"
   ja: "日本の"
+  fr: "français"
+  vi: "tiếng Việt"
+  ch: "中國的"
+  gl: "Galego"
+  ku: "Kurdí"
   
 fallbacks:
   en-GB:

@@ -164,7 +164,7 @@ function drawBox(){
 function makeRow(student){
     var nameTd=nameTdElem.cloneNode(true);
     var rowEl =rowElem.cloneNode(true);
-    rowEl.update(nameTd.update(student.first_name.split(" ").first()));
+    rowEl.update(nameTd.update(student.name));
     for(var i=0;i<datearr.length;i++){
         if(dates[datearr[i]] != null){
             dates[datearr[i]].each(function(e){
@@ -230,7 +230,9 @@ function makeHoverEl(dt,name){
     var maindiv = new Element('div',{
         'class':'date'
     });
-    var spanel =  new Element('span');
+    var spanel =  new Element('span',{
+        'class':'themed_text'
+    });
     var secdiv = new Element('div');
     secdiv.update(name);
     spanel.update(dt.day+" "+dt.date);

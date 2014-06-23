@@ -54,17 +54,18 @@
 }
 
 .submit_button {
-    padding: 7px 10px;
-    color: #fff;
-    background: #27292B;
-    -moz-border-radius:10px;
-    -webkit-border-radius:10px;
-    font-weight: bold;
-    font-size: 14px;
-    border:none;
+    background: none repeat scroll 0 0 #27292B;
+    border: medium none;
+    color: #FFFFFF;
+    cursor: pointer;
     font-family: arial;
-    cursor:pointer;
-    margin: 20px auto 0;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 18px 132px 0 0;
+    padding: 7px 10px;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
 }
 .submit_button:hover{
     background:  #373B3F;
@@ -255,23 +256,23 @@ label-field-pair2 {
 }
 .pay_fees{
     text-align: right;
+    margin-bottom: 35px;
 
 }
 table#listing td a {
-    padding: 7px 10px;
-    color: #fff;
-    background: #27292B;
-    -moz-border-radius:10px;
-    -webkit-border-radius:10px;
-    font-weight: bold;
-    font-size: 14px;
-    border:none;
-    font-family: arial;
-    cursor:pointer;
-    margin: 0 auto;
-    text-decoration: none;
+    background: none repeat scroll 0 0 #27292B;
+    border: medium none;
+    color: #FFFFFF;
+    cursor: pointer;
     float: right;
+    font-family: arial;
+    font-size: 14px;
+    font-weight: bold;
+    margin: -34px auto 0;
+    padding: 7px 10px;
+    text-decoration: none;
 }
+
 table#listing td a:hover{
     background:  #373B3F;
     color: #fff;
@@ -279,7 +280,7 @@ table#listing td a:hover{
 }
 
 td span{
-   color: #990A10;
+    color: #990A10;
 }
 
 table#listing td.col-8 {

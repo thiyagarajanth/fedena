@@ -22,10 +22,11 @@ class Employee < ActiveRecord::Base
   belongs_to  :employee_grade
   belongs_to  :employee_department
   belongs_to  :nationality, :class_name => 'Country'
-  belongs_to  :user, :dependent=>:destroy 
+  belongs_to  :user
+  belongs_to  :reporting_manager,:class_name => "Employee"
   
-  has_many :employees_subjects
-  has_many :subjects ,:through => :employees_subjects
+  has_many    :employees_subjects
+  has_many    :subjects ,:through => :employees_subjects
   has_many    :timetable_entries
   has_many    :employee_bank_details
   has_many    :employee_additional_details
@@ -39,12 +40,12 @@ class Employee < ActiveRecord::Base
     :message => "#{t('must_be_a_valid_email_address')}"
 
   validates_presence_of :employee_category_id, :employee_number, :first_name, :employee_position_id,
-    :employee_department_id,  :date_of_birth,:joining_date
+    :employee_department_id,  :date_of_birth,:joining_date,:nationality_id
   validates_uniqueness_of  :employee_number
 
   validates_associated :user
   before_validation :create_user_and_validate
-
+  before_save :status_true
   has_attached_file :photo,
     :styles => {:original=> "125x125#"},
     :url => "/system/:class/:attachment/:id/:style/:basename.:extension",
@@ -56,6 +57,12 @@ class Employee < ActiveRecord::Base
     :message=>'Image can only be GIF, PNG, JPG',:if=> Proc.new { |p| !p.photo_file_name.blank? }
   validates_attachment_size :photo, :less_than => 512000,\
     :message=>'must be less than 500 KB.',:if=> Proc.new { |p| p.photo_file_name_changed? }
+
+  def status_true
+    unless self.status==1
+      self.status=1
+    end
+  end
 
   def create_user_and_validate
     if self.new_record?
@@ -88,6 +95,12 @@ class Employee < ActiveRecord::Base
       user.errors.each{|attr,msg| errors.add(attr.to_sym,"#{msg}")}
     end
     user.errors.blank?
+  end
+
+  def employee_batches
+    batches_with_employees = Batch.active.reject{|b| b.employee_id.nil?}
+    assigned_batches = batches_with_employees.reject{|e| !e.employee_id.split(",").include?(self.id.to_s)}
+    return assigned_batches
   end
 
   def image_file=(input_data)
@@ -203,18 +216,17 @@ class Employee < ActiveRecord::Base
   end
 
   def archive_employee(status)
-    self.update_attributes(:status => false, :status_description => status)
+    self.update_attributes(:status_description => status)
     employee_attributes = self.attributes
     employee_attributes.delete "id"
     employee_attributes.delete "photo_file_size"
     employee_attributes.delete "photo_file_name"
     employee_attributes.delete "photo_content_type"
-    employee_attributes.delete "user_id"
     employee_attributes["former_id"]= self.id
     archived_employee = ArchivedEmployee.new(employee_attributes)
     archived_employee.photo = self.photo
     if archived_employee.save
-      self.user.delete unless self.user.nil?
+      #      self.user.delete unless self.user.nil?
       employee_salary_structures = self.employee_salary_structures
       employee_bank_details = self.employee_bank_details
       employee_additional_details = self.employee_additional_details
@@ -227,7 +239,7 @@ class Employee < ActiveRecord::Base
       employee_additional_details.each do |g|
         g.archive_employee_additional_detail(archived_employee.id)
       end
-      self.user.destroy
+      self.user.soft_delete
       self.destroy
     end
   end

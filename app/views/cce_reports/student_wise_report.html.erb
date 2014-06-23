@@ -35,6 +35,12 @@
       <p id="flash-msg"class="flash-msg"> <%= flash[:notice] %> </p>
     <% end %>
   </div>
+  <div class="bread_crumb">
+    <%= link_to t('exam_text'), :controller => "exam", :action=>"index" %> &raquo;
+    <%= link_to t('report_center'), :controller => "exam", :action => "report_center" %> &raquo;
+    <%= link_to t('cce_reports'), :controller => "cce_reports" %> &raquo;
+    Student-wise Report
+  </div>
   <div class="label-field-pair">
     <label for="batch_id"><%= t('select_a_batch') %></label>
     <%= image_tag("loader.gif",
@@ -61,9 +67,9 @@
 <script type="text/javascript">
   function set_active(){
     $$('.active-link').each(function(e){
-      e.removeClassName('active-link');
+      e.removeClassName('active-link themed_text');
     });
-    this.addClassName('active-link')
+    this.addClassName('active-link themed_text')
   }
   function draw_report(){
     Element.show('loader')

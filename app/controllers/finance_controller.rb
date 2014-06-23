@@ -78,14 +78,19 @@ class FinanceController < ApplicationController
   end
 
   def expense_create
-    flash[:notice]=nil
-    @expense = FinanceTransaction.new(params[:transaction])
+    @finance_transaction = FinanceTransaction.new
     @categories = FinanceTransactionCategory.expense_categories
     if @categories.empty?
       flash[:notice] = "#{t('flash2')}"
     end
-    if request.post? and @expense.save
-      flash[:notice] = "#{t('flash3')}"
+    if request.post?
+      @finance_transaction = FinanceTransaction.new(params[:finance_transaction])
+      if @finance_transaction.save
+        flash[:notice] = "#{t('flash3')}"
+        redirect_to :action=>"expense_create"
+      else
+        render :action=>"expense_create"
+      end
     end
   end
 
@@ -120,14 +125,19 @@ class FinanceController < ApplicationController
   end
   
   def income_create
-    flash[:notice]=nil
-    @income = FinanceTransaction.new(params[:transaction])
+    @finance_transaction = FinanceTransaction.new()
     @categories = FinanceTransactionCategory.income_categories
     if @categories.empty?
       flash[:notice] = "#{t('flash5')}"
     end
-    if request.post? and @income.save
-      flash[:notice] = "#{t('flash6')}"
+    if request.post? 
+      @finance_transaction = FinanceTransaction.new(params[:finance_transaction])
+      if @finance_transaction.save
+        flash[:notice] = "#{t('flash6')}"
+        redirect_to :action=>"income_create"
+      else
+        render :action=>"income_create"
+      end
     end
   end
 
@@ -512,6 +522,8 @@ class FinanceController < ApplicationController
 
 
   def view_employee_payslip
+    @is_present_employee=true
+    @is_present_employee=false if (Employee.find_by_id(params[:id]).nil?)
     @monthly_payslips = MonthlyPayslip.find(:all,:conditions=>["employee_id=? AND salary_date = ?",params[:id],params[:salary_date]],:include=>:payroll_category)
     @individual_payslips =  IndividualPayslipCategory.find(:all,:conditions=>["employee_id=? AND salary_date = ?",params[:id],params[:salary_date]])
     @salary  = Employee.calculate_salary(@monthly_payslips, @individual_payslips)
@@ -751,6 +763,7 @@ class FinanceController < ApplicationController
   def master_category_particulars_update
     @feeparticulars = FinanceFeeParticular.find( params[:id])
     render :update do |page|
+      params[:finance_fee_particular][:student_category_id]="" if params[:finance_fee_particular][:student_category_id].nil?
       if @feeparticulars.update_attributes(params[:finance_fee_particular])
         @finance_fee_category = FinanceFeeCategory.find(@feeparticulars.finance_fee_category_id)
         @particulars = FinanceFeeParticular.paginate(:page => params[:page],:conditions => ["is_deleted = '#{false}' and finance_fee_category_id = '#{@finance_fee_category.id}' "])
@@ -1348,30 +1361,37 @@ class FinanceController < ApplicationController
     @date    =  @fee_collection = FinanceFeeCollection.find(params[:date])
     @student = Student.find(params[:student]) if params[:student]
     @fee = FinanceFee.first(:conditions=>"fee_collection_id = #{@date.id}" ,:joins=>'INNER JOIN students ON finance_fees.student_id = students.id')
-    @student ||= @fee.student
-    @prev_student = @student.previous_fee_student(@date.id)
-    @next_student = @student.next_fee_student(@date.id)
-    @financefee = @student.finance_fee_by_date @date
-    @due_date = @fee_collection.due_date
-    unless @financefee.transaction_id.blank?
-      @paid_fees = FinanceTransaction.find(:all,:conditions=>"FIND_IN_SET(id,\"#{@financefee.transaction_id}\")", :order=>"created_at ASC")
-    end
-    @fee_category = FinanceFeeCategory.find(@fee_collection.fee_category_id,:conditions => ["is_deleted = false"])
-    @fee_particulars = @date.fees_particulars(@student)
+    unless @fee.nil?
+      @student ||= @fee.student
+      @prev_student = @student.previous_fee_student(@date.id)
+      @next_student = @student.next_fee_student(@date.id)
+      @financefee = @student.finance_fee_by_date @date
+      @due_date = @fee_collection.due_date
+      unless @financefee.transaction_id.blank?
+        @paid_fees = FinanceTransaction.find(:all,:conditions=>"FIND_IN_SET(id,\"#{@financefee.transaction_id}\")", :order=>"created_at ASC")
+      end
+      @fee_category = FinanceFeeCategory.find(@fee_collection.fee_category_id,:conditions => ["is_deleted = false"])
+      @fee_particulars = @date.fees_particulars(@student)
 
-    @batch_discounts = BatchFeeCollectionDiscount.find_all_by_finance_fee_collection_id(@date.id)
-    @student_discounts = StudentFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@date.id,@student.id)
-    @category_discounts = StudentCategoryFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@date.id,@student.student_category_id)
-    @total_discount = 0
-    @total_discount += @batch_discounts.map{|s| s.discount}.sum unless @batch_discounts.nil?
-    @total_discount += @student_discounts.map{|s| s.discount}.sum unless @student_discounts.nil?
-    @total_discount += @category_discounts.map{|s| s.discount}.sum unless @category_discounts.nil?
-    if @total_discount > 100
-      @total_discount = 100
-    end
+      @batch_discounts = BatchFeeCollectionDiscount.find_all_by_finance_fee_collection_id(@date.id)
+      @student_discounts = StudentFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@date.id,@student.id)
+      @category_discounts = StudentCategoryFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@date.id,@student.student_category_id)
+      @total_discount = 0
+      @total_discount += @batch_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @batch_discounts.nil?
+      @total_discount += @student_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @student_discounts.nil?
+      @total_discount += @category_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @category_discounts.nil?
+      if @total_discount.to_f > [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum.to_f
+        @total_discount = [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum.to_f
+      end
+      @total_discount_percentage = [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.discount(@student)}.sum
 
-    render :update do |page|
-      page.replace_html "student", :partial => "student_fees_submission"
+      render :update do |page|
+        page.replace_html "student", :partial => "student_fees_submission"
+      end
+    else
+      render :update do |page|
+        page.replace_html "student", :text => '<p class="flash-msg">No students have been assigned this fee.</p>'
+      end
     end
   end
 
@@ -1396,12 +1416,13 @@ class FinanceController < ApplicationController
     @student_discounts = StudentFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@fee_collection.id,@student.id)
     @category_discounts = StudentCategoryFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@fee_collection.id,@student.student_category_id)
     @total_discount = 0
-    @total_discount += @batch_discounts.map{|s| s.discount}.sum unless @batch_discounts.nil?
-    @total_discount += @student_discounts.map{|s| s.discount}.sum unless @student_discounts.nil?
-    @total_discount += @category_discounts.map{|s| s.discount}.sum unless @category_discounts.nil?
-    if @total_discount > 100
-      @total_discount = 100
+    @total_discount += @batch_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @batch_discounts.nil?
+    @total_discount += @student_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @student_discounts.nil?
+    @total_discount += @category_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @category_discounts.nil?
+    if @total_discount.to_f > [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum.to_f
+      @total_discount = [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum.to_f
     end
+    @total_discount_percentage = [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.discount(@student)}.sum
     
     @fee_particulars.each do |p|
       total_fees += p.amount
@@ -1467,12 +1488,13 @@ class FinanceController < ApplicationController
     @student_discounts = StudentFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@fee_collection.id,@student.id)
     @category_discounts = StudentCategoryFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@fee_collection.id,@student.student_category_id)
     @total_discount = 0
-    @total_discount += @batch_discounts.map{|s| s.discount}.sum unless @batch_discounts.nil?
-    @total_discount += @student_discounts.map{|s| s.discount}.sum unless @student_discounts.nil?
-    @total_discount += @category_discounts.map{|s| s.discount}.sum unless @category_discounts.nil?
-    if @total_discount > 100
-      @total_discount = 100
+    @total_discount += @batch_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @batch_discounts.nil?
+    @total_discount += @student_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @student_discounts.nil?
+    @total_discount += @category_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @category_discounts.nil?
+    if @total_discount.to_f > [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum.to_f
+      @total_discount = [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum.to_f
     end
+    @total_discount_percentage = [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.discount(@student)}.sum
     
     render :pdf => 'fee_receipt_pdf'
            
@@ -1509,12 +1531,13 @@ class FinanceController < ApplicationController
       @student_discounts = StudentFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@fee_collection.id,@student.id)
       @category_discounts = StudentCategoryFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@fee_collection.id,@student.student_category_id)
       @total_discount = 0
-      @total_discount += @batch_discounts.map{|s| s.discount}.sum unless @batch_discounts.nil?
-      @total_discount += @student_discounts.map{|s| s.discount}.sum unless @student_discounts.nil?
-      @total_discount += @category_discounts.map{|s| s.discount}.sum unless @category_discounts.nil?
-      if @total_discount > 100
-        @total_discount = 100
+      @total_discount += @batch_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @batch_discounts.nil?
+      @total_discount += @student_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @student_discounts.nil?
+      @total_discount += @category_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @category_discounts.nil?
+      if @total_discount.to_f > [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum.to_f
+        @total_discount = [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum.to_f
       end
+      @total_discount_percentage = [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.discount(@student)}.sum
 
 
       render :update do |page|
@@ -1564,12 +1587,13 @@ class FinanceController < ApplicationController
     @student_discounts = StudentFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@fee_collection.id,@student.id)
     @category_discounts = StudentCategoryFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@fee_collection.id,@student.student_category_id)
     @total_discount = 0
-    @total_discount += @batch_discounts.map{|s| s.discount}.sum unless @batch_discounts.nil?
-    @total_discount += @student_discounts.map{|s| s.discount}.sum unless @student_discounts.nil?
-    @total_discount += @category_discounts.map{|s| s.discount}.sum unless @category_discounts.nil?
-    if @total_discount > 100
-      @total_discount = 100
+    @total_discount += @batch_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @batch_discounts.nil?
+    @total_discount += @student_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @student_discounts.nil?
+    @total_discount += @category_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @category_discounts.nil?
+    if @total_discount.to_f > [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum.to_f
+      @total_discount = [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum.to_f
     end
+    @total_discount_percentage = [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.discount(@student)}.sum
     
     render :update do |page|
       page.replace_html "fee_submission", :partial => "fees_submission_form"
@@ -1597,12 +1621,13 @@ class FinanceController < ApplicationController
     @student_discounts = StudentFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@fee_collection.id,@student.id)
     @category_discounts = StudentCategoryFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@fee_collection.id,@student.student_category_id)
     @total_discount = 0
-    @total_discount += @batch_discounts.map{|s| s.discount}.sum unless @batch_discounts.nil?
-    @total_discount += @student_discounts.map{|s| s.discount}.sum unless @student_discounts.nil?
-    @total_discount += @category_discounts.map{|s| s.discount}.sum unless @category_discounts.nil?
-    if @total_discount > 100
-      @total_discount = 100
+    @total_discount += @batch_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @batch_discounts.nil?
+    @total_discount += @student_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @student_discounts.nil?
+    @total_discount += @category_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @category_discounts.nil?
+    if @total_discount.to_f > [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum.to_f
+      @total_discount = [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum.to_f
     end
+    @total_discount_percentage = [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.discount(@student)}.sum
 
     render :update do |page|
       page.replace_html "fee_submission", :partial => "fees_submission_form"
@@ -1623,12 +1648,13 @@ class FinanceController < ApplicationController
     @student_discounts = StudentFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@fee_collection.id,@student.id)
     @category_discounts = StudentCategoryFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@fee_collection.id,@student.student_category_id)
     @total_discount = 0
-    @total_discount += @batch_discounts.map{|s| s.discount}.sum unless @batch_discounts.nil?
-    @total_discount += @student_discounts.map{|s| s.discount}.sum unless @student_discounts.nil?
-    @total_discount += @category_discounts.map{|s| s.discount}.sum unless @category_discounts.nil?
-    if @total_discount > 100
-      @total_discount = 100
+    @total_discount += @batch_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @batch_discounts.nil?
+    @total_discount += @student_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @student_discounts.nil?
+    @total_discount += @category_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @category_discounts.nil?
+    if @total_discount.to_f > [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum.to_f
+      @total_discount = [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum.to_f
     end
+    @total_discount_percentage = [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.discount(@student)}.sum
     total_fees = 0
     @fee_particulars.each do |p|
       total_fees += p.amount
@@ -1713,12 +1739,13 @@ class FinanceController < ApplicationController
     @student_discounts = StudentFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@fee_collection.id,@student.id)
     @category_discounts = StudentCategoryFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@fee_collection.id,@student.student_category_id)
     @total_discount = 0
-    @total_discount += @batch_discounts.map{|s| s.discount}.sum unless @batch_discounts.nil?
-    @total_discount += @student_discounts.map{|s| s.discount}.sum unless @student_discounts.nil?
-    @total_discount += @category_discounts.map{|s| s.discount}.sum unless @category_discounts.nil?
-    if @total_discount > 100
-      @total_discount = 100
+    @total_discount += @batch_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @batch_discounts.nil?
+    @total_discount += @student_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @student_discounts.nil?
+    @total_discount += @category_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @category_discounts.nil?
+    if @total_discount.to_f > [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.total_payable * s.discount(@student) / 100}.sum.to_f
+      @total_discount = [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum.to_f
     end
+    @total_discount_percentage = [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.discount(@student)}.sum
     render :update do |page|
       page.replace_html "fees_structure" , :partial => "fees_structure"
     end
@@ -1790,12 +1817,13 @@ class FinanceController < ApplicationController
     @student_discounts = StudentFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@fee_collection.id,@student.id)
     @category_discounts = StudentCategoryFeeCollectionDiscount.find_all_by_finance_fee_collection_id_and_receiver_id(@fee_collection.id,@student.student_category_id)
     @total_discount = 0
-    @total_discount += @batch_discounts.map{|s| s.discount}.sum unless @batch_discounts.nil?
-    @total_discount += @student_discounts.map{|s| s.discount}.sum unless @student_discounts.nil?
-    @total_discount += @category_discounts.map{|s| s.discount}.sum unless @category_discounts.nil?
-    if @total_discount > 100
-      @total_discount = 100
+    @total_discount += @batch_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @batch_discounts.nil?
+    @total_discount += @student_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @student_discounts.nil?
+    @total_discount += @category_discounts.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum unless @category_discounts.nil?
+    if @total_discount.to_f > [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum.to_f
+      @total_discount = [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.total_payable(@student) * s.discount(@student) / 100}.sum.to_f
     end
+    @total_discount_percentage = [@batch_discounts,@student_discounts,@category_discounts].flatten.compact.map{|s| s.discount(@student)}.sum
     
     unless @financefee.transaction_id.blank?
       @paid_fees = FinanceTransaction.find(:all,:conditions=>"FIND_IN_SET(id,\"#{@financefee.transaction_id}\")", :order=>"created_at ASC")
@@ -2340,6 +2368,11 @@ class FinanceController < ApplicationController
       @courses = Course.active
       render :update do |page|
         page.replace_html "form-box", :partial => "student_wise_discount_form"
+        page.replace_html 'form-errors', :text =>""
+      end
+    else
+      render :update do |page|
+        page.replace_html "form-box", :text => ""
         page.replace_html 'form-errors', :text =>""
       end
     end

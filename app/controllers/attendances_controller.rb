@@ -23,31 +23,42 @@ class AttendancesController < ApplicationController
   before_filter :only_privileged_employee_allowed, :only => 'index'
   before_filter :default_time_zone_present_time
   def index
+    @config = Configuration.find_by_config_key('StudentAttendanceType')
     @date_today = @local_tzone_time.to_date
     if current_user.admin?
       @batches = Batch.active
     elsif @current_user.privileges.map{|p| p.name}.include?('StudentAttendanceRegister')
       @batches = Batch.active
     elsif @current_user.employee?
-      @batches=Batch.find_all_by_employee_id @current_user.employee_record.id
-      @batches+=@current_user.employee_record.subjects.collect{|b| b.batch}
-      @batches=@batches.uniq unless @batches.empty?
+      if @config.config_value == 'Daily'
+        @batches=@current_user.employee_record.employee_batches
+      else
+        @batches=@current_user.employee_record.employee_batches
+        @batches+=@current_user.employee_record.subjects.collect{|b| b.batch}
+        @batches=@batches.uniq unless @batches.empty?
+      end
     end
-    @config = Configuration.find_by_config_key('StudentAttendanceType')
   end
 
   def list_subject
-    @batch = Batch.find(params[:batch_id])
-    @subjects = @batch.subjects
-    if @current_user.employee? and @allow_access ==true and !@current_user.privileges.map{|m| m.name}.include?("StudentAttendanceRegister")
-      if @batch.employee_id.to_i==@current_user.employee_record.id
-        @subjects= @batch.subjects
-      else
-        @subjects= Subject.find(:all,:joins=>"INNER JOIN employees_subjects ON employees_subjects.subject_id = subjects.id AND employee_id = #{@current_user.employee_record.id} AND batch_id = #{@batch.id} ")
+    if params[:batch_id].present?
+      @batch = Batch.find(params[:batch_id])
+      @subjects = @batch.subjects
+      if @current_user.employee? and @allow_access ==true and !@current_user.privileges.map{|m| m.name}.include?("StudentAttendanceRegister")
+        if @batch.employee_id.to_i==@current_user.employee_record.id
+          @subjects= @batch.subjects
+        else
+          @subjects= Subject.find(:all,:joins=>"INNER JOIN employees_subjects ON employees_subjects.subject_id = subjects.id AND employee_id = #{@current_user.employee_record.id} AND batch_id = #{@batch.id} ")
+        end
       end
-    end
-    render(:update) do |page|
-      page.replace_html 'subjects', :partial=> 'subjects'
+      render(:update) do |page|
+        page.replace_html 'subjects', :partial=> 'subjects'
+      end
+    else
+      render(:update) do |page|
+        page.replace_html "register", :text => ""
+        page.replace_html "subjects", :text => ""
+      end
     end
   end
 
@@ -83,41 +94,49 @@ class AttendancesController < ApplicationController
   end
 
   def subject_wise_register
-    @sub =Subject.find params[:subject_id]
-    @batch=Batch.find(@sub.batch_id)
-    @today = params[:next].present? ? params[:next].to_date : @local_tzone_time.to_date
-    unless @sub.elective_group_id.nil?
-      elective_student_ids = StudentsSubject.find_all_by_subject_id(@sub.id).map { |x| x.student_id }
-      @students = @batch.students.by_first_name.with_full_name_only.all(:conditions=>"FIND_IN_SET(id,\"#{elective_student_ids.split.join(',')}\")")
-    else
-      @students = @batch.students.by_first_name.with_full_name_only
-    end
-    subject_leaves = SubjectLeave.by_month_batch_subject(@today,@batch.id,@sub.id).group_by(&:student_id)
-    @leaves = Hash.new
-    @students.each do |student|
-      @leaves[student.id] = Hash.new(false)
-      unless subject_leaves[student.id].nil?
-        subject_leaves[student.id].group_by(&:month_date).each do |m,mleave|
-          @leaves[student.id]["#{m}"]={}
-          mleave.group_by(&:class_timing_id).each do |ct,ctleave|
-            ctleave.each do |leave|
-              @leaves[student.id]["#{m}"][ct] = leave.id
+    if params[:subject_id].present?
+      @sub =Subject.find params[:subject_id]
+      @batch=Batch.find(@sub.batch_id)
+      @today = params[:next].present? ? params[:next].to_date : @local_tzone_time.to_date
+      unless @sub.elective_group_id.nil?
+        elective_student_ids = StudentsSubject.find_all_by_subject_id(@sub.id).map { |x| x.student_id }
+        @students = @batch.students.by_first_name.with_full_name_only.all(:conditions=>"FIND_IN_SET(id,\"#{elective_student_ids.split.join(',')}\")")
+      else
+        @students = @batch.students.by_first_name.with_full_name_only
+      end
+      subject_leaves = SubjectLeave.by_month_batch_subject(@today,@batch.id,@sub.id).group_by(&:student_id)
+      @leaves = Hash.new
+      @students.each do |student|
+        @leaves[student.id] = Hash.new(false)
+        unless subject_leaves[student.id].nil?
+          subject_leaves[student.id].group_by(&:month_date).each do |m,mleave|
+            @leaves[student.id]["#{m}"]={}
+            mleave.group_by(&:class_timing_id).each do |ct,ctleave|
+              ctleave.each do |leave|
+                @leaves[student.id]["#{m}"][ct] = leave.id
+              end
             end
           end
         end
       end
-    end
-    @dates=Timetable.tte_for_range(@batch,@today,@sub)
-    @translated=Hash.new
-    @translated['name']=t('name')
-    (0..6).each do |i|
-      @translated[Date::ABBR_DAYNAMES[i].to_s]=t(Date::ABBR_DAYNAMES[i].downcase)
-    end
-    (1..12).each do |i|
-      @translated[Date::MONTHNAMES[i].to_s]=t(Date::MONTHNAMES[i].downcase)
-    end
-    respond_to do |fmt|
-      fmt.json {render :json=>{'leaves'=>@leaves,'students'=>@students,'dates'=>@dates,'batch'=>@batch,'today'=>@today,'translated'=>@translated}}
+      @dates=Timetable.tte_for_range(@batch,@today,@sub)
+      @translated=Hash.new
+      @translated['name']=t('name')
+      (0..6).each do |i|
+        @translated[Date::ABBR_DAYNAMES[i].to_s]=t(Date::ABBR_DAYNAMES[i].downcase)
+      end
+      (1..12).each do |i|
+        @translated[Date::MONTHNAMES[i].to_s]=t(Date::MONTHNAMES[i].downcase)
+      end
+      respond_to do |fmt|
+        fmt.json {render :json=>{'leaves'=>@leaves,'students'=>@students,'dates'=>@dates,'batch'=>@batch,'today'=>@today,'translated'=>@translated}}
+      end
+    else
+      render :update do |page|
+        page.replace_html "register", :text => ""
+        page.hide "loader"
+      end
+      return
     end
   end
 
@@ -187,9 +206,20 @@ class AttendancesController < ApplicationController
     respond_to do |format|
       if @absentee.save
         sms_setting = SmsSetting.new()
+        message = ""
         if sms_setting.application_sms_active and @student.is_sms_enabled and sms_setting.attendance_sms_active
           recipients = []
-          message = "#{@student.first_name} #{@student.last_name} #{t('flash_msg7')} #{@absentee.month_date}"
+          unless @config.config_value=="SubjectWise"
+            if @absentee.is_full_day
+              message = "#{@student.first_name} #{@student.last_name} #{t('flash_msg7')} #{@absentee.month_date}"
+            elsif @absentee.forenoon == true and @absentee.afternoon == false
+              message = "#{@student.first_name} #{@student.last_name} #{t('flash_msg7')} (forenoon) #{@absentee.month_date}"
+            elsif @absentee.afternoon == true and @absentee.forenoon == false
+              message = "#{@student.first_name} #{@student.last_name} #{t('flash_msg7')} (afternoon) #{@absentee.month_date}"
+            end
+          else
+            message = "#{@student.first_name} #{@student.last_name} #{t('flash_msg7')} #{@absentee.month_date}  #{t('flash_subject')} #{@absentee.subject.name} #{t('flash_period')} #{@absentee.class_timing.try(:name)}"
+          end
           if sms_setting.student_sms_active
             recipients.push @student.phone2 unless @student.phone2.nil?
           end

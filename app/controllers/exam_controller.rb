@@ -328,8 +328,7 @@ class ExamController < ApplicationController
   def consolidated_exam_report_pdf
     @exam_group = ExamGroup.find(params[:exam_group])
     @batch = @exam_group.batch
-    render :pdf => 'consolidated_exam_report_pdf',
-      :page_size=> 'A3'
+    render :pdf => 'consolidated_exam_report_pdf'#, :page_size=> 'A3'
     #        respond_to do |format|
     #            format.pdf { render :layout => false }
     #        end
@@ -341,7 +340,7 @@ class ExamController < ApplicationController
   end
 
   def list_batch_subjects
-    @subjects = Subject.find_all_by_batch_id(params[:batch_id],:conditions=>"is_deleted=false")
+    @subjects = Subject.find_all_by_batch_id(params[:batch_id],:conditions=>"is_deleted=false AND no_exams=false")
     render(:update) do |page|
       page.replace_html 'subject-select', :partial=>'rank_subject_select'
     end
@@ -381,7 +380,7 @@ class ExamController < ApplicationController
   end
 
   def list_subjects
-    @subjects = Subject.find_all_by_batch_id(params[:batch_id],:conditions=>"is_deleted=false")
+    @subjects = Subject.find_all_by_batch_id(params[:batch_id],:conditions=>"is_deleted=false AND no_exams=false")
     render(:update) do |page|
       page.replace_html 'subject-select', :partial=>'subject_select'
     end
@@ -1026,6 +1025,7 @@ class ExamController < ApplicationController
         redirect_to :action=>'grouped_exam_report' and return
       end
     end
+    @previous_batch = 0
     #grouped-exam-report-for-batch
     if params[:student].nil?
       @type = params[:type]
@@ -1053,13 +1053,15 @@ class ExamController < ApplicationController
         elective_subjects.push Subject.find(elect.subject_id)
       end
       @subjects = general_subjects + elective_subjects
-      @subjects.reject!{|s| s.no_exams==true}
-      exams = Exam.find_all_by_exam_group_id(@exam_groups.collect(&:id))
-      subject_ids = exams.collect(&:subject_id)
-      @subjects.reject!{|sub| !(subject_ids.include?(sub.id))}
+      @subjects.reject!{|s| (s.no_exams==true or s.exam_not_created(@exam_groups.collect(&:id)))}
     else
       @student = Student.find(params[:student])
-      @batch = @student.batch
+      if params[:batch].present?
+        @batch = Batch.find(params[:batch])
+        @previous_batch = 1
+      else
+        @batch = @student.batch
+      end
       @type  = params[:type]
       if params[:type] == 'grouped'
         @grouped_exams = GroupedExam.find_all_by_batch_id(@batch.id)
@@ -1071,17 +1073,14 @@ class ExamController < ApplicationController
         @exam_groups = ExamGroup.find_all_by_batch_id(@batch.id)
         @exam_groups.reject!{|e| e.result_published==false}
       end
-      general_subjects = Subject.find_all_by_batch_id(@student.batch.id, :conditions=>"elective_group_id IS NULL AND is_deleted=false")
-      student_electives = StudentsSubject.find_all_by_student_id(@student.id,:conditions=>"batch_id = #{@student.batch.id}")
+      general_subjects = Subject.find_all_by_batch_id(@batch.id, :conditions=>"elective_group_id IS NULL AND is_deleted=false")
+      student_electives = StudentsSubject.find_all_by_student_id(@student.id,:conditions=>"batch_id = #{@batch.id}")
       elective_subjects = []
       student_electives.each do |elect|
         elective_subjects.push Subject.find(elect.subject_id)
       end
       @subjects = general_subjects + elective_subjects
-      @subjects.reject!{|s| s.no_exams==true}
-      exams = Exam.find_all_by_exam_group_id(@exam_groups.collect(&:id))
-      subject_ids = exams.collect(&:subject_id)
-      @subjects.reject!{|sub| !(subject_ids.include?(sub.id))}
+      @subjects.reject!{|s| (s.no_exams==true or s.exam_not_created(@exam_groups.collect(&:id)))}
       if request.xhr?
         render(:update) do |page|
           page.replace_html   'grouped_exam_report', :partial=>"grouped_exam_report"
@@ -1122,7 +1121,7 @@ class ExamController < ApplicationController
       @subjects.reject!{|sub| !(subject_ids.include?(sub.id))}
     else
       @student = Student.find(params[:student])
-      @batch = @student.batch
+      @batch = Batch.find_by_id(params[:batch_id])
       @type  = params[:type]
       if params[:type] == 'grouped'
         @grouped_exams = GroupedExam.find_all_by_batch_id(@batch.id)
@@ -1134,8 +1133,8 @@ class ExamController < ApplicationController
         @exam_groups = ExamGroup.find_all_by_batch_id(@batch.id)
         @exam_groups.reject!{|e| e.result_published==false}
       end
-      general_subjects = Subject.find_all_by_batch_id(@student.batch.id, :conditions=>"elective_group_id IS NULL")
-      student_electives = StudentsSubject.find_all_by_student_id(@student.id,:conditions=>"batch_id = #{@student.batch.id}")
+      general_subjects = Subject.find_all_by_batch_id(@batch.id, :conditions=>"elective_group_id IS NULL")
+      student_electives = StudentsSubject.find_all_by_student_id(@student.id,:conditions=>"batch_id = #{@batch.id}")
       elective_subjects = []
       student_electives.each do |elect|
         elective_subjects.push Subject.find(elect.subject_id)
@@ -1212,6 +1211,7 @@ class ExamController < ApplicationController
       elective_subjects.push Subject.find(elect.subject_id)
     end
     @subjects = general_subjects + elective_subjects
+    @subjects.reject!{|s| (s.no_exams==true or s.exam_not_created(@exam_groups.collect(&:id)))}
   end
 
   def previous_batch_exams
@@ -1268,12 +1268,24 @@ class ExamController < ApplicationController
       flash[:notice] = "#{t('flash_msg6')}"
       redirect_to :controller=>"user", :action=>"dashboard"
     end
-    scores = ExamScore.find_all_by_exam_id(@exam.id)
-    @students = []
-    unless scores.empty?
-      scores.each do|score|
-        student = Student.find_by_id(score.student_id)
-        @students.push [student.first_name,student.id,student] unless student.nil?
+    #scores = ExamScore.find_all_by_exam_id(@exam.id)
+    exam_subject = Subject.find(@exam.subject_id)
+    is_elective = exam_subject.elective_group_id
+    if is_elective == nil
+      @students = []
+      batch_students = BatchStudent.find_all_by_batch_id(@batch.id)
+      unless batch_students.empty?
+        batch_students.each do|b|
+          student = Student.find_by_id(b.student_id)
+          @students.push [student.first_name,student.id,student] unless student.nil?
+        end
+      end
+    else
+      assigned_students = StudentsSubject.find_all_by_subject_id(exam_subject.id)
+      @students = []
+      assigned_students.each do |s|
+        student = Student.find_by_id(s.student_id)
+        @students.push [student.first_name, student.id, student] unless student.nil?
       end
     end
     @ordered_students = @students.sort
@@ -1293,17 +1305,31 @@ class ExamController < ApplicationController
       exam_score = ExamScore.find(:first, :conditions => {:exam_id => @exam.id, :student_id => student_id} )
       prev_score = ExamScore.find(:first, :conditions => {:exam_id => @exam.id, :student_id => student_id} )
       unless exam_score.nil?
-        unless details[:marks].to_f == exam_score.marks.to_f
-          if details[:marks].to_f <= @exam.maximum_marks.to_f
-            if exam_score.update_attributes(details)
+        #unless details[:marks].to_f == exam_score.marks.to_f
+        if details[:marks].to_f <= @exam.maximum_marks.to_f
+          if exam_score.update_attributes(details)
+            if params[:student_ids] and params[:student_ids].include?(student_id)
               PreviousExamScore.create(:student_id=>prev_score.student_id,:exam_id=>prev_score.exam_id,:marks=>prev_score.marks,:grading_level_id=>prev_score.grading_level_id,:remarks=>prev_score.remarks,:is_failed=>prev_score.is_failed)
-            else
-              flash[:warn_notice] = "#{t('flash8')}"
-              @error = nil
             end
           else
-            @error = true
+            flash[:warn_notice] = "#{t('flash8')}"
+            @error = nil
           end
+        else
+          @error = true
+        end
+        #end
+      else
+        if details[:marks].to_f <= @exam.maximum_marks.to_f
+          ExamScore.create do |score|
+            score.exam_id          = @exam.id
+            score.student_id       = student_id
+            score.marks            = details[:marks]
+            score.grading_level_id = details[:grading_level_id]
+            score.remarks          = details[:remarks]
+          end
+        else
+          @error = true
         end
       end
     end

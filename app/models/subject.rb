@@ -30,15 +30,21 @@ class Subject < ActiveRecord::Base
   validates_presence_of :name, :max_weekly_classes, :code,:batch_id
   validates_presence_of :credit_hours, :if=>:check_grade_type
   validates_numericality_of :max_weekly_classes
+  validates_numericality_of :amount,:allow_nil => true
   validates_uniqueness_of :code, :case_sensitive => false, :scope=>[:batch_id,:is_deleted] ,:if=> 'is_deleted == false'
   named_scope :for_batch, lambda { |b| { :conditions => { :batch_id => b.to_i, :is_deleted => false } } }
   named_scope :without_exams, :conditions => { :no_exams => false, :is_deleted => false }
+  named_scope :active, :conditions => { :is_deleted => false }
 
   before_save :fa_group_valid
 
   def check_grade_type
-    batch = self.batch
-    batch.gpa_enabled? or batch.cwa_enabled?
+    unless self.batch.nil?
+      batch = self.batch
+      batch.gpa_enabled? or batch.cwa_enabled?
+    else
+      return false
+    end
   end
 
   def inactivate
@@ -76,6 +82,20 @@ class Subject < ActiveRecord::Base
       end
     end
     return selected_employee
+  end
+
+  def no_exam_for_batch(batch_id)
+    grouped_exams = GroupedExam.find_all_by_batch_id(batch_id).collect(&:exam_group_id)
+    return exam_not_created(grouped_exams)
+  end
+
+  def exam_not_created(exam_group_ids)
+    exams = Exam.find_all_by_exam_group_id_and_subject_id(exam_group_ids,self.id)
+    if exams.empty?
+      return true
+    else
+      return false
+    end
   end
 
   private

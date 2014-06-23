@@ -37,6 +37,11 @@ class TimetableController < ApplicationController
         @error=true
         @timetable.errors.add_to_base('end_date_overlap')
       end
+      fully_overlapping=Timetable.find(:all,:conditions=>["end_date <= ? AND start_date >= ?",@timetable.end_date,@timetable.start_date])
+      unless fully_overlapping.empty?
+        @error=true
+        @timetable.errors.add_to_base('timetable_in_between_given_dates')
+      end
       #      unless @timetable.start_date>=Date.today
       #        @error=true
       #        @timetable.errors.add_to_base('start_date_is_lower_than_today')
@@ -110,6 +115,11 @@ class TimetableController < ApplicationController
         @error=true
         @timetable.errors.add_to_base('end_date_overlap')
       end
+      fully_overlapping=Timetable.find(:all,:conditions=>["end_date <= ? AND start_date >= ?",@timetable.end_date,@timetable.start_date])
+      unless fully_overlapping.empty?
+        @error=true
+        @timetable.errors.add_to_base('timetable_in_between_given_dates')
+      end
       unless @current
         if new_start<=Date.today
           @timetable.errors.add_to_base('start_date_is_lower_than_today')
@@ -182,16 +192,18 @@ class TimetableController < ApplicationController
       @all_classtimings = @all_timetable_entries.collect(&:class_timing).uniq.sort!{|a,b| a.start_time <=> b.start_time}
       @all_subjects = @all_timetable_entries.collect(&:subject).uniq
       @all_teachers = @all_timetable_entries.collect(&:employee).uniq
-      @all_timetable_entries.each do |tt|
-        @timetable_entries[tt.employee_id][tt.weekday_id][tt.class_timing_id] = tt
+      @all_timetable_entries.each_with_index do |tt , i|
+        @timetable_entries[tt.employee_id][tt.weekday_id][tt.class_timing_id][i] = tt
       end
       @all_subjects.each do |sub|
         unless sub.elective_group.nil?
           @all_teachers+=sub.elective_group.subjects.collect(&:employees).flatten
           @elective_teachers=sub.elective_group.subjects.collect(&:employees).flatten
-          @current.timetable_entries.find_all_by_subject_id(sub.id).each do |tt|
+          @current.timetable_entries.find_all_by_subject_id(sub.id).each_with_index do |tt , i|
             @elective_teachers.each do |e|
-              @timetable_entries[e.id][tt.weekday_id][tt.class_timing_id] = tt
+              unless sub.elective_group.subjects.first == sub && sub.employees.first == e
+                @timetable_entries[e.id][tt.weekday_id][tt.class_timing_id][i] = tt
+              end
             end
           end
         end
@@ -222,16 +234,18 @@ class TimetableController < ApplicationController
     @all_classtimings = @all_timetable_entries.collect(&:class_timing).uniq.sort!{|a,b| a.start_time <=> b.start_time}
     @all_subjects = @all_timetable_entries.collect(&:subject).uniq
     @all_teachers = @all_timetable_entries.collect(&:employee).uniq
-    @all_timetable_entries.each do |tt|
-      @timetable_entries[tt.employee_id][tt.weekday_id][tt.class_timing_id] = tt
+    @all_timetable_entries.each_with_index do |tt , i|
+      @timetable_entries[tt.employee_id][tt.weekday_id][tt.class_timing_id][i] = tt
     end
     @all_subjects.each do |sub|
       unless sub.elective_group.nil?
         @all_teachers+=sub.elective_group.subjects.collect(&:employees).flatten
         @elective_teachers=sub.elective_group.subjects.collect(&:employees).flatten
-        @current.timetable_entries.find_all_by_subject_id(sub.id).each do |tt|
+        @current.timetable_entries.find_all_by_subject_id(sub.id).each_with_index do |tt , i|
           @elective_teachers.each do |e|
-            @timetable_entries[e.id][tt.weekday_id][tt.class_timing_id] = tt
+            unless sub.elective_group.subjects.first == sub && sub.employees.first == e
+              @timetable_entries[e.id][tt.weekday_id][tt.class_timing_id][i] = tt
+            end
           end
         end
       end
@@ -305,15 +319,20 @@ class TimetableController < ApplicationController
         @electives=@employee.subjects.group_by(&:elective_group_id)
         @timetable_entries = Hash.new { |l, k| l[k] = Hash.new(&l.default_proc) }
         @employee_subjects = @employee.subjects
+        subjects = @employee_subjects.select{|sub| sub.elective_group_id.nil?}
+        electives = @employee_subjects.select{|sub| sub.elective_group_id.present?}
+        elective_subjects=electives.map{|x| x.elective_group.subjects.first}
         @employee_timetable_subjects = @employee_subjects.map {|sub| sub.elective_group_id.nil? ? sub : sub.elective_group.subjects.first}
-        @entries = @current.timetable_entries.find(:all,:conditions=>{:subject_id=>@employee_timetable_subjects})
+        @entries=[]
+        @entries += @current.timetable_entries.find(:all,:conditions=>{:subject_id=>subjects,:employee_id => @employee.id})
+        @entries += @current.timetable_entries.find(:all,:conditions=>{:subject_id=>elective_subjects})
         @all_timetable_entries = @entries.select{|t| t.batch.is_active}.select{|s| s.class_timing.is_deleted==false}.select{|w| w.weekday.is_deleted==false}
         @all_batches = @all_timetable_entries.collect(&:batch).uniq
         @all_weekdays = @all_timetable_entries.collect(&:weekday).uniq.sort!{|a,b| a.weekday <=> b.weekday}
         @all_classtimings = @all_timetable_entries.collect(&:class_timing).uniq.sort!{|a,b| a.start_time <=> b.start_time}
         @all_teachers = @all_timetable_entries.collect(&:employee).uniq
-        @all_timetable_entries.each do |tt|
-          @timetable_entries[tt.weekday_id][tt.class_timing_id] = tt
+        @all_timetable_entries.each_with_index do |tt , i|
+          @timetable_entries[tt.weekday_id][tt.class_timing_id][i] = tt
         end
       else
         flash[:notice]=t('no_entries_found')
@@ -342,15 +361,20 @@ class TimetableController < ApplicationController
     @electives=@employee.subjects.group_by(&:elective_group_id)
     @timetable_entries = Hash.new { |l, k| l[k] = Hash.new(&l.default_proc) }
     @employee_subjects = @employee.subjects
+    subjects = @employee_subjects.select{|sub| sub.elective_group_id.nil?}
+    electives = @employee_subjects.select{|sub| sub.elective_group_id.present?}
+    elective_subjects=electives.map{|x| x.elective_group.subjects.first}
     @employee_timetable_subjects = @employee_subjects.map {|sub| sub.elective_group_id.nil? ? sub : sub.elective_group.subjects.first}
-    @entries = @current.timetable_entries.find(:all,:conditions=>{:subject_id=>@employee_timetable_subjects})
+    @entries=[]
+    @entries += @current.timetable_entries.find(:all,:conditions=>{:subject_id=>subjects,:employee_id => @employee.id})
+    @entries += @current.timetable_entries.find(:all,:conditions=>{:subject_id=>elective_subjects})
     @all_timetable_entries = @entries.select{|t| t.batch.is_active}.select{|s| s.class_timing.is_deleted==false}.select{|w| w.weekday.is_deleted==false}
     @all_batches = @all_timetable_entries.collect(&:batch).uniq
     @all_weekdays = @all_timetable_entries.collect(&:weekday).uniq.sort!{|a,b| a.weekday <=> b.weekday}
     @all_classtimings = @all_timetable_entries.collect(&:class_timing).uniq.sort!{|a,b| a.start_time <=> b.start_time}
     @all_teachers = @all_timetable_entries.collect(&:employee).uniq
-    @all_timetable_entries.each do |tt|
-      @timetable_entries[tt.weekday_id][tt.class_timing_id] = tt
+    @all_timetable_entries.each_with_index do |tt , i|
+      @timetable_entries[tt.weekday_id][tt.class_timing_id][i] = tt
     end
     render :update do |page|
       page.replace_html "timetable_view", :partial => "employee_timetable"
@@ -438,7 +462,7 @@ class TimetableController < ApplicationController
     admin_ids << admin.id unless admin.nil?
     @employees = Employee.all(:conditions=>["employee_category_id not in (?)",admin_ids],:include=>[:employee_grade,:employees_subjects])
     @emp_subs = []
-
+    @employees.map{|employee| (employee[:total_time] = ((employee.max_hours_week).to_i))}
     if request.post?
       params[:employee_subjects].delete_blank
       success,@error_obj = EmployeesSubject.allot_work(params[:employee_subjects])
@@ -450,11 +474,6 @@ class TimetableController < ApplicationController
     end
     @batches = Batch.active.scoped :include=>[{:subjects=>:employees},:course]
     @subjects = @batches.collect(&:subjects).flatten
-
-    @subject_limits = {}
-    @subjects.each{|s| @subject_limits[s.id] = s.max_weekly_classes}
-    @employee_limits = {}
-    @employees.each{|e| @employee_limits[e.id] = e.max_hours_week}
   end
   def timetable
     @config = Configuration.available_modules

@@ -26,18 +26,26 @@
   </div>
 </div>
 <div id="page-yield">
+  <div class="bread_crumb">
+    <%= link_to t('finance_text'), :controller => "finance", :action=>"index" %> &raquo;
+    <%= link_to "#{t('payslip_text')}", :controller => "finance", :action => "payslip_index" %> &raquo;
+    <%= link_to "#{t('monthly_payslip')}", :controller => "finance", :action => "view_monthly_payslip" %> &raquo;
+    <%= "#{@monthly_payslips.first.active_or_archived_employee.full_name.to_s} :#{params[:salary_date].to_date.strftime("%b %d, %Y")}" %>
+  </div>
   <ul class="item-list">
     <li class="heading"><%= @monthly_payslips.first.active_or_archived_employee.full_name %></li>
-    <li class="heading"><%= t('payslip_generated_on') %> <%= params[:salary_date] %> <span class="red">(<%= t('status') %>: <%=  @monthly_payslips.first.status_as_text %>)</span></li>
+    <li class="heading"><%= t('payslip_generated_on') %> <%= params[:salary_date] %> <span class="themed_text">(<%= t('status') %>: <%=  @monthly_payslips.first.status_as_text %>)</span></li>
   </ul>
   <ul class="item-list">
     <li class="heading1"><%= t('earnings') %></li>
     <% @monthly_payslips.each do |mp| %>
-      <% unless mp.payroll_category.is_deduction == true %>
-        <li class="list<%=cycle('odd', 'even')%>">
-          <div class="item-name"><%= mp.payroll_category.name  %> </div>
-          <div class="item-edit"><span class="currency-type"><%= @currency_type %></span> <%="%.2f" %mp.amount.to_f  %></div>
-        </li>
+      <% unless mp.payroll_category.blank? %>
+        <% unless mp.payroll_category.is_deduction == true %>
+          <li class="list<%=cycle('odd', 'even')%>">
+            <div class="item-name"><%= mp.payroll_category.name  %> </div>
+            <div class="item-edit"><span class="currency-type"><%= @currency_type %></span> <%="%.2f" %mp.amount.to_f  %></div>
+          </li>
+        <% end %>
       <% end %>
     <% end %>
     <% unless @individual_payslips.empty? %>
@@ -59,11 +67,13 @@
   <ul class="item-list">
     <li class="heading1"><%= t('deductions') %></li>
     <% @monthly_payslips.each do |mp| %>
-      <% unless mp.payroll_category.is_deduction == false %>
-        <li class="list<%=cycle('odd', 'even')%>">
-          <div class="item-name"><%= mp.payroll_category.name  %></div>
-          <div class="item-edit"><span class="currency-type"><%= @currency_type %></span> <%="%.2f" %mp.amount.to_f %></div>
-        </li>
+      <% unless mp.payroll_category.blank? %>
+        <% unless mp.payroll_category.is_deduction == false %>
+          <li class="list<%=cycle('odd', 'even')%>">
+            <div class="item-name"><%= mp.payroll_category.name  %></div>
+            <div class="item-edit"><span class="currency-type"><%= @currency_type %></span> <%="%.2f" %mp.amount.to_f %></div>
+          </li>
+        <% end %>
       <% end %>
     <% end %>
     <% unless @individual_payslips.empty? %>
@@ -97,7 +107,7 @@
   </ul>
 </div>
 <div class="pdf-report">
-  <% if @monthly_payslips.first.is_approved == false and @monthly_payslips.first.is_rejected == false%>
+  <% if @is_present_employee==true and @monthly_payslips.first.is_approved == false and @monthly_payslips.first.is_rejected == false %>
   <%#= link_to_remote "#{t('approve')}", {:controller=>"finance", :action => "employee_payslip_approve_form",:id =>@monthly_payslips.first.employee_id,:id2 => params[:salary_date] } %>
     <%= link_to_remote "#{t('approve')}",:url=>{:controller => "finance", :action => "employee_payslip_accept_form", :id=> @monthly_payslips.first.employee_id, :id2=>params[:salary_date]}, :confirm=>"#{t('delete_confirm_msg')}" %>
     <%= link_to_remote "#{t('reject')}",:url=>{:controller => "finance", :action => "employee_payslip_reject_form", :id=> @monthly_payslips.first.employee_id, :id2=>params[:salary_date]}, :confirm=>"#{t('delete_confirm_msg')}" %>

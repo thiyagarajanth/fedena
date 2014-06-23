@@ -34,7 +34,13 @@
     width:135px;
     margin-left: 210px;
 }
+.user_button{
+    margin-top: 0;
+}
 .box{
     width:550px;
     margin:0px auto;
+}
+.bread_crumb {
+ margin-left: 10px;
 }

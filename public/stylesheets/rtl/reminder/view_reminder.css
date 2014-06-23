@@ -18,7 +18,6 @@
 #reminder-subject{
     margin:0 0 20px 0;
     font-weight:bold;
-    color:#9e0f15;
     font-size:16px;
 }
 
@@ -90,6 +89,7 @@
 }
 #reminder-reply{
     margin:20px 8px 20px 0;
+    overflow: hidden;
 }
 .label-field-pair textarea:focus{
     background: #fff;

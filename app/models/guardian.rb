@@ -19,9 +19,11 @@
 class Guardian < ActiveRecord::Base
   belongs_to :country
   belongs_to :ward, :class_name => 'Student'
-  belongs_to :user,:dependent=>:destroy, :autosave =>true
+  belongs_to :user
 
-  validates_presence_of :first_name, :relation
+  validates_presence_of :first_name, :relation,:ward_id
+  validates_format_of     :email, :with => /^[A-Z0-9._%-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i,   :allow_blank=>true,
+    :message => "#{t('must_be_a_valid_email_address')}"
   before_destroy :immediate_contact_nil
 
   def validate
@@ -41,7 +43,10 @@ class Guardian < ActiveRecord::Base
     guardian_attributes.delete "id"
     guardian_attributes.delete "user_id"
     guardian_attributes["ward_id"] = archived_student
-    self.destroy if ArchivedGuardian.create(guardian_attributes)
+    if ArchivedGuardian.create(guardian_attributes)
+      self.user.soft_delete if self.user.present?
+      self.destroy
+    end
   end
 
   def create_guardian_user(student)
@@ -51,7 +56,7 @@ class Guardian < ActiveRecord::Base
       u.username = "p"+student.admission_no.to_s
       u.password = "p#{student.admission_no.to_s}123"
       u.role = 'Parent'
-      u.email = ( email == '' or User.find_by_email(self.email) ) ? "" :self.email.to_s
+      u.email = ( email == '' or User.active.find_by_email(self.email) ) ? "" :self.email.to_s
     end 
     self.update_attributes(:user_id => user.id) if user.save
   end
@@ -61,15 +66,15 @@ class Guardian < ActiveRecord::Base
   def self.shift_user(student)
     self.find_all_by_ward_id(student.id).each do |g|
       parent_user = g.user
-      parent_user.destroy if parent_user.present?
+      parent_user.soft_delete if parent_user.present? and (parent_user.is_deleted==false)
     end
     current_guardian =  student.immediate_contact
     current_guardian.create_guardian_user(student) if  current_guardian.present?
   end
 
   def immediate_contact_nil
-     student = self.ward
-    unless student.user.nil?
+    student = self.ward
+    if student.present? and (student.immediate_contact_id==self.id)
       student.update_attributes(:immediate_contact_id=>nil)
     end
   end

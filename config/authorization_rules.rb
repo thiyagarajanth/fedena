@@ -86,7 +86,7 @@ authorization do
     has_permission_on [:scheduled_jobs],
       :to => [
       :index
-      ]
+    ]
     has_permission_on [:exam_groups],
       :to => [
       :index,
@@ -826,9 +826,10 @@ authorization do
 
   role :add_new_batch do
     has_permission_on [:configuration], :to => [:index]
-    has_permission_on [:courses], :to => [:index,:manage_course, :manage_batches,:find_course, :new, :create,:destroy,:edit,:update, :show, :update_batch,:grouped_batches,:create_batch_group,:edit_batch_group,:update_batch_group,:delete_batch_group]
+    has_permission_on [:courses], :to => [:index,:manage_course, :manage_batches,:find_course, :new, :create,:destroy,:edit,:update, :show, :update_batch,:grouped_batches,:create_batch_group,:edit_batch_group,:update_batch_group,:delete_batch_group,:assign_subject_amount,:edit_subject_amount,:destroy_subject_amount]
     has_permission_on [:batches], :to => [:index, :new, :create,:destroy,:edit,:update, :show, :init_data,:assign_tutor,:update_employees,:assign_employee,:batches_ajax]
     has_permission_on [:subjects], :to => [:index, :new, :create,:destroy,:edit,:update, :show]
+    has_permission_on [:elective_groups],  :to => [:index,:new,:create,:destroy,:edit, :update,:show]
     has_permission_on [:student], :to => [:electives, :assign_students, :unassign_students, :assign_all_students, :unassign_all_students, :profile, :guardians, :show_previous_details]
     has_permission_on [:batch_transfers],
       :to => [
@@ -850,6 +851,7 @@ authorization do
     has_permission_on [:configuration], :to => [:index]
     has_permission_on [:student], :to => [:electives, :assign_students, :unassign_students, :assign_all_students, :unassign_all_students]
     has_permission_on [:subjects],        :to => [:index,:new,:create,:destroy,:edit, :update,:show]
+    has_permission_on [:elective_groups],  :to => [:index,:new,:create,:destroy,:edit, :update,:show]
   end
 
   role :academic_year do
@@ -876,7 +878,7 @@ authorization do
 
   role :general_settings do
     has_permission_on [:configuration], :to => [:index,:settings,:permissions]
-    has_permission_on [:student], :to => [:add_additional_details, :delete_additional_details, :edit_additional_details, :categories,:category_delete,:category_edit,:category_update ]
+    has_permission_on [:student], :to => [:add_additional_details, :change_field_priority, :delete_additional_details, :edit_additional_details, :categories,:category_delete,:category_edit,:category_update ]
   end
 
   role :finance_control do
@@ -995,12 +997,12 @@ authorization do
       :fees_create,
       :master_fees,
       :show_master_categories_list,
-#      :show_additional_fees_list,
+      #      :show_additional_fees_list,
       :fees_particulars,
-#      :additional_fees,
-#      :additional_fees_create_form,
-#      :additional_fees_create,
-#      :additional_fees_view,
+      #      :additional_fees,
+      #      :additional_fees_create_form,
+      #      :additional_fees_create,
+      #      :additional_fees_view,
       :add_particulars,
       :fee_collection_batch_update,
       :fees_submission_student,
@@ -1045,14 +1047,14 @@ authorization do
       :master_category_particulars_edit,
       :master_category_particulars_update,
       :master_category_particulars_delete,
-#      :additional_fees_list,
+      #      :additional_fees_list,
       :additional_particulars,
       :add_particulars_edit,
       :add_particulars_update,
       :add_particulars_delete,
-#      :additional_fees_edit,
-#      :additional_fees_update,
-#      :additional_fees_delete,
+      #      :additional_fees_edit,
+      #      :additional_fees_update,
+      #      :additional_fees_delete,
       :month_date,
       :compare_report,
       :report_compare,
@@ -1108,6 +1110,19 @@ authorization do
   end
 
   role :hr_basics do
+    has_permission_on [:archived_employee],
+      :to => [
+      :profile,
+      :profile_general,
+      :profile_personal,
+      :profile_address,
+      :profile_contact,
+      :profile_bank_details,
+      :profile_additional_details,
+      :profile_payroll_details,
+      :profile_pdf,
+      :show
+    ]
     has_permission_on [:employee],
       :to => [
       :index,
@@ -1165,6 +1180,7 @@ authorization do
       :add_bank_details,
       :edit_bank_details,
       :add_additional_details,
+      :change_field_priority,
       :edit_additional_details,
       :delete_bank_details,
       :delete_additional_details,
@@ -1297,6 +1313,19 @@ authorization do
   end
 
   role :employee_search do
+    has_permission_on [:archived_employee],
+      :to => [
+      :profile,
+      :profile_general,
+      :profile_personal,
+      :profile_address,
+      :profile_contact,
+      :profile_bank_details,
+      :profile_additional_details,
+      :profile_payroll_details,
+      :profile_pdf,
+      :show
+    ]
     has_permission_on [:employee],
       :to => [
       :search,
@@ -1364,6 +1393,7 @@ authorization do
     has_permission_on [:student_attendance], :to => [:index, :student, :month]
     has_permission_on [:configuration], :to => [:index,:settings,:permissions, :add_weekly_holidays, :delete]
     has_permission_on [:subjects], :to => [:index, :new, :create,:destroy,:edit,:update, :show]
+    has_permission_on [:elective_groups],  :to => [:index,:new,:create,:destroy,:edit, :update,:show]
     has_permission_on [:courses],
       :to => [
       :index,
@@ -1381,7 +1411,10 @@ authorization do
       :create_batch_group,
       :edit_batch_group,
       :update_batch_group,
-      :delete_batch_group
+      :delete_batch_group,
+      :assign_subject_amount,
+      :edit_subject_amount,
+      :destroy_subject_amount
     ]
     has_permission_on [:batches],
       :to => [
@@ -1576,7 +1609,7 @@ authorization do
     has_permission_on [:scheduled_jobs],
       :to => [
       :index
-      ]
+    ]
     has_permission_on [:exam_groups],
       :to => [
       :index,
@@ -1757,12 +1790,12 @@ authorization do
       :fees_create,
       :master_fees,
       :show_master_categories_list,
-#      :show_additional_fees_list,
+      #      :show_additional_fees_list,
       :fees_particulars,
-#      :additional_fees,
-#      :additional_fees_create_form,
-#      :additional_fees_create,
-#      :additional_fees_view,
+      #      :additional_fees,
+      #      :additional_fees_create_form,
+      #      :additional_fees_create,
+      #      :additional_fees_view,
       :add_particulars,
       :fee_collection_batch_update,
       :fees_submission_student,
@@ -1807,14 +1840,14 @@ authorization do
       :master_category_particulars_edit,
       :master_category_particulars_update,
       :master_category_particulars_delete,
-#      :additional_fees_list,
+      #      :additional_fees_list,
       :additional_particulars,
       :add_particulars_edit,
       :add_particulars_update,
       :add_particulars_delete,
-#      :additional_fees_edit,
-#      :additional_fees_update,
-#      :additional_fees_delete,
+      #      :additional_fees_edit,
+      #      :additional_fees_update,
+      #      :additional_fees_delete,
       :month_date,
       :compare_report,
       :report_compare,
@@ -1925,6 +1958,7 @@ authorization do
       :category_delete,
       :categories,
       :add_additional_details,
+      :change_field_priority,
       :edit_additional_details,
       :delete_additional_details,
       :admission4,
@@ -2021,6 +2055,19 @@ authorization do
       :index,
       :new
     ]
+    has_permission_on [:archived_employee],
+      :to => [
+      :profile,
+      :profile_general,
+      :profile_personal,
+      :profile_address,
+      :profile_contact,
+      :profile_bank_details,
+      :profile_additional_details,
+      :profile_payroll_details,
+      :profile_pdf,
+      :show
+    ]
     has_permission_on [:employee],
       :to => [
       :index,
@@ -2116,6 +2163,7 @@ authorization do
       :admission3_1,
       :admission3_2,
       :add_additional_details,
+      :change_field_priority,
       :edit_additional_details,
       :delete_additional_details,
       :profile_additional_details,
@@ -2318,6 +2366,7 @@ authorization do
   role :parent do
     has_permission_on [:course], :to => [:view]
     has_permission_on [:exam], :to => [:generated_report, :generated_report4_pdf, :combined_grouped_exam_report_pdf, :graph_for_generated_report, :academic_report, :previous_years_marks_overview,:previous_years_marks_overview_pdf, :graph_for_previous_years_marks_overview, :generated_report3, :graph_for_generated_report3 ,:generated_report4,:student_transcript,:student_transcript_pdf]
+    has_permission_on [:timetable], :to => [:student_view, :update_student_tt]
     has_permission_on [:student],
       :to => [
       :exam_report,
@@ -2443,6 +2492,7 @@ authorization do
       :observation_groups,
       :observation_scores
     ]
+    has_permission_on [:student_attendance], :to => [:index]
     has_permission_on [:attendances], :to => [:index, :list_subject, :show, :subject_wise_register, :daily_register, :new, :create, :edit,:update, :destroy]
     has_permission_on [:attendance_reports], :to => [:new,:index, :subject, :mode, :show, :year, :report, :filter, :student_details,:report_pdf,:filter_report_pdf,:student]
     has_permission_on [:cce_reports],:to=>[:index,:student_wise_report,:student_wise_report_pdf,:student_report,:student_report_pdf,:student_transcript]

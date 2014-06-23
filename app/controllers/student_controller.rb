@@ -64,7 +64,7 @@ class StudentController < ApplicationController
         if sms_setting.application_sms_active and @student.is_sms_enabled
           recipients = []
           message = "#{t('student_admission_done')} #{@student.admission_no} #{t('password_is')} #{@student.admission_no}123"
-          if sms_setting.student_sms_active
+          if sms_setting.student_admission_sms_active
             recipients.push @student.phone2 unless @student.phone2.blank?
           end
           unless recipients.empty?
@@ -95,7 +95,7 @@ class StudentController < ApplicationController
     if request.post?
       sms_setting = SmsSetting.new()
       @student = Student.update(@student.id, :immediate_contact_id => params[:immediate_contact][:contact])
-      if sms_setting.application_sms_active and @student.is_sms_enabled
+      if sms_setting.application_sms_active and sms_setting.student_admission_sms_active and @student.is_sms_enabled
         recipients = []
         message = "#{t('student_admission_done')}  #{@student.admission_no} #{t('password_is')} #{@student.admission_no}123"
         if sms_setting.parent_sms_active
@@ -120,7 +120,7 @@ class StudentController < ApplicationController
     if request.post?
       sms_setting = SmsSetting.new()
       @student = Student.update(@student.id, :immediate_contact_id => params[:immediate_contact][:contact])
-      if sms_setting.application_sms_active and @student.is_sms_enabled
+      if sms_setting.application_sms_active and sms_setting.student_admission_sms_active and @student.is_sms_enabled
         recipients = []
         message = "#{t('student_admission_done')}   #{@student.admission_no} #{t('password_is')}#{@student.admission_no}123"
         if sms_setting.parent_sms_active
@@ -159,14 +159,15 @@ class StudentController < ApplicationController
 
   def previous_subject
     @student = Student.find(params[:id])
+    @student_previous_subject_details=StudentPreviousSubjectMark.new
     render(:update) do |page|
       page.replace_html 'subject', :partial=>"previous_subject"
     end
   end
 
   def save_previous_subject
-    @previous_subject = StudentPreviousSubjectMark.new params[:student_previous_subject_details]
-    @previous_subject.save
+    @student_previous_subject_details = StudentPreviousSubjectMark.new params[:student_previous_subject_details]
+    @student_previous_subject_details.save
     #@all_previous_subject = StudentPreviousSubjectMark.find(:all,:conditions=>"student_id = #{@previous_subject.student_id}")
   end
 
@@ -181,18 +182,45 @@ class StudentController < ApplicationController
 
   def admission4
     @student = Student.find(params[:id])
-    @additional_fields = StudentAdditionalField.find(:all, :conditions=> "status = true")
+    @student_additional_details = StudentAdditionalDetail.find_all_by_student_id(@student.id)
+    @additional_fields = StudentAdditionalField.find(:all, :conditions=> "status = true", :order=>"priority ASC")
     if @additional_fields.empty?
       flash[:notice] = "#{t('flash9')} #{@student.first_name} #{@student.last_name}."
       redirect_to :controller => "student", :action => "profile", :id => @student.id
     end
     if request.post?
-      params[:student_additional_details].each_pair do |k, v|
-        StudentAdditionalDetail.create(:student_id => params[:id],
-          :additional_field_id => k,:additional_info => v['additional_info'])
+      @error=false
+      mandatory_fields = StudentAdditionalField.find(:all, :conditions=>{:is_mandatory=>true, :status=>true})
+      mandatory_fields.each do|m|
+        unless params[:student_additional_details][m.id.to_s.to_sym].present?
+          @student.errors.add_to_base("#{m.name} must contain atleast one selected option.")
+          @error=true
+        else
+          if params[:student_additional_details][m.id.to_s.to_sym][:additional_info]==""
+            @student.errors.add_to_base("#{m.name} cannot be blank.")
+            @error=true
+          end
+        end
       end
-      flash[:notice] = "#{t('flash9')} #{@student.first_name} #{@student.last_name}."
-      redirect_to :controller => "student", :action => "profile", :id => @student.id
+      unless @error==true
+        params[:student_additional_details].each_pair do |k, v|
+          addl_info = v['additional_info']
+          addl_field = StudentAdditionalField.find_by_id(k)
+          if addl_field.input_type == "has_many"
+            addl_info = addl_info.join(", ")
+          end
+          prev_record = StudentAdditionalDetail.find_by_student_id_and_additional_field_id(params[:id], k)
+          unless prev_record.nil?
+            prev_record.update_attributes(:additional_info => addl_info)
+          else
+            addl_detail = StudentAdditionalDetail.new(:student_id => params[:id],
+              :additional_field_id => k,:additional_info => addl_info)
+            addl_detail.save if addl_detail.valid?
+          end
+        end
+        flash[:notice] = "#{t('flash9')} #{@student.first_name} #{@student.last_name}. #{t('new_admission_link')} <a href='/student/admission1'>Click Here</a>"
+        redirect_to :controller => "student", :action => "profile", :id => @student.id
+      end
     end
   end
 
@@ -220,19 +248,58 @@ class StudentController < ApplicationController
     end
   end
   def add_additional_details
-    @additional_details = StudentAdditionalField.find(:all)
-    @additional_field = StudentAdditionalField.new(params[:additional_field])
-    if request.post? and @additional_field.save
-      flash[:notice] = "#{t('flash1')}"
-      redirect_to :controller => "student", :action => "add_additional_details"
+    @additional_details = StudentAdditionalField.find(:all, :conditions=>{:status=>true},:order=>"priority ASC")
+    @inactive_additional_details = StudentAdditionalField.find(:all, :conditions=>{:status=>false},:order=>"priority ASC")
+    @additional_field = StudentAdditionalField.new    
+    @student_additional_field_option = @additional_field.student_additional_field_options.build
+    if request.post?
+      priority = 1
+      unless @additional_details.empty?
+        last_priority = @additional_details.map{|r| r.priority}.compact.sort.last
+        priority = last_priority + 1
+      end
+      @additional_field = StudentAdditionalField.new(params[:student_additional_field])
+      @additional_field.priority = priority
+      if @additional_field.save
+        flash[:notice] = "#{t('flash1')}"
+        redirect_to :controller => "student", :action => "add_additional_details"
+      end
+    end
+  end
+  def change_field_priority
+    @additional_field = StudentAdditionalField.find(params[:id])
+    priority = @additional_field.priority
+    @additional_fields = StudentAdditionalField.find(:all, :conditions=>{:status=>true}, :order=> "priority ASC").map{|b| b.priority.to_i}
+    position = @additional_fields.index(priority)
+    if params[:order]=="up"
+      prev_field = StudentAdditionalField.find_by_priority(@additional_fields[position - 1])
+    else
+      prev_field = StudentAdditionalField.find_by_priority(@additional_fields[position + 1])
+    end
+    @additional_field.update_attributes(:priority=>prev_field.priority)
+    prev_field.update_attributes(:priority=>priority.to_i)
+    @additional_field = StudentAdditionalField.new
+    @additional_details = StudentAdditionalField.find(:all, :conditions=>{:status=>true},:order=>"priority ASC")
+    @inactive_additional_details = StudentAdditionalField.find(:all, :conditions=>{:status=>false},:order=>"priority ASC")
+    render(:update) do|page|
+      page.replace_html "category-list", :partial=>"additional_fields"
     end
   end
 
   def edit_additional_details
-    @additional_details = StudentAdditionalField.find(params[:id])
-    if request.post? and @additional_details.update_attributes(params[:additional_details])
-      flash[:notice] = "#{t('flash2')}"
-      redirect_to :action => "add_additional_details"
+    @additional_details = StudentAdditionalField.find(:all, :conditions=>{:status=>true},:order=>"priority ASC")
+    @inactive_additional_details = StudentAdditionalField.find(:all, :conditions=>{:status=>false},:order=>"priority ASC")
+    @additional_field = StudentAdditionalField.find(params[:id])
+    @student_additional_field_option = @additional_field.student_additional_field_options
+    if request.get?
+      render :action=>'add_additional_details'
+    else
+      if @additional_field.update_attributes(params[:student_additional_field])
+        flash[:notice] = "#{t('flash2')}"
+        redirect_to :action => "add_additional_details"
+      else
+        render :action=>"add_additional_details"
+      end
     end
   end
 
@@ -240,7 +307,8 @@ class StudentController < ApplicationController
     students = StudentAdditionalDetail.find(:all ,:conditions=>"additional_field_id = #{params[:id]}")
     if students.blank?
       StudentAdditionalField.find(params[:id]).destroy
-      @additional_details = StudentAdditionalField.find(:all)
+      @additional_details = StudentAdditionalField.find(:all, :conditions=>{:status=>true},:order=>"priority ASC")
+      @inactive_additional_details = StudentAdditionalField.find(:all, :conditions=>{:status=>false},:order=>"priority ASC")
       flash[:notice]="#{t('flash13')}"
       redirect_to :action => "add_additional_details"
     else
@@ -281,6 +349,12 @@ class StudentController < ApplicationController
   def destroy
     student = Student.find(params[:id])
     unless student.check_dependency
+      student.guardians.each do|guardian|
+        guardian.user.destroy if guardian.user.present?
+        guardian.destroy
+
+      end
+      student.user.destroy
       student.destroy
       flash[:notice] = "#{t('flash10')}. #{student.admission_no}."
       redirect_to :controller => 'user', :action => 'dashboard'
@@ -355,16 +429,20 @@ class StudentController < ApplicationController
       recipient_list = []
       case params['email']['recipients']
       when 'Student'
-        recipient_list << @student.email
+        recipient_list << @student.email unless @student.email == ""
       when 'Guardian'
-        recipient_list << @student.immediate_contact.email unless @student.immediate_contact.nil?
+        recipient_list << @student.immediate_contact.email unless (@student.immediate_contact.nil? or @student.immediate_contact.email=="")
       when 'Student & Guardian'
-        recipient_list << @student.email
-        recipient_list << @student.immediate_contact.email unless @student.immediate_contact.nil?
+        recipient_list << @student.email unless @student.email == ""
+        recipient_list << @student.immediate_contact.email unless (@student.immediate_contact.nil? or @student.immediate_contact.email=="")
       end
-      FedenaMailer::deliver_email(sender, recipient_list, params['email']['subject'], params['email']['message'])
-      flash[:notice] = "#{t('flash12')} #{recipient_list.join(', ')}"
-      redirect_to :controller => 'student', :action => 'profile', :id => @student.id
+      unless recipient_list.empty?
+        FedenaMailer::deliver_email(sender, recipient_list, params['email']['subject'], params['email']['message'])
+        flash[:notice] = "#{t('flash12')} #{recipient_list.join(', ')}"
+        redirect_to :controller => 'student', :action => 'profile', :id => @student.id
+      else
+        @student.errors.add_to_base("#{t('flash20')}")
+      end
     end
   end
 
@@ -582,13 +660,16 @@ class StudentController < ApplicationController
 
   def category_edit
     @student_category = StudentCategory.find(params[:id])
-    
+    @student_category_name=@student_category.name
   end
 
   def category_update
     @student_category = StudentCategory.find(params[:id])
-    @student_category.update_attribute(:name, params[:name])
-    @student_categories = StudentCategory.active
+    @student_category_name=@student_category.name
+    if @student_category.update_attributes(:name => params[:name])
+      @student_categories = StudentCategory.active
+      @student_category = StudentCategory.new
+    end
   end
 
   def view_all

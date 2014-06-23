@@ -24,12 +24,12 @@ class Student < ActiveRecord::Base
   belongs_to :batch
   belongs_to :student_category
   belongs_to :nationality, :class_name => 'Country'
-  belongs_to :user,:dependent=>:destroy
+  belongs_to :user
 
   has_one    :immediate_contact
   has_one    :student_previous_data
   has_many   :student_previous_subject_mark
-  has_many   :guardians, :foreign_key => 'ward_id', :dependent => :destroy
+  has_many   :guardians, :foreign_key => 'ward_id'
   has_many   :finance_transactions, :as => :payee
   has_many   :attendances
   has_many   :finance_fees
@@ -63,6 +63,8 @@ class Student < ActiveRecord::Base
   validates_associated :user
   before_validation :create_user_and_validate
 
+  before_save :is_active_true
+
   has_attached_file :photo,
     :styles => {:original=> "125x125#"},
     :url => "/system/:class/:attachment/:id/:style/:basename.:extension",
@@ -83,6 +85,12 @@ class Student < ActiveRecord::Base
     errors.add(:admission_no, "#{t('model_errors.student.error3')}.") if self.admission_no=='0'
     errors.add(:admission_no, "#{t('should_not_be_admin')}") if self.admission_no.to_s.downcase== 'admin'
     
+  end
+
+  def is_active_true
+    unless self.is_active==1
+      self.is_active=1
+    end
   end
 
   def create_user_and_validate
@@ -266,22 +274,21 @@ class Student < ActiveRecord::Base
   end
 
   def archive_student(status)
-    self.update_attributes(:is_active => false, :status_description => status)
     student_attributes = self.attributes
     student_attributes["former_id"]= self.id
+    student_attributes["status_description"] = status
     student_attributes.delete "id"
     student_attributes.delete "has_paid_fees"
-    student_attributes.delete "user_id"
     student_attributes.delete "created_at"
     archived_student = ArchivedStudent.new(student_attributes)
     archived_student.photo = self.photo
     if archived_student.save
-      guardian = self.guardians
-      self.user.destroy unless self.user.blank?
-      self.destroy
-      guardian.each do |g|
+      guardians = self.guardians
+      self.user.soft_delete
+      guardians.each do |g|
         g.archive_guardian(archived_student.id)
       end
+      self.destroy
       #
       #      student_exam_scores = ExamScore.find_all_by_student_id(self.id)
       #      student_exam_scores.each do |s|

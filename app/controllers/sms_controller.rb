@@ -17,6 +17,7 @@
 #limitations under the License.
 
 class SmsController < ApplicationController
+  before_filter :login_required
   filter_access_to :all
   
   def index
@@ -84,7 +85,7 @@ class SmsController < ApplicationController
           sms = Delayed::Job.enqueue(SmsManager.new(message,@recipients))
           # raise @recipients.inspect
           render(:update) do |page|
-            page.replace_html 'status-message',:text=>"<p class=\"flash-msg\">#{t('sms_sending_intiated')}</p>"
+            page.replace_html 'status-message',:text=>"<p class=\"flash-msg\">#{t('sms_sending_intiated', :log_url => url_for(:controller => "sms", :action => "show_sms_messages"))}</p>"
             page.visual_effect(:highlight, 'status-message')
           end
         end
@@ -125,7 +126,7 @@ class SmsController < ApplicationController
           message = params[:send_sms][:message]
           sms = Delayed::Job.enqueue(SmsManager.new(message,@recipients))
           render(:update) do |page|
-            page.replace_html 'status-message',:text=>"<p class=\"flash-msg\">#{t('sms_sending_intiated')}</p>"
+            page.replace_html 'status-message',:text=>"<p class=\"flash-msg\">#{t('sms_sending_intiated', :log_url => url_for(:controller => "sms", :action => "show_sms_messages"))}</p>"
             page.visual_effect(:highlight, 'status-message')
           end
         end
@@ -166,7 +167,7 @@ class SmsController < ApplicationController
       message = params[:send_sms][:message]
       Delayed::Job.enqueue(SmsManager.new(message,@recipients))
       render(:update) do |page|
-        page.replace_html 'status-message',:text=>"<p class=\"flash-msg\">#{t('sms_sending_intiated')}</p>"
+        page.replace_html 'status-message',:text=>"<p class=\"flash-msg\">#{t('sms_sending_intiated', :log_url => url_for(:controller => "sms", :action => "show_sms_messages"))}</p>"
         page.visual_effect(:highlight, 'status-message')
       end
     end
@@ -189,7 +190,7 @@ class SmsController < ApplicationController
           message = params[:send_sms][:message]
           Delayed::Job.enqueue(SmsManager.new(message,@recipients))
           render(:update) do |page|
-            page.replace_html 'status-message',:text=>"<p class=\"flash-msg\">#{t('sms_sending_intiated')}</p>"
+            page.replace_html 'status-message',:text=>"<p class=\"flash-msg\">#{t('sms_sending_intiated', :log_url => url_for(:controller => "sms", :action => "show_sms_messages"))}</p>"
             page.visual_effect(:highlight, 'status-message')
           end
         end
@@ -222,7 +223,7 @@ class SmsController < ApplicationController
           message = params[:send_sms][:message]
           Delayed::Job.enqueue(SmsManager.new(message,@recipients))
           render(:update) do |page|
-            page.replace_html 'status-message',:text=>"<p class=\"flash-msg\">#{t('sms_sending_intiated')}</p>"
+            page.replace_html 'status-message',:text=>"<p class=\"flash-msg\">#{t('sms_sending_intiated', :log_url => url_for(:controller => "sms", :action => "show_sms_messages"))}</p>"
             page.visual_effect(:highlight, 'status-message')
           end
         end

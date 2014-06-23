@@ -28,6 +28,14 @@
 </div>
 
 <div id="page-yield">
+    <div class="bread_crumb">
+    <%= link_to t('finance_text'), :controller => "finance", :action=>"index" %> &raquo;
+    <%= link_to "#{t('transactions')}", :controller => "finance", :action => "transactions" %> &raquo;
+    <%= link_to "#{t('monthly_transactions')}", :controller => "finance", :action => "monthly_report" %> &raquo;
+    <%= link_to "#{t('finance_transactions_view')}", :controller => "finance", :action => "update_monthly_report", :start_date=>@start_date, :end_date=>@end_date %> &raquo;
+    <%= link_to "#{t('salary_account')}", :controller => "finance", :action => "salary_department", :start=>@start_date, :end=>@end_date %> &raquo;
+    <%= t('department')+": "+ @department.name %>
+  </div>
   <% total=0 %>
   <table id="listing" align="center" width="100%" cellpadding="1" cellspacing="1">
     <tr class="tr-head">
@@ -50,7 +58,7 @@
         <% employee_id = payslip.first.active_or_archived_employee.class.to_s=="ArchivedEmployee" ?  payslip.first.active_or_archived_employee.former_id :  payslip.first.active_or_archived_employee.id %>
         <tr class="tr-<%= cycle("even","odd") %>">
           <td class ="col-1"><%=i+1%></td>
-          <td class="col-2"><%= link_to payslip.first.active_or_archived_employee.full_name + " - " , :action => 'employee_payslip_monthly_report',:id2 => salary_date.to_date,:id =>employee_id %> <%= I18n.l(salary_date,:format=>"%B,%Y")%> </td>
+          <td class="col-2"><%= link_to payslip.first.active_or_archived_employee.full_name + " - " , {:action => 'employee_payslip_monthly_report',:id2 => salary_date.to_date,:id =>employee_id},{:target=>"_blank"} %> <%= I18n.l(salary_date,:format=>"%B,%Y")%> </td>
           <%  amount = Employee.calculate_salary(payslip,individual_payslip_category)[:net_amount]%>
           <td class="col-3" align="right"> <%=  amount  %> </td>
           <td class="col-3"> <%=salary_date %> </td>

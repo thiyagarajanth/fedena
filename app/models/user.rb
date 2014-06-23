@@ -19,7 +19,7 @@
 class User < ActiveRecord::Base
   attr_accessor :password, :role, :old_password, :new_password, :confirm_password
 
-  validates_uniqueness_of :username #, :email
+  validates_uniqueness_of :username, :scope=> [:is_deleted],:if=> 'is_deleted == false' #, :email
   validates_length_of     :username, :within => 1..20
   validates_length_of     :password, :within => 4..40, :allow_nil => true
   validates_format_of     :username, :with => /^[A-Z0-9_-]*$/i,
@@ -35,6 +35,9 @@ class User < ActiveRecord::Base
   has_one :student_record,:class_name=>"Student",:foreign_key=>"user_id"
   has_one :employee_record,:class_name=>"Employee",:foreign_key=>"user_id"
 
+  named_scope :active, :conditions => { :is_deleted => false }
+  named_scope :inactive, :conditions => { :is_deleted => true }
+
   def before_save
     self.salt = random_string(8) if self.salt == nil
     self.hashed_password = Digest::SHA1.hexdigest(self.salt + self.password) unless self.password.nil?
@@ -44,6 +47,7 @@ class User < ActiveRecord::Base
       self.student  = true if self.role == 'Student'
       self.employee = true if self.role == 'Employee'
       self.parent = true if self.role == 'Parent'
+      self.is_first_login = true
     end
   end
 
@@ -173,6 +177,9 @@ class User < ActiveRecord::Base
       next_date=(start_date.to_date<=date ? date+1.days : start_date )
       next_date
     end
+  end
+  def soft_delete
+    self.update_attributes(:is_deleted =>true)
   end
 
 end

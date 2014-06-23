@@ -27,15 +27,20 @@
 </div>
 
 <div id="page-yield">
+  <div class="bread_crumb">
+    <%= link_to t('finance_text'), :controller => "finance", :action=>"index" %> &raquo;
+    <%= link_to "#{t('transactions')}", :controller => "finance", :action => "transactions" %> &raquo;
+    <%= t('monthly_transactions') %>
+  </div>
   <div class="box">
   <% form_for :report, :url => {:action => 'update_monthly_report'} do |form| %>
     <div class="label-field-pair">
       <label><%= t('select_start_date') %>:</label>
-      <div class="input-container"><%= calendar_date_select_tag 'start_date', I18n.l(Date.today,:format=>"%e-%m-%Y") ,:popup=>:force%></div>
+      <div class="input-container"><%= calendar_date_select_tag 'start_date', I18n.l(Date.today,:format=>:default) ,:popup=>:force%></div>
     </div>
     <div class="label-field-pair">
       <label><%= t('select_end_date') %>: </label>
-      <div class="input-container"><%= calendar_date_select_tag 'end_date', I18n.l(Date.today,:format=>"%e-%m-%Y") ,:popup=>:force%></div>
+      <div class="input-container"><%= calendar_date_select_tag 'end_date', I18n.l(Date.today,:format=>:default) ,:popup=>:force%></div>
     </div>
 
          <%=  submit_tag "► #{t('monthly_report')}",:class=>'submit_button' %>

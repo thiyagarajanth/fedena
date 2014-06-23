@@ -20,7 +20,8 @@
 
 <div class="profile_top_banner">
   <span class="profile"><%= t('details') %></span>
-  <%= rtl? ? image_tag("master_student/profile/topbanner_rtl.png") : image_tag("master_student/profile/topbanner.png") %></div>
+  <div class="profile-topbanner"></div>
+</div>
 
 <table width="700">
   <tr class="odd left"><td><%= t('joining_date') %></td><td class="right"><%= I18n.l(@employee.joining_date,:format=>:normal)%></td></tr>
@@ -49,12 +50,12 @@
 </table>
 <div class="edit-pdf-group">
   <% if permitted_to? :change_reporting_manager, :employee %>
-    <div class="edit">
-      <%= link_to "► #{t('edit_text')}",  :controller => "employee", :action => "edit1", :id =>@employee.id %>
+    <div>
+      <%= link_to "► #{t('edit_text')}", {:controller => "employee", :action => "edit1", :id =>@employee.id}, :class=> 'user_button' %>
     </div>
   <%end%>
   <% if permitted_to?  :profile_pdf , :employee %>
-    <div class="pdf">
+    <div>
       <%= link_to " ► #{t('pdf_report')}",
         {:controller => "employee", :action => "profile_pdf", :id => @employee.id},:target => '_blank', :class=> 'user_button' %>
     </div>

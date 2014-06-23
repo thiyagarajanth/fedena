@@ -56,16 +56,16 @@ class PayrollController < ApplicationController
 
   def delete_category
     if params[:id]
-    employees = EmployeeSalaryStructure.find(:all ,:conditions=>"payroll_category_id = #{params[:id]}")
-    if employees.empty?
-      PayrollCategory.find(params[:id]).destroy
-      @departments = PayrollCategory.find :all
-      flash[:notice]="#{t('flash3')}"
-      redirect_to :action => "add_category"
-    else
-      flash[:notice]="#{t('flash4')}"
-      redirect_to :action => "add_category"
-    end
+      employees = EmployeeSalaryStructure.find(:all ,:conditions=>"payroll_category_id = #{params[:id]}")
+      if employees.empty?
+        PayrollCategory.find(params[:id]).destroy
+        @departments = PayrollCategory.find :all
+        flash[:notice]="#{t('flash3')}"
+        redirect_to :action => "add_category"
+      else
+        flash[:warn_notice]="#{t('flash4')}"
+        redirect_to :action => "add_category"
+      end
     else
       redirect_to :action => "add_category"
     end
@@ -83,13 +83,15 @@ class PayrollController < ApplicationController
           params[:manage_payroll].each_pair do |k, v|
             EmployeeSalaryStructure.create(:employee_id => params[:id], :payroll_category_id => k, :amount => v['amount'])
           end
-          flash[:notice] = "#{t('data_saved_for')} #{@employee.first_name}"
+          flash[:notice] = "#{t('data_saved_for')} #{@employee.first_name}.  #{t('new_admission_link')} <a href='/employee/admission1'>Click Here</a>"
           redirect_to :controller => "employee", :action => "profile", :id=> @employee.id
         end
       else
+        flash[:notice] = "#{t('data_saved_for')} #{@employee.first_name}.  #{t('new_admission_link')} <a href='/employee/admission1'>Click Here</a>"
         redirect_to :controller=>"employee", :action=>"profile", :id=>@employee.id
       end
     else
+      flash[:notice] = "#{t('data_saved_for')} #{@employee.first_name}.  #{t('new_admission_link')} <a href='/employee/admission1'>Click Here</a>"
       redirect_to :controller=>"employee", :action=>"profile", :id=>@employee.id
     end
   end

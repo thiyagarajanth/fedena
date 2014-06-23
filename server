@@ -1,0 +1,2482 @@
+Script started on Friday 20 June 2014 03:52:20 PM IST
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ script/server 
+/usr/bin/env: ruby: No such file or directory
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ script/server s
+/usr/bin/env: ruby: No such file or directory
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ script/server s[Kscript/server -e testscript/server -e test
+/usr/bin/env: ruby: No such file or directory
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ script/server script/server -e testscript/server -e test[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+/usr/bin/env: ruby: No such file or directory
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ script/server script/server -e test[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+/usr/bin/env: ruby: No such file or directory
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ rake db:create --trace[H[2J]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ rake db:create --trace
+Fedena requires i18n gem version 0.4.0 to be installed.Run gem install i18n -v 0.4.0
+rake aborted!
+no such file to load -- rdoc/task
+/home/thiyagu/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/site_ruby/1.8/rubygems/core_ext/kernel_require.rb:53:in `gem_original_require'
+/home/thiyagu/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/site_ruby/1.8/rubygems/core_ext/kernel_require.rb:53:in `require'
+/home/thiyagu/projects/fedena/Rakefile:8
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/rake_module.rb:25:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/rake_module.rb:25:in `load_rakefile'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/application.rb:637:in `raw_load_rakefile'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/application.rb:94:in `load_rakefile'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/application.rb:165:in `standard_exception_handling'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/application.rb:93:in `load_rakefile'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/application.rb:77:in `run'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/application.rb:165:in `standard_exception_handling'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/application.rb:75:in `run'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/bin/rake:33
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/bin/rake:23:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/bin/rake:23
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/bin/ruby_executable_hooks:15
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ rake db:create --trace
+Fedena requires i18n gem version 0.4.0 to be installed.Run gem install i18n -v 0.4.0
+rake aborted!
+uninitialized constant Rake::RDocTask
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/tasks/documentation.rake:3
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/task_manager.rb:196:in `in_namespace'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/dsl_definition.rb:104:in `namespace'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/tasks/documentation.rake:1
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/tasks/rails.rb:4:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/tasks/rails.rb:4
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/tasks/rails.rb:4:in `each'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/tasks/rails.rb:4
+/home/thiyagu/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/site_ruby/1.8/rubygems/core_ext/kernel_require.rb:53:in `gem_original_require'
+/home/thiyagu/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/site_ruby/1.8/rubygems/core_ext/kernel_require.rb:53:in `require'
+/home/thiyagu/projects/fedena/Rakefile:8
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/rake_module.rb:25:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/rake_module.rb:25:in `load_rakefile'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/application.rb:637:in `raw_load_rakefile'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/application.rb:94:in `load_rakefile'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/application.rb:165:in `standard_exception_handling'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/application.rb:93:in `load_rakefile'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/application.rb:77:in `run'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/application.rb:165:in `standard_exception_handling'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/lib/rake/application.rb:75:in `run'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@global/gems/rake-10.1.1/bin/rake:33
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/bin/rake:23:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/bin/rake:23
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/bin/ruby_executable_hooks:15
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ gem install i18n -v 0.4.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fetching: i18n-0.4.0.gemFetching: i18n-0.4.0.gem (  3%)Fetching: i18n-0.4.0.gem ( 19%)Fetching: i18n-0.4.0.gem ( 59%)Fetching: i18n-0.4.0.gem ( 83%)Fetching: i18n-0.4.0.gem (100%)Fetching: i18n-0.4.0.gem (100%)
+Successfully installed i18n-0.4.0
+Installing ri documentation for i18n-0.4.0
+/home/thiyagu/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/rdoc/rdoc.rb:280: warning: conflicting chdir during another chdir block
+/home/thiyagu/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/rdoc/rdoc.rb:287: warning: conflicting chdir during another chdir block
+Done installing documentation for i18n after 1 seconds
+1 gem installed
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ 
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ 
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ 
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ 
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ 
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ 
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ 
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ 
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ 
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ 
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ 
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ 
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ 
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ 
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ 
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ 
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ 
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ gem install i18n -v 0.4.0[3Prake db:create --tracegem update --system 1.8.25[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[23Pgem install i18n -v 0.4.0[Kgem update --system 1.8.25gem update --system 1.8.25[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+Updating rubygems-update
+Fetching: rubygems-update-1.8.25.gemFetching: rubygems-update-1.8.25.gem (  1%)Fetching: rubygems-update-1.8.25.gem (  3%)Fetching: rubygems-update-1.8.25.gem (  7%)Fetching: rubygems-update-1.8.25.gem (  9%)Fetching: rubygems-update-1.8.25.gem ( 13%)Fetching: rubygems-update-1.8.25.gem ( 14%)Fetching: rubygems-update-1.8.25.gem ( 17%)Fetching: rubygems-update-1.8.25.gem ( 18%)Fetching: rubygems-update-1.8.25.gem ( 22%)Fetching: rubygems-update-1.8.25.gem ( 26%)Fetching: rubygems-update-1.8.25.gem ( 31%)Fetching: rubygems-update-1.8.25.gem ( 35%)Fetching: rubygems-update-1.8.25.gem ( 39%)Fetching: rubygems-update-1.8.25.gem ( 43%)Fetching: rubygems-update-1.8.25.gem ( 48%)Fetching: rubygems-update-1.8.25.gem ( 52%)Fetching: rubygems-update-1.8.25.gem ( 56%)Fetching: rubygems-update-1.8.25.gem ( 60%)Fetching: rubygems-update-1.8.25.gem ( 65%)Fetching: rubygems-update-1.8.25.gem ( 69%)Fetching: rubygems-update-1.8.25.gem ( 73%)Fetching: rubygems-update-1.8.25.gem ( 78%)Fetching: rubygems-update-1.8.25.gem ( 82%)Fetching: rubygems-update-1.8.25.gem ( 86%)Fetching: rubygems-update-1.8.25.gem ( 90%)Fetching: rubygems-update-1.8.25.gem ( 95%)Fetching: rubygems-update-1.8.25.gem ( 99%)Fetching: rubygems-update-1.8.25.gem (100%)Fetching: rubygems-update-1.8.25.gem (100%)
+Successfully installed rubygems-update-1.8.25
+Installing RDoc documentation for rubygems-update-1.8.25
+/home/thiyagu/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/rdoc/rdoc.rb:280: warning: conflicting chdir during another chdir block
+/home/thiyagu/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/rdoc/rdoc.rb:287: warning: conflicting chdir during another chdir block
+Installing ri documentation for rubygems-update-1.8.25
+/home/thiyagu/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/rdoc/rdoc.rb:280: warning: conflicting chdir during another chdir block
+/home/thiyagu/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/rdoc/rdoc.rb:287: warning: conflicting chdir during another chdir block
+Done installing documentation for rubygems-update after 0 seconds
+Installing RubyGems 1.8.25
+RubyGems 1.8.25 installed
+
+== 1.8.25/ 2013-01-24
+
+* 6 bug fixes:
+
+  * Added 11627 to setup bin_file location to protect against errors. Fixes #328 by ConradIrwin
+  * Specification#ruby_code didn't handle Requirement with multiple
+  * Fix error on creating a Version object with a frozen string.
+  * Fix incremental index updates
+  * Fix missing load_yaml in YAML-related requirement.rb code.
+  * Manually backport encoding-aware YAML gemspec
+
+
+------------------------------------------------------------------------------
+
+RubyGems installed the following executables:
+	/home/thiyagu/.rvm/rubies/ruby-1.8.7-p374/bin/gem
+
+RubyGems system software updated
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ gem list | grep ruby
+[01;31m[Kruby[m[Kgems-bundler (1.4.4)
+[01;31m[Kruby[m[Kgems-update (1.8.25)
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ gem install rubygems-update -v 1.3.5
+Fetching: rubygems-update-1.3.5.gemFetching: rubygems-update-1.3.5.gem (  1%)Fetching: rubygems-update-1.3.5.gem (  2%)Fetching: rubygems-update-1.3.5.gem (  3%)Fetching: rubygems-update-1.3.5.gem (  4%)Fetching: rubygems-update-1.3.5.gem (  5%)Fetching: rubygems-update-1.3.5.gem (  6%)Fetching: rubygems-update-1.3.5.gem (  7%)Fetching: rubygems-update-1.3.5.gem (  8%)Fetching: rubygems-update-1.3.5.gem (  9%)Fetching: rubygems-update-1.3.5.gem ( 10%)Fetching: rubygems-update-1.3.5.gem ( 11%)Fetching: rubygems-update-1.3.5.gem ( 12%)Fetching: rubygems-update-1.3.5.gem ( 13%)Fetching: rubygems-update-1.3.5.gem ( 14%)Fetching: rubygems-update-1.3.5.gem ( 15%)Fetching: rubygems-update-1.3.5.gem ( 16%)Fetching: rubygems-update-1.3.5.gem ( 17%)Fetching: rubygems-update-1.3.5.gem ( 18%)Fetching: rubygems-update-1.3.5.gem ( 19%)Fetching: rubygems-update-1.3.5.gem ( 20%)Fetching: rubygems-update-1.3.5.gem ( 21%)Fetching: rubygems-update-1.3.5.gem ( 22%)Fetching: rubygems-update-1.3.5.gem ( 24%)Fetching: rubygems-update-1.3.5.gem ( 25%)Fetching: rubygems-update-1.3.5.gem ( 26%)Fetching: rubygems-update-1.3.5.gem ( 27%)Fetching: rubygems-update-1.3.5.gem ( 28%)Fetching: rubygems-update-1.3.5.gem ( 29%)Fetching: rubygems-update-1.3.5.gem ( 30%)Fetching: rubygems-update-1.3.5.gem ( 31%)Fetching: rubygems-update-1.3.5.gem ( 32%)Fetching: rubygems-update-1.3.5.gem ( 33%)Fetching: rubygems-update-1.3.5.gem ( 34%)Fetching: rubygems-update-1.3.5.gem ( 35%)Fetching: rubygems-update-1.3.5.gem ( 36%)Fetching: rubygems-update-1.3.5.gem ( 37%)Fetching: rubygems-update-1.3.5.gem ( 39%)Fetching: rubygems-update-1.3.5.gem ( 41%)Fetching: rubygems-update-1.3.5.gem ( 42%)Fetching: rubygems-update-1.3.5.gem ( 43%)Fetching: rubygems-update-1.3.5.gem ( 44%)Fetching: rubygems-update-1.3.5.gem ( 45%)Fetching: rubygems-update-1.3.5.gem ( 46%)Fetching: rubygems-update-1.3.5.gem ( 47%)Fetching: rubygems-update-1.3.5.gem ( 48%)Fetching: rubygems-update-1.3.5.gem ( 49%)Fetching: rubygems-update-1.3.5.gem ( 50%)Fetching: rubygems-update-1.3.5.gem ( 51%)Fetching: rubygems-update-1.3.5.gem ( 52%)Fetching: rubygems-update-1.3.5.gem ( 53%)Fetching: rubygems-update-1.3.5.gem ( 54%)Fetching: rubygems-update-1.3.5.gem ( 55%)Fetching: rubygems-update-1.3.5.gem ( 56%)Fetching: rubygems-update-1.3.5.gem ( 57%)Fetching: rubygems-update-1.3.5.gem ( 58%)Fetching: rubygems-update-1.3.5.gem ( 59%)Fetching: rubygems-update-1.3.5.gem ( 60%)Fetching: rubygems-update-1.3.5.gem ( 61%)Fetching: rubygems-update-1.3.5.gem ( 62%)Fetching: rubygems-update-1.3.5.gem ( 63%)Fetching: rubygems-update-1.3.5.gem ( 64%)Fetching: rubygems-update-1.3.5.gem ( 65%)Fetching: rubygems-update-1.3.5.gem ( 66%)Fetching: rubygems-update-1.3.5.gem ( 67%)Fetching: rubygems-update-1.3.5.gem ( 68%)Fetching: rubygems-update-1.3.5.gem ( 69%)Fetching: rubygems-update-1.3.5.gem ( 70%)Fetching: rubygems-update-1.3.5.gem ( 71%)Fetching: rubygems-update-1.3.5.gem ( 72%)Fetching: rubygems-update-1.3.5.gem ( 73%)Fetching: rubygems-update-1.3.5.gem ( 74%)Fetching: rubygems-update-1.3.5.gem ( 75%)Fetching: rubygems-update-1.3.5.gem ( 76%)Fetching: rubygems-update-1.3.5.gem ( 77%)Fetching: rubygems-update-1.3.5.gem ( 78%)Fetching: rubygems-update-1.3.5.gem ( 79%)Fetching: rubygems-update-1.3.5.gem ( 80%)Fetching: rubygems-update-1.3.5.gem ( 81%)Fetching: rubygems-update-1.3.5.gem ( 82%)Fetching: rubygems-update-1.3.5.gem ( 83%)Fetching: rubygems-update-1.3.5.gem ( 84%)Fetching: rubygems-update-1.3.5.gem ( 85%)Fetching: rubygems-update-1.3.5.gem ( 86%)Fetching: rubygems-update-1.3.5.gem ( 87%)Fetching: rubygems-update-1.3.5.gem ( 88%)Fetching: rubygems-update-1.3.5.gem ( 89%)Fetching: rubygems-update-1.3.5.gem ( 90%)Fetching: rubygems-update-1.3.5.gem ( 91%)Fetching: rubygems-update-1.3.5.gem ( 92%)Fetching: rubygems-update-1.3.5.gem ( 93%)Fetching: rubygems-update-1.3.5.gem ( 94%)Fetching: rubygems-update-1.3.5.gem ( 95%)Fetching: rubygems-update-1.3.5.gem ( 96%)Fetching: rubygems-update-1.3.5.gem ( 97%)Fetching: rubygems-update-1.3.5.gem ( 98%)Fetching: rubygems-update-1.3.5.gem ( 99%)Fetching: rubygems-update-1.3.5.gem (100%)Fetching: rubygems-update-1.3.5.gem (100%)
+Successfully installed rubygems-update-1.3.5
+1 gem installed
+Installing ri documentation for rubygems-update-1.3.5...
+Installing RDoc documentation for rubygems-update-1.3.5...
+Could not find main page README
+Could not find main page README
+Could not find main page README
+Could not find main page README
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ gem install rubygems-update -v 1.3.5[16Plist | grep ruby
+[01;31m[Kruby[m[Kgems-bundler (1.4.4)
+[01;31m[Kruby[m[Kgems-update (1.8.25, 1.3.5)
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ gem list | grep rubyinstall rubygems-update -v 1.3.5[1@u[1@n[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P.58.5[C25
+Successfully uninstalled rubygems-update-1.8.25
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ gem uninstall rubygems-update -v 1.8.25[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kbundle install --local
+[31mCould not locate Gemfile[0m
+]0;thiyagu@2di3044: ~/projects/fedenathiyagu@2di3044:~/projects/fedena$ cd ..[K[K[K[Kd
+]0;thiyagu@2di3044: ~thiyagu@2di3044:~$ cd [K[K[Kcd /usr/local/src
+]0;thiyagu@2di3044: /usr/local/srcthiyagu@2di3044:/usr/local/src$ [H[2J]0;thiyagu@2di3044: /usr/local/srcthiyagu@2di3044:/usr/local/src$ wget http://production.cf.rubygems.org/rubygems/rubygems-1.3.7.tgz
+--2014-06-20 16:11:23--  http://production.cf.rubygems.org/rubygems/rubygems-1.3.7.tgz
+Resolving production.cf.rubygems.org (production.cf.rubygems.org)... 54.230.188.170, 54.230.188.240, 54.230.188.102, ...
+Connecting to production.cf.rubygems.org (production.cf.rubygems.org)|54.230.188.170|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 290986 (284K) [application/octet-stream]
+rubygems-1.3.7.tgz: Permission denied
+
+Cannot write to `rubygems-1.3.7.tgz' (Permission denied).
+]0;thiyagu@2di3044: /usr/local/srcthiyagu@2di3044:/usr/local/src$ tar xzvf rubygems-1.3.7.tgz
+tar (child): rubygems-1.3.7.tgz: Cannot open: No such file or directory
+tar (child): Error is not recoverable: exiting now
+tar: Child returned status 2
+tar: Error is not recoverable: exiting now
+]0;thiyagu@2di3044: /usr/local/srcthiyagu@2di3044:/usr/local/src$ cd rubygems-1.3.7
+bash: cd: rubygems-1.3.7: No such file or directory
+]0;thiyagu@2di3044: /usr/local/srcthiyagu@2di3044:/usr/local/src$ cd 
+]0;thiyagu@2di3044: ~thiyagu@2di3044:~$ cd fe[K[K[K[K[Kcd
+]0;thiyagu@2di3044: ~thiyagu@2di3044:~$ cd /
+]0;thiyagu@2di3044: /thiyagu@2di3044:/$ cd fr[K[KDe[K[K[K[Kd
+]0;thiyagu@2di3044: ~thiyagu@2di3044:~$ cd Desktop/fedena/
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ ruby -v
+ruby 1.8.7 (2013-06-27 patchlevel 374) [i686-linux]
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ rails -v
+Rails 2.3.5
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ sudo gem install bundler
+[sudo] password for thiyagu: 
+sudo: gem: command not found
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ cd ..
+]0;thiyagu@2di3044: ~/Desktopthiyagu@2di3044:~/Desktop$ cd ..sudo gem install bundler
+sudo: gem: command not found
+]0;thiyagu@2di3044: ~/Desktopthiyagu@2di3044:~/Desktop$ sudo gem install bundlercd ..[Ksudo gem install bundler[16Prails -v[1Puby[C[C[Ccd Desktop/fedena/[K /[K rubygems-1.3.7tar xzvf rubygems-1.3.7.tgzwget http://production.cf.rubygems.org/rubygems/rubygems-1.3.7.tgz[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccd /usr/local/src[K
+]0;thiyagu@2di3044: /usr/local/srcthiyagu@2di3044:/usr/local/src$ ls
+]0;thiyagu@2di3044: /usr/local/srcthiyagu@2di3044:/usr/local/src$ wget http://production.cf.rubygems.org/rubygems/rubygems-1.3.7.tgz
+--2014-06-20 16:14:37--  http://production.cf.rubygems.org/rubygems/rubygems-1.3.7.tgz
+Resolving production.cf.rubygems.org (production.cf.rubygems.org)... 54.230.189.101, 54.230.189.212, 54.230.191.208, ...
+Connecting to production.cf.rubygems.org (production.cf.rubygems.org)|54.230.189.101|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 290986 (284K) [application/octet-stream]
+rubygems-1.3.7.tgz: Permission denied
+
+Cannot write to `rubygems-1.3.7.tgz' (Permission denied).
+]0;thiyagu@2di3044: /usr/local/srcthiyagu@2di3044:/usr/local/src$ wget http://production.cf.rubygems.org/rubygems/rubygems-1.3.7.tgz[1@s[1@u[1@d[1@o[1@ 
+--2014-06-20 16:14:47--  http://production.cf.rubygems.org/rubygems/rubygems-1.3.7.tgz
+Resolving production.cf.rubygems.org (production.cf.rubygems.org)... 54.230.189.212, 54.230.191.208, 54.230.189.100, ...
+Connecting to production.cf.rubygems.org (production.cf.rubygems.org)|54.230.189.212|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 290986 (284K) [application/octet-stream]
+Saving to: `rubygems-1.3.7.tgz'
+
+ 0% [                                                                                                                      ] 0           --.-K/s              74% [======================================================================================>                               ] 2,16,520    1.03M/s              100%[=====================================================================================================================>] 2,90,986    1023K/s   in 0.3s    
+
+2014-06-20 16:14:47 (1023 KB/s) - `rubygems-1.3.7.tgz' saved [290986/290986]
+
+]0;thiyagu@2di3044: /usr/local/srcthiyagu@2di3044:/usr/local/src$ tar xzvf rubygems-1.3.7.tgz
+rubygems-1.3.7/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+rubygems-1.3.7/.autotest
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/.autotest: Cannot open: No such file or directory
+rubygems-1.3.7/.document
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/.document: Cannot open: No such file or directory
+rubygems-1.3.7/bin/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/bin: Cannot mkdir: No such file or directory
+rubygems-1.3.7/ChangeLog
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/ChangeLog: Cannot open: No such file or directory
+rubygems-1.3.7/cruise_config.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/cruise_config.rb: Cannot open: No such file or directory
+rubygems-1.3.7/GPL.txt
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/GPL.txt: Cannot open: No such file or directory
+rubygems-1.3.7/hide_lib_for_update/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/hide_lib_for_update: Cannot mkdir: No such file or directory
+rubygems-1.3.7/History.txt
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/History.txt: Cannot open: No such file or directory
+rubygems-1.3.7/lib/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib: Cannot mkdir: No such file or directory
+rubygems-1.3.7/LICENSE.txt
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/LICENSE.txt: Cannot open: No such file or directory
+rubygems-1.3.7/Manifest.txt
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/Manifest.txt: Cannot open: No such file or directory
+rubygems-1.3.7/pkgs/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/pkgs: Cannot mkdir: No such file or directory
+rubygems-1.3.7/Rakefile
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/Rakefile: Cannot open: No such file or directory
+rubygems-1.3.7/README
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/README: Cannot open: No such file or directory
+rubygems-1.3.7/setup.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/setup.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test: Cannot mkdir: No such file or directory
+rubygems-1.3.7/util/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/util: Cannot mkdir: No such file or directory
+rubygems-1.3.7/util/CL2notes
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/util/CL2notes: Cannot open: No such file or directory
+rubygems-1.3.7/util/gem_prelude.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/util/gem_prelude.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/bogussources.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/bogussources.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/data/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/data: Cannot mkdir: No such file or directory
+rubygems-1.3.7/test/fake_certlib/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/fake_certlib: Cannot mkdir: No such file or directory
+rubygems-1.3.7/test/foo/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/foo: Cannot mkdir: No such file or directory
+rubygems-1.3.7/test/functional.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/functional.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/gem_installer_test_case.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/gem_installer_test_case.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/gem_package_tar_test_case.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/gem_package_tar_test_case.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/gemutilities.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/gemutilities.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/insure_session.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/insure_session.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/mockgemui.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/mockgemui.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/plugin/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/plugin: Cannot mkdir: No such file or directory
+rubygems-1.3.7/test/private_key.pem
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/private_key.pem: Cannot open: No such file or directory
+rubygems-1.3.7/test/public_cert.pem
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/public_cert.pem: Cannot open: No such file or directory
+rubygems-1.3.7/test/rubygems/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/rubygems: Cannot mkdir: No such file or directory
+rubygems-1.3.7/test/rubygems_plugin.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/rubygems_plugin.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/simple_gem.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/simple_gem.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_config.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_config.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_builder.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_builder.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_command_manager.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_command_manager.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_build_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_build_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_cert_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_cert_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_check_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_check_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_contents_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_contents_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_dependency_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_dependency_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_environment_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_environment_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_fetch_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_fetch_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_generate_index_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_generate_index_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_install_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_install_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_list_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_list_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_lock_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_lock_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_mirror_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_mirror_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_outdated_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_outdated_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_owner_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_owner_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_pristine_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_pristine_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_push_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_push_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_query_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_query_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_server_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_server_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_sources_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_sources_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_specification_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_specification_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_stale_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_stale_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_uninstall_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_uninstall_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_unpack_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_unpack_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_update_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_update_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_commands_which_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_commands_which_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_config_file.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_config_file.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_dependency.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_dependency.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_dependency_installer.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_dependency_installer.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_dependency_list.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_dependency_list.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_doc_manager.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_doc_manager.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_ext_configure_builder.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_ext_configure_builder.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_ext_ext_conf_builder.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_ext_ext_conf_builder.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_ext_rake_builder.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_ext_rake_builder.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_format.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_format.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_gem_path_searcher.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_gem_path_searcher.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_gem_runner.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_gem_runner.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_gemcutter_utilities.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_gemcutter_utilities.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_indexer.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_indexer.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_install_update_options.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_install_update_options.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_installer.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_installer.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_local_remote_options.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_local_remote_options.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_package_tar_header.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_package_tar_header.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_package_tar_input.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_package_tar_input.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_package_tar_output.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_package_tar_output.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_package_tar_reader.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_package_tar_reader.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_package_tar_reader_entry.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_package_tar_reader_entry.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_package_tar_writer.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_package_tar_writer.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_package_task.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_package_task.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_platform.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_platform.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_remote_fetcher.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_remote_fetcher.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_requirement.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_requirement.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_server.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_server.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_source_index.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_source_index.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_spec_fetcher.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_spec_fetcher.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_specification.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_specification.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_stream_ui.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_stream_ui.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_uninstaller.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_uninstaller.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_validator.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_validator.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_version.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_version.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_gem_version_option.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_gem_version_option.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/test_kernel.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/test_kernel.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/rubygems/commands/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/rubygems/commands: Cannot mkdir: No such file or directory
+rubygems-1.3.7/test/rubygems/commands/crash_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/rubygems/commands/crash_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/plugin/exception/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/plugin/exception: Cannot mkdir: No such file or directory
+rubygems-1.3.7/test/plugin/load/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/plugin/load: Cannot mkdir: No such file or directory
+rubygems-1.3.7/test/plugin/standarderror/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/plugin/standarderror: Cannot mkdir: No such file or directory
+rubygems-1.3.7/test/plugin/standarderror/rubygems_plugin.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/plugin/standarderror/rubygems_plugin.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/plugin/load/rubygems_plugin.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/plugin/load/rubygems_plugin.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/plugin/exception/rubygems_plugin.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/plugin/exception/rubygems_plugin.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/foo/discover.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/foo/discover.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/fake_certlib/openssl.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/fake_certlib/openssl.rb: Cannot open: No such file or directory
+rubygems-1.3.7/test/data/gem-private_key.pem
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/data/gem-private_key.pem: Cannot open: No such file or directory
+rubygems-1.3.7/test/data/gem-public_cert.pem
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/test/data/gem-public_cert.pem: Cannot open: No such file or directory
+rubygems-1.3.7/pkgs/sources/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/pkgs/sources: Cannot mkdir: No such file or directory
+rubygems-1.3.7/pkgs/sources/lib/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/pkgs/sources/lib: Cannot mkdir: No such file or directory
+rubygems-1.3.7/pkgs/sources/sources.gemspec
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/pkgs/sources/sources.gemspec: Cannot open: No such file or directory
+rubygems-1.3.7/pkgs/sources/lib/sources.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/pkgs/sources/lib/sources.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/gauntlet_rubygems.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/gauntlet_rubygems.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rbconfig/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rbconfig: Cannot mkdir: No such file or directory
+rubygems-1.3.7/lib/rubygems/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems: Cannot mkdir: No such file or directory
+rubygems-1.3.7/lib/rubygems.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/ubygems.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/ubygems.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/builder.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/builder.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/command_manager.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/command_manager.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands: Cannot mkdir: No such file or directory
+rubygems-1.3.7/lib/rubygems/config_file.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/config_file.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/custom_require.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/custom_require.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/defaults.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/defaults.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/dependency.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/dependency.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/dependency_installer.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/dependency_installer.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/dependency_list.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/dependency_list.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/doc_manager.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/doc_manager.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/errors.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/errors.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/exceptions.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/exceptions.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/ext/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/ext: Cannot mkdir: No such file or directory
+rubygems-1.3.7/lib/rubygems/ext.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/ext.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/format.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/format.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/gem_openssl.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/gem_openssl.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/gem_path_searcher.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/gem_path_searcher.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/gem_runner.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/gem_runner.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/gemcutter_utilities.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/gemcutter_utilities.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/indexer.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/indexer.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/install_update_options.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/install_update_options.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/installer.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/installer.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/local_remote_options.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/local_remote_options.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/old_format.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/old_format.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/package/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/package: Cannot mkdir: No such file or directory
+rubygems-1.3.7/lib/rubygems/package.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/package.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/package_task.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/package_task.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/platform.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/platform.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/remote_fetcher.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/remote_fetcher.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/require_paths_builder.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/require_paths_builder.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/requirement.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/requirement.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/security.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/security.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/server.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/server.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/source_index.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/source_index.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/source_info_cache.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/source_info_cache.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/source_info_cache_entry.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/source_info_cache_entry.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/spec_fetcher.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/spec_fetcher.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/specification.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/specification.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/test_utilities.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/test_utilities.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/text.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/text.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/uninstaller.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/uninstaller.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/user_interaction.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/user_interaction.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/validator.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/validator.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/version.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/version.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/version_option.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/version_option.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/package/f_sync_dir.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/package/f_sync_dir.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/package/tar_header.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/package/tar_header.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/package/tar_input.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/package/tar_input.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/package/tar_output.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/package/tar_output.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/package/tar_reader/
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/package/tar_reader: Cannot mkdir: No such file or directory
+rubygems-1.3.7/lib/rubygems/package/tar_reader.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/package/tar_reader.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/package/tar_writer.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/package/tar_writer.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/package/tar_reader/entry.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/package/tar_reader/entry.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/ext/builder.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/ext/builder.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/ext/configure_builder.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/ext/configure_builder.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/ext/ext_conf_builder.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/ext/ext_conf_builder.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/ext/rake_builder.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/ext/rake_builder.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/build_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/build_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/cert_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/cert_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/check_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/check_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/cleanup_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/cleanup_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/contents_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/contents_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/dependency_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/dependency_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/environment_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/environment_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/fetch_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/fetch_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/generate_index_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/generate_index_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/help_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/help_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/install_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/install_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/list_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/list_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/lock_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/lock_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/mirror_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/mirror_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/outdated_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/outdated_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/owner_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/owner_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/pristine_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/pristine_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/push_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/push_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/query_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/query_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/rdoc_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/rdoc_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/search_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/search_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/server_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/server_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/setup_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/setup_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/sources_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/sources_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/specification_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/specification_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/stale_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/stale_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/uninstall_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/uninstall_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/unpack_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/unpack_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/update_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/update_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rubygems/commands/which_command.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rubygems/commands/which_command.rb: Cannot open: No such file or directory
+rubygems-1.3.7/lib/rbconfig/datadir.rb
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/lib/rbconfig/datadir.rb: Cannot open: No such file or directory
+rubygems-1.3.7/hide_lib_for_update/note.txt
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/hide_lib_for_update/note.txt: Cannot open: No such file or directory
+rubygems-1.3.7/bin/gem
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/bin/gem: Cannot open: No such file or directory
+rubygems-1.3.7/bin/update_rubygems
+tar: rubygems-1.3.7: Cannot mkdir: Permission denied
+tar: rubygems-1.3.7/bin/update_rubygems: Cannot open: No such file or directory
+tar: Exiting with failure status due to previous errors
+]0;thiyagu@2di3044: /usr/local/srcthiyagu@2di3044:/usr/local/src$ tar xzvf rubygems-1.3.7.tgz[1@s[1@u[1@d[1@o[1@ 
+rubygems-1.3.7/
+rubygems-1.3.7/.autotest
+rubygems-1.3.7/.document
+rubygems-1.3.7/bin/
+rubygems-1.3.7/ChangeLog
+rubygems-1.3.7/cruise_config.rb
+rubygems-1.3.7/GPL.txt
+rubygems-1.3.7/hide_lib_for_update/
+rubygems-1.3.7/History.txt
+rubygems-1.3.7/lib/
+rubygems-1.3.7/LICENSE.txt
+rubygems-1.3.7/Manifest.txt
+rubygems-1.3.7/pkgs/
+rubygems-1.3.7/Rakefile
+rubygems-1.3.7/README
+rubygems-1.3.7/setup.rb
+rubygems-1.3.7/test/
+rubygems-1.3.7/util/
+rubygems-1.3.7/util/CL2notes
+rubygems-1.3.7/util/gem_prelude.rb
+rubygems-1.3.7/test/bogussources.rb
+rubygems-1.3.7/test/data/
+rubygems-1.3.7/test/fake_certlib/
+rubygems-1.3.7/test/foo/
+rubygems-1.3.7/test/functional.rb
+rubygems-1.3.7/test/gem_installer_test_case.rb
+rubygems-1.3.7/test/gem_package_tar_test_case.rb
+rubygems-1.3.7/test/gemutilities.rb
+rubygems-1.3.7/test/insure_session.rb
+rubygems-1.3.7/test/mockgemui.rb
+rubygems-1.3.7/test/plugin/
+rubygems-1.3.7/test/private_key.pem
+rubygems-1.3.7/test/public_cert.pem
+rubygems-1.3.7/test/rubygems/
+rubygems-1.3.7/test/rubygems_plugin.rb
+rubygems-1.3.7/test/simple_gem.rb
+rubygems-1.3.7/test/test_config.rb
+rubygems-1.3.7/test/test_gem.rb
+rubygems-1.3.7/test/test_gem_builder.rb
+rubygems-1.3.7/test/test_gem_command.rb
+rubygems-1.3.7/test/test_gem_command_manager.rb
+rubygems-1.3.7/test/test_gem_commands_build_command.rb
+rubygems-1.3.7/test/test_gem_commands_cert_command.rb
+rubygems-1.3.7/test/test_gem_commands_check_command.rb
+rubygems-1.3.7/test/test_gem_commands_contents_command.rb
+rubygems-1.3.7/test/test_gem_commands_dependency_command.rb
+rubygems-1.3.7/test/test_gem_commands_environment_command.rb
+rubygems-1.3.7/test/test_gem_commands_fetch_command.rb
+rubygems-1.3.7/test/test_gem_commands_generate_index_command.rb
+rubygems-1.3.7/test/test_gem_commands_install_command.rb
+rubygems-1.3.7/test/test_gem_commands_list_command.rb
+rubygems-1.3.7/test/test_gem_commands_lock_command.rb
+rubygems-1.3.7/test/test_gem_commands_mirror_command.rb
+rubygems-1.3.7/test/test_gem_commands_outdated_command.rb
+rubygems-1.3.7/test/test_gem_commands_owner_command.rb
+rubygems-1.3.7/test/test_gem_commands_pristine_command.rb
+rubygems-1.3.7/test/test_gem_commands_push_command.rb
+rubygems-1.3.7/test/test_gem_commands_query_command.rb
+rubygems-1.3.7/test/test_gem_commands_server_command.rb
+rubygems-1.3.7/test/test_gem_commands_sources_command.rb
+rubygems-1.3.7/test/test_gem_commands_specification_command.rb
+rubygems-1.3.7/test/test_gem_commands_stale_command.rb
+rubygems-1.3.7/test/test_gem_commands_uninstall_command.rb
+rubygems-1.3.7/test/test_gem_commands_unpack_command.rb
+rubygems-1.3.7/test/test_gem_commands_update_command.rb
+rubygems-1.3.7/test/test_gem_commands_which_command.rb
+rubygems-1.3.7/test/test_gem_config_file.rb
+rubygems-1.3.7/test/test_gem_dependency.rb
+rubygems-1.3.7/test/test_gem_dependency_installer.rb
+rubygems-1.3.7/test/test_gem_dependency_list.rb
+rubygems-1.3.7/test/test_gem_doc_manager.rb
+rubygems-1.3.7/test/test_gem_ext_configure_builder.rb
+rubygems-1.3.7/test/test_gem_ext_ext_conf_builder.rb
+rubygems-1.3.7/test/test_gem_ext_rake_builder.rb
+rubygems-1.3.7/test/test_gem_format.rb
+rubygems-1.3.7/test/test_gem_gem_path_searcher.rb
+rubygems-1.3.7/test/test_gem_gem_runner.rb
+rubygems-1.3.7/test/test_gem_gemcutter_utilities.rb
+rubygems-1.3.7/test/test_gem_indexer.rb
+rubygems-1.3.7/test/test_gem_install_update_options.rb
+rubygems-1.3.7/test/test_gem_installer.rb
+rubygems-1.3.7/test/test_gem_local_remote_options.rb
+rubygems-1.3.7/test/test_gem_package_tar_header.rb
+rubygems-1.3.7/test/test_gem_package_tar_input.rb
+rubygems-1.3.7/test/test_gem_package_tar_output.rb
+rubygems-1.3.7/test/test_gem_package_tar_reader.rb
+rubygems-1.3.7/test/test_gem_package_tar_reader_entry.rb
+rubygems-1.3.7/test/test_gem_package_tar_writer.rb
+rubygems-1.3.7/test/test_gem_package_task.rb
+rubygems-1.3.7/test/test_gem_platform.rb
+rubygems-1.3.7/test/test_gem_remote_fetcher.rb
+rubygems-1.3.7/test/test_gem_requirement.rb
+rubygems-1.3.7/test/test_gem_server.rb
+rubygems-1.3.7/test/test_gem_source_index.rb
+rubygems-1.3.7/test/test_gem_spec_fetcher.rb
+rubygems-1.3.7/test/test_gem_specification.rb
+rubygems-1.3.7/test/test_gem_stream_ui.rb
+rubygems-1.3.7/test/test_gem_uninstaller.rb
+rubygems-1.3.7/test/test_gem_validator.rb
+rubygems-1.3.7/test/test_gem_version.rb
+rubygems-1.3.7/test/test_gem_version_option.rb
+rubygems-1.3.7/test/test_kernel.rb
+rubygems-1.3.7/test/rubygems/commands/
+rubygems-1.3.7/test/rubygems/commands/crash_command.rb
+rubygems-1.3.7/test/plugin/exception/
+rubygems-1.3.7/test/plugin/load/
+rubygems-1.3.7/test/plugin/standarderror/
+rubygems-1.3.7/test/plugin/standarderror/rubygems_plugin.rb
+rubygems-1.3.7/test/plugin/load/rubygems_plugin.rb
+rubygems-1.3.7/test/plugin/exception/rubygems_plugin.rb
+rubygems-1.3.7/test/foo/discover.rb
+rubygems-1.3.7/test/fake_certlib/openssl.rb
+rubygems-1.3.7/test/data/gem-private_key.pem
+rubygems-1.3.7/test/data/gem-public_cert.pem
+rubygems-1.3.7/pkgs/sources/
+rubygems-1.3.7/pkgs/sources/lib/
+rubygems-1.3.7/pkgs/sources/sources.gemspec
+rubygems-1.3.7/pkgs/sources/lib/sources.rb
+rubygems-1.3.7/lib/gauntlet_rubygems.rb
+rubygems-1.3.7/lib/rbconfig/
+rubygems-1.3.7/lib/rubygems/
+rubygems-1.3.7/lib/rubygems.rb
+rubygems-1.3.7/lib/ubygems.rb
+rubygems-1.3.7/lib/rubygems/builder.rb
+rubygems-1.3.7/lib/rubygems/command.rb
+rubygems-1.3.7/lib/rubygems/command_manager.rb
+rubygems-1.3.7/lib/rubygems/commands/
+rubygems-1.3.7/lib/rubygems/config_file.rb
+rubygems-1.3.7/lib/rubygems/custom_require.rb
+rubygems-1.3.7/lib/rubygems/defaults.rb
+rubygems-1.3.7/lib/rubygems/dependency.rb
+rubygems-1.3.7/lib/rubygems/dependency_installer.rb
+rubygems-1.3.7/lib/rubygems/dependency_list.rb
+rubygems-1.3.7/lib/rubygems/doc_manager.rb
+rubygems-1.3.7/lib/rubygems/errors.rb
+rubygems-1.3.7/lib/rubygems/exceptions.rb
+rubygems-1.3.7/lib/rubygems/ext/
+rubygems-1.3.7/lib/rubygems/ext.rb
+rubygems-1.3.7/lib/rubygems/format.rb
+rubygems-1.3.7/lib/rubygems/gem_openssl.rb
+rubygems-1.3.7/lib/rubygems/gem_path_searcher.rb
+rubygems-1.3.7/lib/rubygems/gem_runner.rb
+rubygems-1.3.7/lib/rubygems/gemcutter_utilities.rb
+rubygems-1.3.7/lib/rubygems/indexer.rb
+rubygems-1.3.7/lib/rubygems/install_update_options.rb
+rubygems-1.3.7/lib/rubygems/installer.rb
+rubygems-1.3.7/lib/rubygems/local_remote_options.rb
+rubygems-1.3.7/lib/rubygems/old_format.rb
+rubygems-1.3.7/lib/rubygems/package/
+rubygems-1.3.7/lib/rubygems/package.rb
+rubygems-1.3.7/lib/rubygems/package_task.rb
+rubygems-1.3.7/lib/rubygems/platform.rb
+rubygems-1.3.7/lib/rubygems/remote_fetcher.rb
+rubygems-1.3.7/lib/rubygems/require_paths_builder.rb
+rubygems-1.3.7/lib/rubygems/requirement.rb
+rubygems-1.3.7/lib/rubygems/security.rb
+rubygems-1.3.7/lib/rubygems/server.rb
+rubygems-1.3.7/lib/rubygems/source_index.rb
+rubygems-1.3.7/lib/rubygems/source_info_cache.rb
+rubygems-1.3.7/lib/rubygems/source_info_cache_entry.rb
+rubygems-1.3.7/lib/rubygems/spec_fetcher.rb
+rubygems-1.3.7/lib/rubygems/specification.rb
+rubygems-1.3.7/lib/rubygems/test_utilities.rb
+rubygems-1.3.7/lib/rubygems/text.rb
+rubygems-1.3.7/lib/rubygems/uninstaller.rb
+rubygems-1.3.7/lib/rubygems/user_interaction.rb
+rubygems-1.3.7/lib/rubygems/validator.rb
+rubygems-1.3.7/lib/rubygems/version.rb
+rubygems-1.3.7/lib/rubygems/version_option.rb
+rubygems-1.3.7/lib/rubygems/package/f_sync_dir.rb
+rubygems-1.3.7/lib/rubygems/package/tar_header.rb
+rubygems-1.3.7/lib/rubygems/package/tar_input.rb
+rubygems-1.3.7/lib/rubygems/package/tar_output.rb
+rubygems-1.3.7/lib/rubygems/package/tar_reader/
+rubygems-1.3.7/lib/rubygems/package/tar_reader.rb
+rubygems-1.3.7/lib/rubygems/package/tar_writer.rb
+rubygems-1.3.7/lib/rubygems/package/tar_reader/entry.rb
+rubygems-1.3.7/lib/rubygems/ext/builder.rb
+rubygems-1.3.7/lib/rubygems/ext/configure_builder.rb
+rubygems-1.3.7/lib/rubygems/ext/ext_conf_builder.rb
+rubygems-1.3.7/lib/rubygems/ext/rake_builder.rb
+rubygems-1.3.7/lib/rubygems/commands/build_command.rb
+rubygems-1.3.7/lib/rubygems/commands/cert_command.rb
+rubygems-1.3.7/lib/rubygems/commands/check_command.rb
+rubygems-1.3.7/lib/rubygems/commands/cleanup_command.rb
+rubygems-1.3.7/lib/rubygems/commands/contents_command.rb
+rubygems-1.3.7/lib/rubygems/commands/dependency_command.rb
+rubygems-1.3.7/lib/rubygems/commands/environment_command.rb
+rubygems-1.3.7/lib/rubygems/commands/fetch_command.rb
+rubygems-1.3.7/lib/rubygems/commands/generate_index_command.rb
+rubygems-1.3.7/lib/rubygems/commands/help_command.rb
+rubygems-1.3.7/lib/rubygems/commands/install_command.rb
+rubygems-1.3.7/lib/rubygems/commands/list_command.rb
+rubygems-1.3.7/lib/rubygems/commands/lock_command.rb
+rubygems-1.3.7/lib/rubygems/commands/mirror_command.rb
+rubygems-1.3.7/lib/rubygems/commands/outdated_command.rb
+rubygems-1.3.7/lib/rubygems/commands/owner_command.rb
+rubygems-1.3.7/lib/rubygems/commands/pristine_command.rb
+rubygems-1.3.7/lib/rubygems/commands/push_command.rb
+rubygems-1.3.7/lib/rubygems/commands/query_command.rb
+rubygems-1.3.7/lib/rubygems/commands/rdoc_command.rb
+rubygems-1.3.7/lib/rubygems/commands/search_command.rb
+rubygems-1.3.7/lib/rubygems/commands/server_command.rb
+rubygems-1.3.7/lib/rubygems/commands/setup_command.rb
+rubygems-1.3.7/lib/rubygems/commands/sources_command.rb
+rubygems-1.3.7/lib/rubygems/commands/specification_command.rb
+rubygems-1.3.7/lib/rubygems/commands/stale_command.rb
+rubygems-1.3.7/lib/rubygems/commands/uninstall_command.rb
+rubygems-1.3.7/lib/rubygems/commands/unpack_command.rb
+rubygems-1.3.7/lib/rubygems/commands/update_command.rb
+rubygems-1.3.7/lib/rubygems/commands/which_command.rb
+rubygems-1.3.7/lib/rbconfig/datadir.rb
+rubygems-1.3.7/hide_lib_for_update/note.txt
+rubygems-1.3.7/bin/gem
+rubygems-1.3.7/bin/update_rubygems
+]0;thiyagu@2di3044: /usr/local/srcthiyagu@2di3044:/usr/local/src$ cd rubygems-1.3.7
+]0;thiyagu@2di3044: /usr/local/src/rubygems-1.3.7thiyagu@2di3044:/usr/local/src/rubygems-1.3.7$ sudo ruby setup.rb
+RubyGems 1.3.7 installed
+
+﻿=== 1.3.7 / 2010-05-13
+
+NOTE:
+
+http://rubygems.org is now the default source for downloading gems.
+
+You may have sources set via ~/.gemrc, so you should replace
+http://gems.rubyforge.org with http://rubygems.org
+
+http://gems.rubyforge.org will continue to work for the forseeable future.
+
+New features:
+
+* `gem` commands
+  * `gem install` and `gem fetch` now report alternate platforms when a
+    matching one couldn't be found.
+  * `gem contents` --prefix is now the default as specified in --help.  Bug
+    #27211 by Mamoru Tasaka.
+  * `gem fetch` can fetch of old versions again.  Bug #27960 by Eric Hankins.
+  * `gem query` and friends output now lists platforms.  Bug #27856 by Greg
+    Hazel.
+  * `gem server` now allows specification of multiple gem dirs for
+    documentation.  Bug #27573 by Yuki Sonoda.
+  * `gem unpack` can unpack gems again.  Bug #27872 by Timothy Jones.
+  * `gem unpack` now unpacks remote gems.
+  * --user-install is no longer the default.  If you really liked it, see
+    Gem::ConfigFile to learn how to set it by default.  (This change was made
+    in 1.3.6)
+* RubyGems now has platform support for IronRuby.  Patch #27951 by Will Green.
+
+Bug fixes:
+
+* Require rubygems/custom_require if --disable-gem was set.  Bug #27700 by
+  Roger Pack.
+* RubyGems now protects against exceptions being raised by plugins.
+* rubygems/builder now requires user_interaction.  Ruby Bug #1040 by Phillip
+  Toland.
+* Gem::Dependency support #version_requirements= with a warning.  Fix for old
+  Rails versions.  Bug #27868 by Wei Jen Lu.
+* Gem::PackageTask depends on the package dir like the other rake package
+  tasks so dependencies can be hooked up correctly.
+
+
+------------------------------------------------------------------------------
+
+RubyGems installed the following executables:
+	/usr/bin/gem1.8
+
+]0;thiyagu@2di3044: /usr/local/src/rubygems-1.3.7thiyagu@2di3044:/usr/local/src/rubygems-1.3.7$ sudo update-alternatives --install /usr/bin/gem gem /usr/bin/gem1.8 1
+update-alternatives: using /usr/bin/gem1.8 to provide /usr/bin/gem (gem) in auto mode.
+]0;thiyagu@2di3044: /usr/local/src/rubygems-1.3.7thiyagu@2di3044:/usr/local/src/rubygems-1.3.7$ sudo gem install bundler
+Successfully installed bundler-1.6.3
+1 gem installed
+Installing ri documentation for bundler-1.6.3...
+Installing RDoc documentation for bundler-1.6.3...
+]0;thiyagu@2di3044: /usr/local/src/rubygems-1.3.7thiyagu@2di3044:/usr/local/src/rubygems-1.3.7$ mysql
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 40
+Server version: 5.5.37-0ubuntu0.12.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> Bye
+]0;thiyagu@2di3044: /usr/local/src/rubygems-1.3.7thiyagu@2di3044:/usr/local/src/rubygems-1.3.7$ cd
+]0;thiyagu@2di3044: ~thiyagu@2di3044:~$ cd Desktop/fe
+bash: cd: Desktop/fe: No such file or directory
+]0;thiyagu@2di3044: ~thiyagu@2di3044:~$ cd Desktop/fedena/
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ bundle install --local[H[2J]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ bundle install --local
+[33mThe source :rubygems is deprecated because HTTP requests are insecure.
+Please change your source to 'https://rubygems.org' if possible, or 'http://rubygems.org' if not.[0m
+[32mInstalling rake 0.8.7[0m
+Using activesupport 2.3.5
+Using rack 1.0.1
+Using actionpack 2.3.5
+Using actionmailer 2.3.5
+Using activerecord 2.3.5
+Using activeresource 2.3.5
+[32mInstalling declarative_authorization 0.5.1[0m
+[32mInstalling fattr 2.2.1[0m
+[32mInstalling i18n 0.4.2[0m
+[32mInstalling mysql 2.8.1[0m
+Using rails 2.3.5
+[32mInstalling session 3.1.0[0m
+[32mInstalling rush 0.6.8[0m
+Using bundler 1.6.3
+Updating files in vendor/cache
+[32mYour bundle is complete![0m
+[32mUse `bundle show [gemname]` to see where a bundled gem is installed.[0m
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ rake db:createrake db:create[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Ke
+(in /home/thiyagu/backup/fedena)
+rake aborted!
+uninitialized constant ActiveSupport::Dependencies::Mutex
+/home/thiyagu/backup/fedena/Rakefile:10:in `require'
+(See full trace by running task with --trace)
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ rake db:create
+(in /home/thiyagu/backup/fedena)
+Couldn't create database for {"database"=>"fedena_ultimate", "adapter"=>"mysql", "host"=>"localhost", "port"=>3306, "password"=>nil, "username"=>"root"}, charset: utf8, collation: utf8_unicode_ci (if you set the charset manually, make sure you have a matching collation)
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ rake dn[Kb:create
+(in /home/thiyagu/backup/fedena)
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ scipr[Kt/server
+bash: scipt/server: No such file or directory
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ scipt/server -e development
+bash: scipt/server: No such file or directory
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ rake fedena:plugins:install_all[H[2J]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ rake fedena:plugins:install_all
+(in /home/thiyagu/backup/fedena)
+rake aborted!
+undefined local variable or method `version_requirements' for #<Rails::GemDependency:0xb6ea48e8>
+
+(See full trace by running task with --trace)
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ rake fedena:plugins:install_all[4Pscipt/server -e development
+bash: scipt/server: No such file or directory
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ scipt/server -e developmentrake fedena:plugins:install_all
+(in /home/thiyagu/backup/fedena)
+rake aborted!
+/home/thiyagu/backup/fedena/config/environment.rb:5: syntax error, unexpected '='
+if Gem::VERSION &gt;= "1.3.6"
+                     ^
+
+(See full trace by running task with --trace)
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ rake fedena:plugins:install_all
+(in /home/thiyagu/backup/fedena)
+rake aborted!
+/home/thiyagu/backup/fedena/config/environment.rb:5: syntax error, unexpected '='
+if Gem::VERSION &gt;= "1.3.5"
+                     ^
+
+(See full trace by running task with --trace)
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ rake fedena:plugins:install_all
+(in /home/thiyagu/backup/fedena)
+rake aborted!
+undefined local variable or method `version_requirements' for #<Rails::GemDependency:0xb6f53564>
+
+(See full trace by running task with --trace)
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ [H[2J]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ rake fedena:plugins:install_all
+(in /home/thiyagu/backup/fedena)
+rake aborted!
+undefined local variable or method `version_requirements' for #<Rails::GemDependency:0xb6f2581c>
+
+(See full trace by running task with --trace)
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ ruby[K[K[K[Kgem list | grep ruby
+[01;31m[Kruby[m[Kgems-bundler (1.4.4)
+[01;31m[Kruby[m[Kgems-update (1.3.5)
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ gem install rubygems-update -v='1.4.2'
+Fetching: rubygems-update-1.4.2.gemFetching: rubygems-update-1.4.2.gem (  1%)Fetching: rubygems-update-1.4.2.gem (  2%)Fetching: rubygems-update-1.4.2.gem (  3%)Fetching: rubygems-update-1.4.2.gem (  4%)Fetching: rubygems-update-1.4.2.gem (  5%)Fetching: rubygems-update-1.4.2.gem (  6%)Fetching: rubygems-update-1.4.2.gem (  7%)Fetching: rubygems-update-1.4.2.gem (  8%)Fetching: rubygems-update-1.4.2.gem (  9%)Fetching: rubygems-update-1.4.2.gem ( 10%)Fetching: rubygems-update-1.4.2.gem ( 11%)Fetching: rubygems-update-1.4.2.gem ( 12%)Fetching: rubygems-update-1.4.2.gem ( 13%)Fetching: rubygems-update-1.4.2.gem ( 14%)Fetching: rubygems-update-1.4.2.gem ( 15%)Fetching: rubygems-update-1.4.2.gem ( 16%)Fetching: rubygems-update-1.4.2.gem ( 17%)Fetching: rubygems-update-1.4.2.gem ( 18%)Fetching: rubygems-update-1.4.2.gem ( 19%)Fetching: rubygems-update-1.4.2.gem ( 20%)Fetching: rubygems-update-1.4.2.gem ( 21%)Fetching: rubygems-update-1.4.2.gem ( 22%)Fetching: rubygems-update-1.4.2.gem ( 23%)Fetching: rubygems-update-1.4.2.gem ( 24%)Fetching: rubygems-update-1.4.2.gem ( 25%)Fetching: rubygems-update-1.4.2.gem ( 26%)Fetching: rubygems-update-1.4.2.gem ( 27%)Fetching: rubygems-update-1.4.2.gem ( 28%)Fetching: rubygems-update-1.4.2.gem ( 29%)Fetching: rubygems-update-1.4.2.gem ( 30%)Fetching: rubygems-update-1.4.2.gem ( 31%)Fetching: rubygems-update-1.4.2.gem ( 32%)Fetching: rubygems-update-1.4.2.gem ( 33%)Fetching: rubygems-update-1.4.2.gem ( 34%)Fetching: rubygems-update-1.4.2.gem ( 35%)Fetching: rubygems-update-1.4.2.gem ( 36%)Fetching: rubygems-update-1.4.2.gem ( 37%)Fetching: rubygems-update-1.4.2.gem ( 38%)Fetching: rubygems-update-1.4.2.gem ( 39%)Fetching: rubygems-update-1.4.2.gem ( 40%)Fetching: rubygems-update-1.4.2.gem ( 41%)Fetching: rubygems-update-1.4.2.gem ( 42%)Fetching: rubygems-update-1.4.2.gem ( 43%)Fetching: rubygems-update-1.4.2.gem ( 44%)Fetching: rubygems-update-1.4.2.gem ( 45%)Fetching: rubygems-update-1.4.2.gem ( 46%)Fetching: rubygems-update-1.4.2.gem ( 47%)Fetching: rubygems-update-1.4.2.gem ( 48%)Fetching: rubygems-update-1.4.2.gem ( 49%)Fetching: rubygems-update-1.4.2.gem ( 51%)Fetching: rubygems-update-1.4.2.gem ( 52%)Fetching: rubygems-update-1.4.2.gem ( 53%)Fetching: rubygems-update-1.4.2.gem ( 54%)Fetching: rubygems-update-1.4.2.gem ( 55%)Fetching: rubygems-update-1.4.2.gem ( 56%)Fetching: rubygems-update-1.4.2.gem ( 57%)Fetching: rubygems-update-1.4.2.gem ( 58%)Fetching: rubygems-update-1.4.2.gem ( 59%)Fetching: rubygems-update-1.4.2.gem ( 60%)Fetching: rubygems-update-1.4.2.gem ( 61%)Fetching: rubygems-update-1.4.2.gem ( 62%)Fetching: rubygems-update-1.4.2.gem ( 63%)Fetching: rubygems-update-1.4.2.gem ( 64%)Fetching: rubygems-update-1.4.2.gem ( 65%)Fetching: rubygems-update-1.4.2.gem ( 66%)Fetching: rubygems-update-1.4.2.gem ( 67%)Fetching: rubygems-update-1.4.2.gem ( 68%)Fetching: rubygems-update-1.4.2.gem ( 69%)Fetching: rubygems-update-1.4.2.gem ( 70%)Fetching: rubygems-update-1.4.2.gem ( 71%)Fetching: rubygems-update-1.4.2.gem ( 72%)Fetching: rubygems-update-1.4.2.gem ( 73%)Fetching: rubygems-update-1.4.2.gem ( 74%)Fetching: rubygems-update-1.4.2.gem ( 75%)Fetching: rubygems-update-1.4.2.gem ( 76%)Fetching: rubygems-update-1.4.2.gem ( 77%)Fetching: rubygems-update-1.4.2.gem ( 78%)Fetching: rubygems-update-1.4.2.gem ( 79%)Fetching: rubygems-update-1.4.2.gem ( 80%)Fetching: rubygems-update-1.4.2.gem ( 81%)Fetching: rubygems-update-1.4.2.gem ( 82%)Fetching: rubygems-update-1.4.2.gem ( 83%)Fetching: rubygems-update-1.4.2.gem ( 84%)Fetching: rubygems-update-1.4.2.gem ( 85%)Fetching: rubygems-update-1.4.2.gem ( 86%)Fetching: rubygems-update-1.4.2.gem ( 87%)Fetching: rubygems-update-1.4.2.gem ( 88%)Fetching: rubygems-update-1.4.2.gem ( 89%)Fetching: rubygems-update-1.4.2.gem ( 90%)Fetching: rubygems-update-1.4.2.gem ( 91%)Fetching: rubygems-update-1.4.2.gem ( 92%)Fetching: rubygems-update-1.4.2.gem ( 93%)Fetching: rubygems-update-1.4.2.gem ( 94%)Fetching: rubygems-update-1.4.2.gem ( 95%)Fetching: rubygems-update-1.4.2.gem ( 96%)Fetching: rubygems-update-1.4.2.gem ( 97%)Fetching: rubygems-update-1.4.2.gem ( 98%)Fetching: rubygems-update-1.4.2.gem ( 99%)Fetching: rubygems-update-1.4.2.gem (100%)Fetching: rubygems-update-1.4.2.gem (100%)
+Successfully installed rubygems-update-1.4.2
+1 gem installed
+Installing ri documentation for rubygems-update-1.4.2...
+Installing RDoc documentation for rubygems-update-1.4.2...
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ gem install rubygems-update -v='1.4.2'[18Plist | grep rubyrake fedena:plugins:install_all
+(in /home/thiyagu/backup/fedena)
+rake aborted!
+undefined local variable or method `version_requirements' for #<Rails::GemDependency:0xb6ee06a4>
+
+(See full trace by running task with --trace)
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ rake fedena:plugins:install_allgem install rubygems-update -v='1.4.2'[18Plist | grep rubyrake fedena:plugins:install_all[11Pgem list | grep rubyinstall rubygems-update -v='1.4.2'[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7Prake fedena:plugins:install_allgem install rubygems-update -v='1.4.2'[C[1@u[1@n[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P.2'[1P2'[1P'3'.'5'
+Successfully uninstalled rubygems-update-1.3.5
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ gem uninstall rubygems-update -v='1.3.5'[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[9Prake fedena:plugins:install_all
+(in /home/thiyagu/backup/fedena)
+rake aborted!
+undefined local variable or method `version_requirements' for #<Rails::GemDependency:0xb6e83b48>
+
+(See full trace by running task with --trace)
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ rake fedena:plugins:install_allgem uninstall rubygems-update -v='1.3.5'[1P[1P
+Fetching: rubygems-update-1.3.5.gemFetching: rubygems-update-1.3.5.gem (  1%)Fetching: rubygems-update-1.3.5.gem (  2%)Fetching: rubygems-update-1.3.5.gem (  3%)Fetching: rubygems-update-1.3.5.gem (  4%)Fetching: rubygems-update-1.3.5.gem (  5%)Fetching: rubygems-update-1.3.5.gem (  6%)Fetching: rubygems-update-1.3.5.gem (  7%)Fetching: rubygems-update-1.3.5.gem (  8%)Fetching: rubygems-update-1.3.5.gem ( 10%)Fetching: rubygems-update-1.3.5.gem ( 11%)Fetching: rubygems-update-1.3.5.gem ( 12%)Fetching: rubygems-update-1.3.5.gem ( 13%)Fetching: rubygems-update-1.3.5.gem ( 15%)Fetching: rubygems-update-1.3.5.gem ( 17%)Fetching: rubygems-update-1.3.5.gem ( 19%)Fetching: rubygems-update-1.3.5.gem ( 20%)Fetching: rubygems-update-1.3.5.gem ( 21%)Fetching: rubygems-update-1.3.5.gem ( 22%)Fetching: rubygems-update-1.3.5.gem ( 23%)Fetching: rubygems-update-1.3.5.gem ( 24%)Fetching: rubygems-update-1.3.5.gem ( 25%)Fetching: rubygems-update-1.3.5.gem ( 26%)Fetching: rubygems-update-1.3.5.gem ( 27%)Fetching: rubygems-update-1.3.5.gem ( 28%)Fetching: rubygems-update-1.3.5.gem ( 29%)Fetching: rubygems-update-1.3.5.gem ( 30%)Fetching: rubygems-update-1.3.5.gem ( 31%)Fetching: rubygems-update-1.3.5.gem ( 32%)Fetching: rubygems-update-1.3.5.gem ( 33%)Fetching: rubygems-update-1.3.5.gem ( 34%)Fetching: rubygems-update-1.3.5.gem ( 35%)Fetching: rubygems-update-1.3.5.gem ( 36%)Fetching: rubygems-update-1.3.5.gem ( 37%)Fetching: rubygems-update-1.3.5.gem ( 38%)Fetching: rubygems-update-1.3.5.gem ( 39%)Fetching: rubygems-update-1.3.5.gem ( 40%)Fetching: rubygems-update-1.3.5.gem ( 41%)Fetching: rubygems-update-1.3.5.gem ( 42%)Fetching: rubygems-update-1.3.5.gem ( 43%)Fetching: rubygems-update-1.3.5.gem ( 44%)Fetching: rubygems-update-1.3.5.gem ( 45%)Fetching: rubygems-update-1.3.5.gem ( 46%)Fetching: rubygems-update-1.3.5.gem ( 47%)Fetching: rubygems-update-1.3.5.gem ( 48%)Fetching: rubygems-update-1.3.5.gem ( 49%)Fetching: rubygems-update-1.3.5.gem ( 50%)Fetching: rubygems-update-1.3.5.gem ( 51%)Fetching: rubygems-update-1.3.5.gem ( 52%)Fetching: rubygems-update-1.3.5.gem ( 53%)Fetching: rubygems-update-1.3.5.gem ( 54%)Fetching: rubygems-update-1.3.5.gem ( 55%)Fetching: rubygems-update-1.3.5.gem ( 56%)Fetching: rubygems-update-1.3.5.gem ( 57%)Fetching: rubygems-update-1.3.5.gem ( 58%)Fetching: rubygems-update-1.3.5.gem ( 59%)Fetching: rubygems-update-1.3.5.gem ( 60%)Fetching: rubygems-update-1.3.5.gem ( 61%)Fetching: rubygems-update-1.3.5.gem ( 62%)Fetching: rubygems-update-1.3.5.gem ( 63%)Fetching: rubygems-update-1.3.5.gem ( 64%)Fetching: rubygems-update-1.3.5.gem ( 65%)Fetching: rubygems-update-1.3.5.gem ( 66%)Fetching: rubygems-update-1.3.5.gem ( 67%)Fetching: rubygems-update-1.3.5.gem ( 68%)Fetching: rubygems-update-1.3.5.gem ( 69%)Fetching: rubygems-update-1.3.5.gem ( 70%)Fetching: rubygems-update-1.3.5.gem ( 71%)Fetching: rubygems-update-1.3.5.gem ( 72%)Fetching: rubygems-update-1.3.5.gem ( 73%)Fetching: rubygems-update-1.3.5.gem ( 74%)Fetching: rubygems-update-1.3.5.gem ( 75%)Fetching: rubygems-update-1.3.5.gem ( 76%)Fetching: rubygems-update-1.3.5.gem ( 77%)Fetching: rubygems-update-1.3.5.gem ( 78%)Fetching: rubygems-update-1.3.5.gem ( 79%)Fetching: rubygems-update-1.3.5.gem ( 80%)Fetching: rubygems-update-1.3.5.gem ( 81%)Fetching: rubygems-update-1.3.5.gem ( 82%)Fetching: rubygems-update-1.3.5.gem ( 83%)Fetching: rubygems-update-1.3.5.gem ( 84%)Fetching: rubygems-update-1.3.5.gem ( 85%)Fetching: rubygems-update-1.3.5.gem ( 86%)Fetching: rubygems-update-1.3.5.gem ( 87%)Fetching: rubygems-update-1.3.5.gem ( 88%)Fetching: rubygems-update-1.3.5.gem ( 89%)Fetching: rubygems-update-1.3.5.gem ( 90%)Fetching: rubygems-update-1.3.5.gem ( 91%)Fetching: rubygems-update-1.3.5.gem ( 92%)Fetching: rubygems-update-1.3.5.gem ( 93%)Fetching: rubygems-update-1.3.5.gem ( 94%)Fetching: rubygems-update-1.3.5.gem ( 95%)Fetching: rubygems-update-1.3.5.gem ( 96%)Fetching: rubygems-update-1.3.5.gem ( 97%)Fetching: rubygems-update-1.3.5.gem ( 98%)Fetching: rubygems-update-1.3.5.gem ( 99%)Fetching: rubygems-update-1.3.5.gem (100%)Fetching: rubygems-update-1.3.5.gem (100%)
+Successfully installed rubygems-update-1.3.5
+1 gem installed
+Installing ri documentation for rubygems-update-1.3.5...
+Installing RDoc documentation for rubygems-update-1.3.5...
+Could not find main page README
+Could not find main page README
+Could not find main page README
+Could not find main page README
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ update_rubygems
+RubyGems 1.4.2 installed
+File not found: README
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ update_rubygemsgem install rubygems-update -v='1.3.5'[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7Prake fedena:plugins:install_all
+(in /home/thiyagu/backup/fedena)
+rake aborted!
+uninitialized constant Authorization
+
+(See full trace by running task with --trace)
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ [H[2J]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ rake fedena:plugins:install_all
+(in /home/thiyagu/backup/fedena)
+rake aborted!
+uninitialized constant Authorization
+
+(See full trace by running task with --trace)
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ gem install declarative_authorization -v 0.5.1
+Successfully installed declarative_authorization-0.5.1
+1 gem installed
+Installing ri documentation for declarative_authorization-0.5.1...
+Installing RDoc documentation for declarative_authorization-0.5.1...
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ gem install i18n -v 0.4.2
+Successfully installed i18n-0.4.2
+1 gem installed
+Installing ri documentation for i18n-0.4.2...
+Installing RDoc documentation for i18n-0.4.2...
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ gem install i18n -v 0.4.2declarative_authorization -v 0.5.1[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[15Prake fedena:plugins:install_all
+(in /home/thiyagu/backup/fedena)
+rake aborted!
+uninitialized constant Authorization
+
+(See full trace by running task with --trace)
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ rake fedena:plugins:install_all --trace
+(in /home/thiyagu/backup/fedena)
+** Invoke fedena:plugins:install_all (first_time)
+** Invoke environment (first_time)
+** Execute environment
+rake aborted!
+uninitialized constant Authorization
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:443:in `load_missing_constant'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:80:in `const_missing'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:92:in `const_missing'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/declarative_authorization-0.5.1/config/routes.rb:5
+/home/thiyagu/backup/fedena/vendor/plugins/fckeditor/init.rb:27:in `draw'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:226:in `draw_without_fckeditor'
+/home/thiyagu/backup/fedena/vendor/plugins/fckeditor/init.rb:23:in `draw'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/declarative_authorization-0.5.1/config/routes.rb:4
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load_without_new_constant_marking'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:521:in `new_constants_in'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:286:in `load_routes!'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:286:in `each'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:286:in `load_routes!'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:266:in `reload!'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing.rb:381:in `inflections'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/core_ext/object/misc.rb:39:in `returning'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing.rb:380:in `inflections'
+/home/thiyagu/backup/fedena/config/initializers/inflections.rb:5
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load_without_new_constant_marking'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:521:in `new_constants_in'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/initializer.rb:622:in `load_application_initializers'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/initializer.rb:621:in `each'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/initializer.rb:621:in `load_application_initializers'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/initializer.rb:176:in `process'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/initializer.rb:113:in `send'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/initializer.rb:113:in `run'
+/home/thiyagu/backup/fedena/config/environment.rb:6
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:156:in `require'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:156:in `require'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:521:in `new_constants_in'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:156:in `require'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/tasks/misc.rake:4
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+/home/thiyagu/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:607:in `invoke_prerequisites'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:604:in `each'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:604:in `invoke_prerequisites'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:596:in `invoke_with_call_chain'
+/home/thiyagu/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/bin/rake:31
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/bin/rake:19:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/bin/rake:19
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/bin/ruby_executable_hooks:15
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ [H[2J]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ rka[K[Kake db:create
+(in /home/thiyagu/backup/fedena)
+fedena_ultimate already exists
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ rake db:createfedena:plugins:install_all --trace
+(in /home/thiyagu/backup/fedena)
+** Invoke fedena:plugins:install_all (first_time)
+** Invoke environment (first_time)
+** Execute environment
+rake aborted!
+uninitialized constant Authorization
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:443:in `load_missing_constant'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:80:in `const_missing'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:92:in `const_missing'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/declarative_authorization-0.5.1/config/routes.rb:5
+/home/thiyagu/backup/fedena/vendor/plugins/fckeditor/init.rb:27:in `draw'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:226:in `draw_without_fckeditor'
+/home/thiyagu/backup/fedena/vendor/plugins/fckeditor/init.rb:23:in `draw'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/declarative_authorization-0.5.1/config/routes.rb:4
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load_without_new_constant_marking'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:521:in `new_constants_in'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:286:in `load_routes!'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:286:in `each'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:286:in `load_routes!'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:266:in `reload!'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing.rb:381:in `inflections'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/core_ext/object/misc.rb:39:in `returning'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing.rb:380:in `inflections'
+/home/thiyagu/backup/fedena/config/initializers/inflections.rb:5
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load_without_new_constant_marking'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:521:in `new_constants_in'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/initializer.rb:622:in `load_application_initializers'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/initializer.rb:621:in `each'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/initializer.rb:621:in `load_application_initializers'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/initializer.rb:176:in `process'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/initializer.rb:113:in `send'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/initializer.rb:113:in `run'
+/home/thiyagu/backup/fedena/config/environment.rb:6
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:156:in `require'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:156:in `require'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:521:in `new_constants_in'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:156:in `require'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/tasks/misc.rake:4
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+/home/thiyagu/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:607:in `invoke_prerequisites'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:604:in `each'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:604:in `invoke_prerequisites'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:596:in `invoke_with_call_chain'
+/home/thiyagu/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/bin/rake:31
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/bin/rake:19:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/bin/rake:19
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/bin/ruby_executable_hooks:15
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ [H[2J]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ rake db:migrate
+(in /home/thiyagu/backup/fedena)
+rake aborted!
+uninitialized constant Authorization
+
+(See full trace by running task with --trace)
+]0;thiyagu@2di3044: ~/Desktop/fedenathiyagu@2di3044:~/Desktop/fedena$ cd ..[K[K[K
+]0;thiyagu@2di3044: ~thiyagu@2di3044:~$ cd backup/fedena/
+]0;thiyagu@2di3044: ~/backup/fedenathiyagu@2di3044:~/backup/fedena$ cd backup/fedena/[Krake db:migratefedena:plugins:install_all --tracedb:create[Kfedena:plugins:install_all --trace[K[6Pgem install i18n -v 0.4.2declarative_authorization -v 0.5.1
+Successfully installed declarative_authorization-0.5.1
+1 gem installed
+Installing ri documentation for declarative_authorization-0.5.1...
+Installing RDoc documentation for declarative_authorization-0.5.1...
+]0;thiyagu@2di3044: ~/backup/fedenathiyagu@2di3044:~/backup/fedena$ gem install declarative_authorization -v 0.5.1[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[29Pcd backup/fedena/[Krake db:migratefedena:plugins:install_all --tracedb:create[Kfedena:plugins:install_all --trace[K[6Pgem install i18n -v 0.4.2
+
+
+
+Successfully installed i18n-0.4.2
+1 gem installed
+Installing ri documentation for i18n-0.4.2...
+Installing RDoc documentation for i18n-0.4.2...
+]0;thiyagu@2di3044: ~/backup/fedenathiyagu@2di3044:~/backup/fedena$ 
+]0;thiyagu@2di3044: ~/backup/fedenathiyagu@2di3044:~/backup/fedena$ 
+]0;thiyagu@2di3044: ~/backup/fedenathiyagu@2di3044:~/backup/fedena$ 
+]0;thiyagu@2di3044: ~/backup/fedenathiyagu@2di3044:~/backup/fedena$ gem install i18n -v 0.4.2declarative_authorization -v 0.5.1[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[29Pcd backup/fedena/[Krake db:migratefedena:plugins:install_all --tracedb:migrate[K
+(in /home/thiyagu/backup/fedena)
+rake aborted!
+uninitialized constant Authorization
+
+(See full trace by running task with --trace)
+]0;thiyagu@2di3044: ~/backup/fedenathiyagu@2di3044:~/backup/fedena$ rake db:create
+(in /home/thiyagu/backup/fedena)
+fedena_ultimate already exists
+]0;thiyagu@2di3044: ~/backup/fedenathiyagu@2di3044:~/backup/fedena$ rake db:createmigrategem install i18n -v 0.4.2declarative_authorization -v 0.5.1[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[29Pcd backup/fedena/[Krake db:migratefedena:plugins:install_all --trace
+(in /home/thiyagu/backup/fedena)
+** Invoke fedena:plugins:install_all (first_time)
+** Invoke environment (first_time)
+** Execute environment
+rake aborted!
+uninitialized constant Authorization
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:443:in `load_missing_constant'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:80:in `const_missing'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:92:in `const_missing'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/declarative_authorization-0.5.1/config/routes.rb:5
+/home/thiyagu/backup/fedena/vendor/plugins/fckeditor/init.rb:27:in `draw'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:226:in `draw_without_fckeditor'
+/home/thiyagu/backup/fedena/vendor/plugins/fckeditor/init.rb:23:in `draw'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/declarative_authorization-0.5.1/config/routes.rb:4
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load_without_new_constant_marking'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:521:in `new_constants_in'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:286:in `load_routes!'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:286:in `each'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:286:in `load_routes!'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:266:in `reload!'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing.rb:381:in `inflections'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/core_ext/object/misc.rb:39:in `returning'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/actionpack-2.3.5/lib/action_controller/routing.rb:380:in `inflections'
+/home/thiyagu/backup/fedena/config/initializers/inflections.rb:5
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load_without_new_constant_marking'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:521:in `new_constants_in'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:145:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/initializer.rb:622:in `load_application_initializers'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/initializer.rb:621:in `each'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/initializer.rb:621:in `load_application_initializers'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/initializer.rb:176:in `process'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/initializer.rb:113:in `send'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/initializer.rb:113:in `run'
+/home/thiyagu/backup/fedena/config/environment.rb:6
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:156:in `require'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:156:in `require'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:521:in `new_constants_in'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:156:in `require'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rails-2.3.5/lib/tasks/misc.rake:4
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+/home/thiyagu/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:607:in `invoke_prerequisites'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:604:in `each'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:604:in `invoke_prerequisites'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:596:in `invoke_with_call_chain'
+/home/thiyagu/.rvm/rubies/ruby-1.8.7-p374/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/gems/rake-0.8.7/bin/rake:31
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/bin/rake:19:in `load'
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/bin/rake:19
+/home/thiyagu/.rvm/gems/ruby-1.8.7-p374@fedena/bin/ruby_executable_hooks:15
+]0;thiyagu@2di3044: ~/backup/fedenathiyagu@2di3044:~/backup/fedena$ [K]0;thiyagu@2di3044: ~/backup/fedenathiyagu@2di3044:~/backup/fedena$ [H[2J]0;thiyagu@2di3044: ~/backup/fedenathiyagu@2di3044:~/backup/fedena$ gem list | grep auth
+declarative_[01;31m[Kauth[m[Korization (0.5.1)
+]0;thiyagu@2di3044: ~/backup/fedenathiyagu@2di3044:~/backup/fedena$ ~/.rvm/gems/ruby-1.8.7-p374@fedena/gems/declarative_authorization-0.5.1licd [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kgem list | grep authrake fedena:plugins:install_all --tracedb:create[Kfedena:plugins:install_all --trace
+(in /home/thiyagu/backup/fedena)
+** Invoke fedena:plugins:install_all (first_time)
+** Invoke environment (first_time)
+** Execute environment
+** Execute fedena:plugins:install_all
+** Execute db:migrate
+==  CreateUsers: migrating ====================================================
+-- create_table(:users)
+   -> 0.1515s
+==  CreateUsers: migrated (0.1517s) ===========================================
+
+==  CreateConfigurations: migrating ===========================================
+-- create_table(:configurations)
+   -> 0.0907s
+==  CreateConfigurations: migrated (0.0909s) ==================================
+
+==  CreateStudents: migrating =================================================
+-- create_table(:students)
+   -> 0.0980s
+-- create_table(:student_categories)
+   -> 0.0918s
+==  CreateStudents: migrated (0.1901s) ========================================
+
+==  CreateArchivedStudents: migrating =========================================
+-- create_table(:archived_students)
+   -> 0.0907s
+==  CreateArchivedStudents: migrated (0.0908s) ================================
+
+==  CreateGuardians: migrating ================================================
+-- create_table(:guardians)
+   -> 0.0837s
+==  CreateGuardians: migrated (0.0838s) =======================================
+
+==  CreateArchivedGuardians: migrating ========================================
+-- create_table(:archived_guardians)
+   -> 0.0824s
+==  CreateArchivedGuardians: migrated (0.0826s) ===============================
+
+==  CreateCountries: migrating ================================================
+-- create_table(:countries)
+   -> 0.1153s
+==  CreateCountries: migrated (9.9448s) =======================================
+
+==  CreateNews: migrating =====================================================
+-- create_table(:news)
+   -> 0.1237s
+-- create_table(:news_comments)
+   -> 0.1337s
+==  CreateNews: migrated (0.2576s) ============================================
+
+==  CreateCoursesAndBatches: migrating ========================================
+-- create_table(:courses)
+   -> 0.1316s
+-- create_table(:batches)
+   -> 0.1169s
+==  CreateCoursesAndBatches: migrated (0.2487s) ===============================
+
+==  CreateBatchStudentsJoinTable: migrating ===================================
+-- create_table(:batch_students, {:id=>false})
+   -> 0.1486s
+==  CreateBatchStudentsJoinTable: migrated (0.1487s) ==========================
+
+==  CreateSubjects: migrating =================================================
+-- create_table(:subjects)
+   -> 0.3741s
+==  CreateSubjects: migrated (0.3742s) ========================================
+
+==  CreateElectiveGroups: migrating ===========================================
+-- create_table(:elective_groups)
+   -> 0.1157s
+==  CreateElectiveGroups: migrated (0.1158s) ==================================
+
+==  CreateGradingLevels: migrating ============================================
+-- create_table(:grading_levels)
+   -> 0.1253s
+==  CreateGradingLevels: migrated (0.1254s) ===================================
+
+==  CreateExamGroups: migrating ===============================================
+-- create_table(:exam_groups)
+   -> 0.1406s
+==  CreateExamGroups: migrated (0.1407s) ======================================
+
+==  CreateExams: migrating ====================================================
+-- create_table(:exams)
+   -> 0.1323s
+==  CreateExams: migrated (0.1324s) ===========================================
+
+==  CreateExamScores: migrating ===============================================
+-- create_table(:exam_scores)
+   -> 0.1333s
+==  CreateExamScores: migrated (0.1334s) ======================================
+
+==  CreateAttendances: migrating ==============================================
+-- create_table(:attendances)
+   -> 0.1241s
+==  CreateAttendances: migrated (0.1242s) =====================================
+
+==  CreateClassTimings: migrating =============================================
+-- create_table(:class_timings)
+   -> 0.1231s
+==  CreateClassTimings: migrated (0.1232s) ====================================
+
+==  CreateTimetableEntries: migrating =========================================
+-- create_table(:timetable_entries)
+   -> 0.1158s
+==  CreateTimetableEntries: migrated (0.1159s) ================================
+
+==  CreateEmployeeCategories: migrating =======================================
+-- create_table(:employee_categories)
+   -> 0.1241s
+==  CreateEmployeeCategories: migrated (0.1242s) ==============================
+
+==  CreateEmployeePositions: migrating ========================================
+-- create_table(:employee_positions)
+   -> 0.1023s
+==  CreateEmployeePositions: migrated (0.1025s) ===============================
+
+==  CreateEmployeeDepartments: migrating ======================================
+-- create_table(:employee_departments)
+   -> 0.1072s
+==  CreateEmployeeDepartments: migrated (0.1073s) =============================
+
+==  CreateEmployeeGrades: migrating ===========================================
+-- create_table(:employee_grades)
+   -> 0.1156s
+==  CreateEmployeeGrades: migrated (0.1157s) ==================================
+
+==  CreateBankFields: migrating ===============================================
+-- create_table(:bank_fields)
+   -> 0.1335s
+==  CreateBankFields: migrated (0.1337s) ======================================
+
+==  CreateEmployeeBankDetails: migrating ======================================
+-- create_table(:employee_bank_details)
+   -> 0.1237s
+==  CreateEmployeeBankDetails: migrated (0.1238s) =============================
+
+==  CreateAdditionalFields: migrating =========================================
+-- create_table(:additional_fields)
+   -> 0.1241s
+==  CreateAdditionalFields: migrated (0.1242s) ================================
+
+==  CreateEmployeeAdditionalDetails: migrating ================================
+-- create_table(:employee_additional_details)
+   -> 0.1241s
+==  CreateEmployeeAdditionalDetails: migrated (0.1242s) =======================
+
+==  CreateEmployees: migrating ================================================
+-- create_table(:employees)
+   -> 0.1316s
+==  CreateEmployees: migrated (0.1318s) =======================================
+
+==  CreatePayrollCategories: migrating ========================================
+-- create_table(:payroll_categories)
+   -> 0.1232s
+==  CreatePayrollCategories: migrated (0.1233s) ===============================
+
+==  CreateEmployeeSalaryStructures: migrating =================================
+-- create_table(:employee_salary_structures)
+   -> 0.1152s
+==  CreateEmployeeSalaryStructures: migrated (0.1153s) ========================
+
+==  CreateMonthlyPayslips: migrating ==========================================
+-- create_table(:monthly_payslips)
+   -> 0.1070s
+==  CreateMonthlyPayslips: migrated (0.1072s) =================================
+
+==  CreateEmployeeLeaveTypes: migrating =======================================
+-- create_table(:employee_leave_types)
+   -> 0.2321s
+==  CreateEmployeeLeaveTypes: migrated (0.2322s) ==============================
+
+==  CreateEmployeeAttendances: migrating ======================================
+-- create_table(:employee_attendances)
+   -> 0.1656s
+==  CreateEmployeeAttendances: migrated (0.1658s) =============================
+
+==  CreateApplyLeaves: migrating ==============================================
+-- create_table(:apply_leaves)
+   -> 0.1158s
+==  CreateApplyLeaves: migrated (0.1159s) =====================================
+
+==  CreateEmployeesSubjects: migrating ========================================
+-- create_table(:employees_subjects)
+   -> 0.1156s
+==  CreateEmployeesSubjects: migrated (0.1157s) ===============================
+
+==  CreateIndividualPayslipCategories: migrating ==============================
+-- create_table(:individual_payslip_categories)
+   -> 0.1243s
+==  CreateIndividualPayslipCategories: migrated (0.1244s) =====================
+
+==  CreateReminders: migrating ================================================
+-- create_table(:reminders)
+   -> 0.1157s
+==  CreateReminders: migrated (0.1158s) =======================================
+
+==  CreateFinanceTransactionCategories: migrating =============================
+-- create_table(:finance_transaction_categories)
+   -> 0.1152s
+==  CreateFinanceTransactionCategories: migrated (0.1154s) ====================
+
+==  CreateFinanceTransactions: migrating ======================================
+-- create_table(:finance_transactions)
+   -> 0.1222s
+==  CreateFinanceTransactions: migrated (0.1223s) =============================
+
+==  CreateFinanceDonations: migrating =========================================
+-- create_table(:finance_donations)
+   -> 0.1068s
+==  CreateFinanceDonations: migrated (0.1069s) ================================
+
+==  CreateFinanceFeeCollections: migrating ====================================
+-- create_table(:finance_fee_collections)
+   -> 0.0987s
+==  CreateFinanceFeeCollections: migrated (0.0989s) ===========================
+
+==  CreateFinanceFees: migrating ==============================================
+-- create_table(:finance_fees)
+   -> 0.2323s
+==  CreateFinanceFees: migrated (0.2324s) =====================================
+
+==  CreateFinanceFeeStructureElements: migrating ==============================
+-- create_table(:finance_fee_structure_elements)
+   -> 0.1065s
+==  CreateFinanceFeeStructureElements: migrated (0.1067s) =====================
+
+==  CreatePrivileges: migrating ===============================================
+-- create_table(:privileges)
+   -> 0.1237s
+==  CreatePrivileges: migrated (0.1238s) ======================================
+
+==  CreatePrivilegesUsersJoinTable: migrating =================================
+-- create_table(:privileges_users, {:id=>false})
+   -> 0.1147s
+==  CreatePrivilegesUsersJoinTable: migrated (0.1148s) ========================
+
+==  CreateFinanceTransactionTriggers: migrating ===============================
+-- create_table(:finance_transaction_triggers)
+   -> 0.3487s
+==  CreateFinanceTransactionTriggers: migrated (0.3488s) ======================
+
+==  CreateEvents: migrating ===================================================
+-- create_table(:events)
+   -> 0.1165s
+==  CreateEvents: migrated (0.1166s) ==========================================
+
+==  CreateBatchEvents: migrating ==============================================
+-- create_table(:batch_events)
+   -> 0.3985s
+==  CreateBatchEvents: migrated (0.3986s) =====================================
+
+==  CreateEmployeeDepartmentEvents: migrating =================================
+-- create_table(:employee_department_events)
+   -> 0.1239s
+==  CreateEmployeeDepartmentEvents: migrated (0.1240s) ========================
+
+==  CreateStudentAdditionalDetails: migrating =================================
+-- create_table(:student_additional_details)
+   -> 0.0981s
+==  CreateStudentAdditionalDetails: migrated (0.0982s) ========================
+
+==  CreateStudentAdditionalFields: migrating ==================================
+-- create_table(:student_additional_fields)
+   -> 0.1403s
+==  CreateStudentAdditionalFields: migrated (0.1405s) =========================
+
+==  CreateLiabilities: migrating ==============================================
+-- create_table(:liabilities)
+   -> 0.1157s
+==  CreateLiabilities: migrated (0.1158s) =====================================
+
+==  CreateAssets: migrating ===================================================
+-- create_table(:assets)
+   -> 0.1318s
+==  CreateAssets: migrated (0.1319s) ==========================================
+
+==  CreatePeriodEntries: migrating ============================================
+-- create_table(:period_entries)
+   -> 0.1362s
+==  CreatePeriodEntries: migrated (0.1363s) ===================================
+
+==  CreateWeekdays: migrating =================================================
+-- create_table(:weekdays)
+   -> 0.2906s
+==  CreateWeekdays: migrated (0.2907s) ========================================
+
+==  CreateFinanceFeeCategories: migrating =====================================
+-- create_table(:finance_fee_categories)
+   -> 0.3441s
+==  CreateFinanceFeeCategories: migrated (0.3443s) ============================
+
+==  CreateFinanceFeeParticulars: migrating ====================================
+-- create_table(:finance_fee_particulars)
+   -> 0.1567s
+==  CreateFinanceFeeParticulars: migrated (0.1568s) ===========================
+
+==  CreateSmsSettings: migrating ==============================================
+-- create_table(:sms_settings)
+   -> 0.0906s
+==  CreateSmsSettings: migrated (0.0907s) =====================================
+
+==  CreateElectives: migrating ================================================
+-- create_table(:electives)
+   -> 0.0822s
+==  CreateElectives: migrated (0.0823s) =======================================
+
+==  CreateStudentsSubject: migrating ==========================================
+-- create_table(:students_subjects)
+   -> 0.0822s
+==  CreateStudentsSubject: migrated (0.0822s) =================================
+
+==  CreateGroupedExams: migrating =============================================
+-- create_table(:grouped_exams)
+   -> 0.0906s
+==  CreateGroupedExams: migrated (0.0907s) ====================================
+
+==  CreateArchivedEmployees: migrating ========================================
+-- create_table(:archived_employees)
+   -> 0.0824s
+==  CreateArchivedEmployees: migrated (0.0825s) ===============================
+
+==  CreateArchivedEmployeeSalaryStructures: migrating =========================
+-- create_table(:archived_employee_salary_structures)
+   -> 0.0820s
+==  CreateArchivedEmployeeSalaryStructures: migrated (0.0822s) ================
+
+==  CreateArchivedEmployeeBankDetails: migrating ==============================
+-- create_table(:archived_employee_bank_details)
+   -> 0.0908s
+==  CreateArchivedEmployeeBankDetails: migrated (0.0909s) =====================
+
+==  CreateArchivedEmployeeAdditionalDetails: migrating ========================
+-- create_table(:archived_employee_additional_details)
+   -> 0.0983s
+==  CreateArchivedEmployeeAdditionalDetails: migrated (0.0984s) ===============
+
+==  CreateStudentPreviousDatas: migrating =====================================
+-- create_table(:student_previous_datas)
+   -> 0.0916s
+==  CreateStudentPreviousDatas: migrated (0.0917s) ============================
+
+==  CreateStudentPreviousSubjectMarks: migrating ==============================
+-- create_table(:student_previous_subject_marks)
+   -> 0.0820s
+==  CreateStudentPreviousSubjectMarks: migrated (0.0821s) =====================
+
+==  CreateArchivedExamScores: migrating =======================================
+-- create_table(:archived_exam_scores)
+   -> 0.0906s
+==  CreateArchivedExamScores: migrated (0.0907s) ==============================
+
+==  CreateAdditionalExamGroups: migrating =====================================
+-- create_table(:additional_exam_groups)
+   -> 0.0816s
+==  CreateAdditionalExamGroups: migrated (0.0817s) ============================
+
+==  CreateAdditionalExams: migrating ==========================================
+-- create_table(:additional_exams)
+   -> 0.0907s
+==  CreateAdditionalExams: migrated (0.0907s) =================================
+
+==  CreateAdditionalExamScores: migrating =====================================
+-- create_table(:additional_exam_scores)
+   -> 0.0976s
+==  CreateAdditionalExamScores: migrated (0.0977s) ============================
+
+==  CreateEmployeeLeaves: migrating ===========================================
+-- create_table(:employee_leaves)
+   -> 0.0990s
+==  CreateEmployeeLeaves: migrated (0.0992s) ==================================
+
+==  AddNewColumnsToFedena: migrating ==========================================
+-- add_column(:students, :has_paid_fees, :boolean, {:default=>false})
+   -> 0.2329s
+-- add_column(:batches, :employee_id, :string)
+   -> 0.4757s
+-- change_column(:student_categories, :is_deleted, :boolean, {:null=>false, :default=>false})
+   -> 0.3024s
+-- change_column(:exams, :maximum_marks, :decimal, {:precision=>10, :scale=>2})
+   -> 0.0505s
+-- change_column(:exams, :minimum_marks, :decimal, {:precision=>10, :scale=>2})
+   -> 0.0505s
+-- rename_column(:timetable_entries, :week_day_id, :weekday_id)
+   -> 0.2259s
+-- add_column(:monthly_payslips, :is_rejected, :boolean, {:null=>false, :default=>false})
+   -> 0.2343s
+-- add_column(:monthly_payslips, :rejector_id, :integer)
+   -> 0.2176s
+-- add_column(:monthly_payslips, :reason, :string)
+   -> 0.2175s
+-- add_column(:employee_leave_types, :carry_forward, :boolean, {:null=>false, :default=>false})
+   -> 0.1841s
+-- change_column(:finance_transactions, :amount, :decimal, {:precision=>15, :scale=>2})
+   -> 0.0600s
+-- add_column(:finance_transactions, :transaction_date, :date)
+   -> 0.2260s
+-- add_column(:finance_transactions, :fine_amount, :decimal, {:default=>0})
+   -> 0.2176s
+-- add_column(:finance_transactions, :master_transaction_id, :integer, {:default=>0})
+   -> 0.2175s
+-- change_column(:finance_donations, :amount, :decimal, {:precision=>15, :scale=>2})
+   -> 0.0507s
+-- add_column(:finance_donations, :transaction_date, :date)
+   -> 0.2174s
+-- change_column(:finance_fees, :transaction_id, :string)
+   -> 0.0506s
+-- change_column(:finance_fee_structure_elements, :amount, :decimal, {:precision=>15, :scale=>2})
+   -> 0.1925s
+-- change_column(:finance_fee_particulars, :amount, :decimal, {:precision=>15, :scale=>2})
+   -> 0.2356s
+==  AddNewColumnsToFedena: migrated (3.6615s) =================================
+
+==  AddColumnsToStudent: migrating ============================================
+-- add_column(:archived_students, :photo_file_size, :integer)
+   -> 0.3233s
+-- rename_column(:archived_students, :photo_filename, :photo_file_name)
+   -> 0.3597s
+-- add_column(:students, :photo_file_size, :integer)
+   -> 0.2010s
+-- rename_column(:students, :photo_filename, :photo_file_name)
+   -> 0.2178s
+==  AddColumnsToStudent: migrated (1.1023s) ===================================
+
+==  AddColumnsToEmployee: migrating ===========================================
+-- add_column(:archived_employees, :photo_file_size, :integer)
+   -> 0.1829s
+-- rename_column(:archived_employees, :photo_filename, :photo_file_name)
+   -> 0.2274s
+-- add_column(:employees, :photo_file_size, :integer)
+   -> 0.2340s
+-- rename_column(:employees, :photo_filename, :photo_file_name)
+   -> 0.2515s
+==  AddColumnsToEmployee: migrated (0.8962s) ==================================
+
+==  AddIndexToFedena: migrating ===============================================
+-- add_index(:users, [:username], {:limit=>10})
+   -> 0.1243s
+-- add_index(:finance_fee_collections, [:fee_category_id])
+   -> 0.1339s
+-- add_index(:finance_fees, [:fee_collection_id, :student_id])
+   -> 0.1423s
+-- add_index(:batch_students, [:batch_id, :student_id])
+   -> 0.1423s
+-- add_index(:subjects, [:batch_id, :elective_group_id, :is_deleted])
+   -> 0.3921s
+-- add_index(:configurations, [:config_key], {:limit=>10})
+   -> 0.1602s
+-- add_index(:exam_scores, [:student_id, :exam_id])
+   -> 0.1506s
+-- add_index(:archived_exam_scores, [:student_id, :exam_id])
+   -> 0.1339s
+-- add_index(:exams, [:exam_group_id, :subject_id])
+   -> 0.1257s
+-- add_index(:grouped_exams, [:batch_id])
+   -> 0.1171s
+-- add_index(:grading_levels, [:batch_id, :is_deleted])
+   -> 0.1426s
+-- add_index(:students_subjects, [:student_id, :subject_id])
+   -> 0.1340s
+-- add_index(:period_entries, [:month_date, :batch_id])
+   -> 0.3088s
+-- add_index(:timetable_entries, [:weekday_id, :batch_id, :class_timing_id], {:name=>"by_timetable"})
+   -> 0.3424s
+-- add_index(:employees_subjects, [:subject_id])
+   -> 0.1854s
+-- add_index(:weekdays, [:batch_id])
+   -> 0.1258s
+-- add_index(:events, [:is_common, :is_holiday, :is_exam])
+   -> 0.1173s
+-- add_index(:batch_events, [:batch_id])
+   -> 0.1340s
+-- add_index(:class_timings, [:batch_id, :start_time, :end_time])
+   -> 0.1341s
+==  AddIndexToFedena: migrated (3.2489s) ======================================
+
+==  ChangeFinanceTransaction: migrating =======================================
+-- change_column(:finance_transactions, :fine_amount, :decimal, {:precision=>10, :scale=>2})
+   -> 0.3405s
+==  ChangeFinanceTransaction: migrated (0.3407s) ==============================
+
+==  CreateUserEvents: migrating ===============================================
+-- create_table(:user_events)
+   -> 0.0960s
+==  CreateUserEvents: migrated (0.0961s) ======================================
+
+==  CreateFeeDiscounts: migrating =============================================
+-- create_table(:fee_discounts)
+   -> 0.3669s
+==  CreateFeeDiscounts: migrated (0.3670s) ====================================
+
+==  CreateFeeCollectionDiscounts: migrating ===================================
+-- create_table(:fee_collection_discounts)
+   -> 0.0740s
+==  CreateFeeCollectionDiscounts: migrated (0.0740s) ==========================
+
+==  CreateFeeCollectionParticulars: migrating =================================
+-- create_table(:fee_collection_particulars)
+   -> 0.0565s
+==  CreateFeeCollectionParticulars: migrated (0.0566s) ========================
+
+==  AddIndexToFedena2: migrating ==============================================
+-- add_index(:reminders, [:recipient])
+   -> 0.1406s
+-- add_index(:students, [:admission_no], {:limit=>10})
+   -> 0.2927s
+-- add_index(:students, [:first_name, :middle_name, :last_name], {:limit=>10})
+   -> 0.1593s
+-- add_index(:employees, [:employee_number], {:limit=>10})
+   -> 0.1507s
+-- add_index(:privileges_users, :user_id)
+   -> 0.1420s
+-- add_index(:configurations, :config_value, {:limit=>10})
+   -> 0.1506s
+-- add_index(:batches, [:is_deleted, :is_active])
+   -> 0.1686s
+==  AddIndexToFedena2: migrated (1.2053s) =====================================
+
+==  AddFormerToArchivedEmployee: migrating ====================================
+-- add_column(:archived_employees, :former_id, :string)
+   -> 0.1904s
+==  AddFormerToArchivedEmployee: migrated (0.1905s) ===========================
+
+==  AddUserIdToStudentsEmployees: migrating ===================================
+-- add_column(:students, :user_id, :integer)
+   -> 0.1913s
+-- add_column(:employees, :user_id, :integer)
+   -> 0.2259s
+-- execute("UPDATE students SET user_id = (SELECT id from users WHERE username = students.admission_no)")
+   -> 0.0005s
+-- execute("UPDATE employees SET user_id = (SELECT id from users WHERE username = employees.employee_number)")
+   -> 0.0004s
+==  AddUserIdToStudentsEmployees: migrated (0.4185s) ==========================
+
+==  AddPolymorphicToFinanceTransaction: migrating =============================
+-- add_column(:finance_transactions, :finance_id, :integer)
+   -> 0.2081s
+-- add_column(:finance_transactions, :finance_type, :string)
+   -> 0.2093s
+-- add_column(:finance_transactions, :payee_id, :integer)
+   -> 0.1856s
+-- add_column(:finance_transactions, :payee_type, :string)
+   -> 0.1759s
+==  AddPolymorphicToFinanceTransaction: migrated (0.7793s) ====================
+
+==  AddRecieptAndVoucherNoToFinanceTransaction: migrating =====================
+-- add_column(:finance_transactions, :receipt_no, :string)
+   -> 0.2071s
+-- add_column(:finance_transactions, :voucher_no, :string)
+   -> 0.2092s
+==  AddRecieptAndVoucherNoToFinanceTransaction: migrated (0.4165s) ============
+
+==  AddPolymorphicToEvent: migrating ==========================================
+-- add_column(:events, :origin_id, :integer)
+   -> 0.4399s
+-- add_column(:events, :origin_type, :string)
+   -> 0.2092s
+==  AddPolymorphicToEvent: migrated (0.6493s) =================================
+
+==  AddIsPaidToFinanceFees: migrating =========================================
+-- add_column(:finance_fees, :is_paid, :boolean, {:default=>0})
+   -> 0.1734s
+==  AddIsPaidToFinanceFees: migrated (0.1736s) ================================
+
+==  AddFieldsToPrivilege: migrating ===========================================
+-- add_column(:privileges, :description, :text)
+   -> 0.3423s
+==  AddFieldsToPrivilege: migrated (1.3193s) ==================================
+
+==  CreateSchoolDetails: migrating ============================================
+-- create_table(:school_details)
+   -> 0.0817s
+==  CreateSchoolDetails: migrated (0.0818s) ===================================
+
+==  AddRemarkToMonthlyPayslip: migrating ======================================
+-- add_column(:monthly_payslips, :remark, :string)
+   -> 0.1993s
+==  AddRemarkToMonthlyPayslip: migrated (0.1995s) =============================
+
+==  CreateTimetables: migrating ===============================================
+-- create_table(:timetables)
+   -> 0.0737s
+==  CreateTimetables: migrated (0.0738s) ======================================
+
+==  AddTimetableIdToTimetableEntries: migrating ===============================
+-- add_column(:timetable_entries, :timetable_id, :integer)
+   -> 0.1741s
+==  AddTimetableIdToTimetableEntries: migrated (0.1742s) ======================
+
+==  AddColumnsToWeekdays: migrating ===========================================
+-- add_column(:weekdays, :name, :string)
+   -> 0.2756s
+-- add_column(:weekdays, :sort_order, :integer)
+   -> 0.2091s
+-- add_column(:weekdays, :day_of_week, :integer)
+   -> 0.2091s
+==  AddColumnsToWeekdays: migrated (0.6941s) ==================================
+
+==  CreateSubjectLeaves: migrating ============================================
+-- create_table(:subject_leaves)
+   -> 0.0820s
+==  CreateSubjectLeaves: migrated (0.0821s) ===================================
+
+==  ChangeDataTypeOfMonthdate: migrating ======================================
+-- add_column(:attendances, :month_date, :date)
+   -> 0.2830s
+==  ChangeDataTypeOfMonthdate: migrated (0.2831s) =============================
+
+==  AddIsApprovedColumnToNewsComments: migrating ==============================
+-- add_column(:news_comments, :is_approved, :boolean, {:default=>0})
+   -> 0.1743s
+==  AddIsApprovedColumnToNewsComments: migrated (0.1745s) =====================
+
+==  CreateClassDesignations: migrating ========================================
+-- create_table(:class_designations)
+   -> 0.0736s
+==  CreateClassDesignations: migrated (0.0737s) ===============================
+
+==  CreateRankingLevels: migrating ============================================
+-- create_table(:ranking_levels)
+   -> 0.2984s
+==  CreateRankingLevels: migrated (0.2985s) ===================================
+
+==  AddCreditPointsToGradingLevels: migrating =================================
+-- add_column(:grading_levels, :credit_points, :int)
+   -> 0.2603s
+-- add_column(:grading_levels, :description, :string)
+   -> 0.4747s
+==  AddCreditPointsToGradingLevels: migrated (0.7351s) ========================
+
+==  AddGradingTypeToBatches: migrating ========================================
+-- add_column(:batches, :grading_type, :string)
+   -> 0.3736s
+==  AddGradingTypeToBatches: migrated (0.3737s) ===============================
+
+==  AddCreditHoursToSubjects: migrating =======================================
+-- add_column(:subjects, :credit_hours, :decimal, {:precision=>15, :scale=>2})
+   -> 0.6497s
+-- add_column(:subjects, :prefer_consecutive, :boolean, {:default=>false})
+   -> 0.3010s
+==  AddCreditHoursToSubjects: migrated (0.9509s) ==============================
+
+==  AddIsFinalExamToExamGroups: migrating =====================================
+-- add_column(:exam_groups, :is_final_exam, :boolean, {:null=>false, :default=>false})
+   -> 0.2917s
+==  AddIsFinalExamToExamGroups: migrated (0.2918s) ============================
+
+==  AddParentColumnToUser: migrating ==========================================
+-- add_column(:users, :parent, :boolean)
+   -> 0.2076s
+==  AddParentColumnToUser: migrated (0.2077s) =================================
+
+==  AddIsDeletedToWeekdaysAndClassTiming: migrating ===========================
+-- add_column(:weekdays, :is_deleted, :boolean, {:default=>false})
+   -> 0.2078s
+-- add_column(:class_timings, :is_deleted, :boolean, {:default=>false})
+   -> 0.1758s
+==  AddIsDeletedToWeekdaysAndClassTiming: migrated (0.3838s) ==================
+
+==  ChangeCreditPointsToDecimal: migrating ====================================
+-- change_column(:grading_levels, :credit_points, :decimal, {:precision=>15, :scale=>2})
+   -> 0.1580s
+==  ChangeCreditPointsToDecimal: migrated (0.1581s) ===========================
+
+==  AddUserColumnToGuardian: migrating ========================================
+-- add_column(:guardians, :user_id, :integer)
+   -> 0.1816s
+==  AddUserColumnToGuardian: migrated (0.1817s) ===============================
+
+==  AddBatchIdToAttendanceAndSubjectLeave: migrating ==========================
+-- add_column(:attendances, :batch_id, :integer)
+   -> 0.1912s
+-- add_column(:subject_leaves, :batch_id, :integer)
+   -> 0.2092s
+==  AddBatchIdToAttendanceAndSubjectLeave: migrated (0.4006s) =================
+
+==  AddAmountToSubjects: migrating ============================================
+-- add_column(:subjects, :amount, :decimal, {:precision=>15, :scale=>2})
+   -> 0.2067s
+==  AddAmountToSubjects: migrated (0.2068s) ===================================
+
+==  AddIndexToFedena3: migrating ==============================================
+-- remove_index(:timetable_entries, {:name=>"by_timetable"})
+   -> 0.1228s
+-- remove_index(:batches, [:is_deleted, :is_active])
+   -> 0.1255s
+-- add_index(:timetable_entries, [:timetable_id])
+   -> 0.1436s
+-- add_index(:timetables, [:start_date, :end_date], {:name=>"by_start_and_end"})
+   -> 0.1842s
+-- add_index(:students, [:batch_id])
+   -> 0.2259s
+-- add_index(:batches, [:is_deleted, :is_active, :course_id, :name])
+   -> 0.1339s
+-- add_index(:subject_leaves, [:month_date, :subject_id, :batch_id])
+   -> 0.1339s
+-- add_index(:subject_leaves, [:student_id, :batch_id])
+   -> 0.1506s
+-- add_index(:attendances, [:month_date, :batch_id])
+   -> 0.1422s
+-- add_index(:attendances, [:student_id, :batch_id])
+   -> 0.1423s
+==  AddIndexToFedena3: migrated (1.5060s) =====================================
+
+==  CreateDelayedJobs: migrating ==============================================
+-- create_table(:delayed_jobs, {:force=>true})
+   -> 0.0821s
+-- add_index(:delayed_jobs, :locked_by)
+   -> 0.2024s
+==  CreateDelayedJobs: migrated (0.2848s) =====================================
+
+==  AddLowerLimitToRankingLevels: migrating ===================================
+-- add_column(:ranking_levels, :lower_limit, :boolean, {:default=>false})
+   -> 0.1911s
+==  AddLowerLimitToRankingLevels: migrated (0.1912s) ==========================
+
+==  AddWeightageToGroupedExams: migrating =====================================
+-- add_column(:grouped_exams, :weightage, :decimal, {:precision=>15, :scale=>2})
+   -> 0.4077s
+==  AddWeightageToGroupedExams: migrated (0.4078s) ============================
+
+==  CreateGroupedExamReports: migrating =======================================
+-- create_table(:grouped_exam_reports)
+   -> 0.0811s
+==  CreateGroupedExamReports: migrated (0.0812s) ==============================
+
+==  CreateFaCriterias: migrating ==============================================
+-- create_table(:fa_criterias)
+   -> 0.0812s
+==  CreateFaCriterias: migrated (0.0814s) =====================================
+
+==  CreateObservationGroups: migrating ========================================
+-- create_table(:observation_groups)
+   -> 0.0810s
+==  CreateObservationGroups: migrated (0.0812s) ===============================
+
+==  CreateObservations: migrating =============================================
+-- create_table(:observations)
+   -> 0.0809s
+==  CreateObservations: migrated (0.0811s) ====================================
+
+==  CreateDescriptiveIndicators: migrating ====================================
+-- create_table(:descriptive_indicators)
+   -> 0.0737s
+==  CreateDescriptiveIndicators: migrated (0.0739s) ===========================
+
+==  CreateAssessmentTools: migrating ==========================================
+-- create_table(:assessment_tools)
+   -> 0.0738s
+==  CreateAssessmentTools: migrated (0.0739s) =================================
+
+==  CreateCceGradeSets: migrating =============================================
+-- create_table(:cce_grade_sets)
+   -> 0.0835s
+==  CreateCceGradeSets: migrated (0.0836s) ====================================
+
+==  CreateCceGrades: migrating ================================================
+-- create_table(:cce_grades)
+   -> 0.0739s
+==  CreateCceGrades: migrated (0.0740s) =======================================
+
+==  CreateCceWeightages: migrating ============================================
+-- create_table(:cce_weightages)
+   -> 0.0737s
+==  CreateCceWeightages: migrated (0.0738s) ===================================
+
+==  CreateCceExamCategories: migrating ========================================
+-- create_table(:cce_exam_categories)
+   -> 0.0740s
+==  CreateCceExamCategories: migrated (0.0741s) ===============================
+
+==  CreateAssessmentScores: migrating =========================================
+-- create_table(:assessment_scores)
+   -> 0.1023s
+==  CreateAssessmentScores: migrated (0.1024s) ================================
+
+==  CreateCceReports: migrating ===============================================
+-- create_table(:cce_reports)
+   -> 0.3236s
+==  CreateCceReports: migrated (0.3237s) ======================================
+
+==  CreateCoursesObservationGroups: migrating =================================
+-- create_table(:courses_observation_groups, {:id=>false})
+   -> 0.0820s
+==  CreateCoursesObservationGroups: migrated (0.0821s) ========================
+
+==  CreateCceWeightagesCourses: migrating =====================================
+-- create_table(:cce_weightages_courses, {:id=>false})
+   -> 0.0812s
+==  CreateCceWeightagesCourses: migrated (0.0813s) ============================
+
+==  AddFullCourseToRankingLevels: migrating ===================================
+-- add_column(:ranking_levels, :full_course, :boolean, {:default=>false})
+   -> 0.1827s
+==  AddFullCourseToRankingLevels: migrated (0.1828s) ==========================
+
+==  CreateSmsLogs: migrating ==================================================
+-- create_table(:sms_logs)
+   -> 0.0986s
+==  CreateSmsLogs: migrated (0.0987s) =========================================
+
+==  CreateSmsMessages: migrating ==============================================
+-- create_table(:sms_messages)
+   -> 0.0739s
+==  CreateSmsMessages: migrated (0.0740s) =====================================
+
+==  AddMarksToClassDesignations: migrating ====================================
+-- add_column(:class_designations, :marks, :decimal, {:precision=>15, :scale=>2})
+   -> 0.2174s
+==  AddMarksToClassDesignations: migrated (0.2175s) ===========================
+
+==  CreateFaGroups: migrating =================================================
+-- create_table(:fa_groups)
+   -> 0.0822s
+==  CreateFaGroups: migrated (0.0823s) ========================================
+
+==  CreateBatchGroups: migrating ==============================================
+-- create_table(:batch_groups)
+   -> 0.1078s
+==  CreateBatchGroups: migrated (0.1079s) =====================================
+
+==  CreateGroupedBatches: migrating ===========================================
+-- create_table(:grouped_batches)
+   -> 0.0809s
+==  CreateGroupedBatches: migrated (0.0810s) ==================================
+
+==  AddIndexToFedenaGpaAndCwa: migrating ======================================
+-- add_index(:grouped_batches, [:batch_group_id])
+   -> 0.2062s
+-- add_index(:grouped_exam_reports, [:batch_id, :student_id, :score_type], {:name=>"by_batch_student_and_score_type"})
+   -> 0.1338s
+==  AddIndexToFedenaGpaAndCwa: migrated (0.3403s) =============================
+
+==  CreateFaGroupsSubjects: migrating =========================================
+-- create_table(:fa_groups_subjects, {:id=>false})
+   -> 0.0738s
+==  CreateFaGroupsSubjects: migrated (0.0739s) ================================
+
+==  AddObservationKindToObservationGroups: migrating ==========================
+-- add_column(:observation_groups, :observation_kind, :string)
+   -> 0.4075s
+==  AddObservationKindToObservationGroups: migrated (0.4076s) =================
+
+==  AddCceEnabledToCourses: migrating =========================================
+-- add_column(:courses, :cce_enabled, :boolean)
+   -> 0.2667s
+==  AddCceEnabledToCourses: migrated (0.2668s) ================================
+
+==  RemoveGradingTypeFromBatches: migrating ===================================
+-- remove_column(:batches, :grading_type)
+   -> 0.5397s
+==  RemoveGradingTypeFromBatches: migrated (0.5399s) ==========================
+
+==  AddGradingTypeToCourses: migrating ========================================
+-- add_column(:courses, :grading_type, :string)
+   -> 0.4653s
+==  AddGradingTypeToCourses: migrated (0.4654s) ===============================
+
+==  AddCourseIdToRankingLevels: migrating =====================================
+-- add_column(:ranking_levels, :course_id, :integer)
+   -> 0.1745s
+==  AddCourseIdToRankingLevels: migrated (0.1746s) ============================
+
+==  AddCourseIdToClassDesignations: migrating =================================
+-- add_column(:class_designations, :course_id, :integer)
+   -> 0.1828s
+==  AddCourseIdToClassDesignations: migrated (0.1829s) ========================
+
+==  AddCceExamCategoryIdToExamGroups: migrating ===============================
+-- add_column(:exam_groups, :cce_exam_category_id, :integer)
+   -> 0.1986s
+==  AddCceExamCategoryIdToExamGroups: migrated (0.1987s) ======================
+
+==  RemoveCceEnabledFromCourses: migrating ====================================
+-- remove_column(:courses, :cce_enabled)
+   -> 0.2334s
+==  RemoveCceEnabledFromCourses: migrated (0.2335s) ===========================
+
+==  AddExamIdToAssessmentScores: migrating ====================================
+-- add_column(:assessment_scores, :exam_id, :integer)
+   -> 0.2247s
+-- add_column(:assessment_scores, :batch_id, :integer)
+   -> 0.1758s
+==  AddExamIdToAssessmentScores: migrated (0.4008s) ===========================
+
+==  RemoveTableAssessmentTools: migrating =====================================
+-- drop_table(:assessment_tools)
+   -> 0.0318s
+==  RemoveTableAssessmentTools: migrated (0.0319s) ============================
+
+==  AddDescriptiveIndicatorIdToAssessmentScores: migrating ====================
+-- add_column(:assessment_scores, :descriptive_indicator_id, :integer)
+   -> 0.1901s
+-- remove_column(:assessment_scores, :assessment_tool_id)
+   -> 0.2092s
+==  AddDescriptiveIndicatorIdToAssessmentScores: migrated (0.3996s) ===========
+
+==  AddCceGradeSetToFaGroups: migrating =======================================
+-- add_column(:fa_groups, :cce_grade_set_id, :integer)
+   -> 0.2007s
+==  AddCceGradeSetToFaGroups: migrated (0.2008s) ==============================
+
+==  AddExamIdToCceReports: migrating ==========================================
+-- add_column(:cce_reports, :exam_id, :integer)
+   -> 0.1829s
+==  AddExamIdToCceReports: migrated (0.1830s) =================================
+
+==  AddOrderToFaCriteriaAndObservations: migrating ============================
+-- add_column(:fa_criterias, :sort_order, :integer)
+   -> 0.1743s
+-- add_column(:observations, :sort_order, :integer)
+   -> 0.1758s
+-- add_column(:descriptive_indicators, :sort_order, :integer)
+   -> 0.4838s
+==  AddOrderToFaCriteriaAndObservations: migrated (0.8343s) ===================
+
+==  AddMaxMarksToObservationGroups: migrating =================================
+-- add_column(:observation_groups, :max_marks, :float)
+   -> 0.4326s
+==  AddMaxMarksToObservationGroups: migrated (0.4327s) ========================
+
+==  AddMaxMarksToFaGroups: migrating ==========================================
+-- add_column(:fa_groups, :max_marks, :float, {:default=>100.0})
+   -> 0.2064s
+==  AddMaxMarksToFaGroups: migrated (0.2066s) =================================
+
+==  AddLimitTypesToRankingLevels: migrating ===================================
+-- add_column(:ranking_levels, :subject_limit_type, :string)
+   -> 0.2092s
+-- add_column(:ranking_levels, :marks_limit_type, :string)
+   -> 0.1759s
+-- remove_column(:ranking_levels, :lower_limit)
+   -> 0.1842s
+==  AddLimitTypesToRankingLevels: migrated (0.5696s) ==========================
+
+==  CreatePreviousExamScores: migrating =======================================
+-- create_table(:previous_exam_scores)
+   -> 0.0814s
+==  CreatePreviousExamScores: migrated (0.0815s) ==============================
+
+==  AddCceIndices: migrating ==================================================
+-- add_index(:cce_grades, :cce_grade_set_id)
+   -> 0.2155s
+-- add_index(:fa_criterias, :fa_group_id)
+   -> 0.1503s
+-- add_index(:courses, :grading_type)
+   -> 0.1425s
+-- add_index(:fa_groups_subjects, :subject_id)
+   -> 0.133

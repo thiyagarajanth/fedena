@@ -73,7 +73,8 @@
       <div id="new_profile_info_top">
         <div class="profile_top_banner">
           <span class="profile"><%= t('details') %></span>
-          <%= rtl? ? image_tag("master_student/profile/topbanner_rtl.png") : image_tag("master_student/profile/topbanner.png") %></div>
+          <div class="profile-topbanner"></div>
+        </div>
         <div class="profile_info_label"><%= t('name') %></div>
         <div class="profile_info_text">
           <%= p.first_name %> <%= p.last_name %>
@@ -107,7 +108,7 @@
           <div class="profile_info_text2"> <%= p.office_address_line1%> <%= p.office_address_line2%> </div>
 
           <div class="profile_info_label"> </div>
-          <div class="profile_info_text"> <%= p.city %> <%= p.state %> <%= p.country.name %> </div>
+          <div class="profile_info_text"> <%= p.city %> <%= p.state %> <%= p.country.nil? ? "" : p.country.name %> </div>
         </div>
 
         <div class="new_profile_info_area1">
@@ -123,7 +124,7 @@
         <% if permitted_to? :edit_guardian,:student %>
           <div class="parent-edit-button">
             <%= link_to "► #{t('edit_text')}",
-              :controller => 'student', :action => 'edit_guardian', :id => p.id %>
+              { :controller => 'student', :action => 'edit_guardian', :id => p.id}, :class=>"user_button" %>
           </div>
         <%  end %>
         <% if permitted_to? :del_guardian,:student %>
@@ -131,7 +132,7 @@
             <div class="parent-edit-button">
               <%= link_to "► #{t('delete_text')}",
                 {:controller => 'student', :action => 'del_guardian', :id => p.id },
-                {:confirm => "#{t('are_you_completely_sure')}"} %>
+                {:confirm => "#{t('are_you_completely_sure')}", :class=>"user_button"} %>
             </div>
           <%  end %>
         <% end %>

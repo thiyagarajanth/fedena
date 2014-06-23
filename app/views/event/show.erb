@@ -32,23 +32,23 @@
 
 
   <div class="detail-box">
-    <div class="label">  <%= t('title') %> :</div>
+    <div class="label themed_text">  <%= t('title') %> :</div>
     <div class="description">
       <%= @event.title %>
     </div>
     <div class="extender"></div>
-    <div class="label"><%= t('description') %>:</div>
+    <div class="label themed_text"><%= t('description') %>:</div>
     <div class="description">
       <%= @event.description %>
     </div>
     <div class="extender"></div>
-    <div class="label">
+    <div class="label themed_text">
       <%= t('start_date') %> :</div>
     <div class="description">
       <%= @event.start_date %>
     </div>
     <div class="extender"></div>
-    <div class="label"><%= t('end_date') %>:</div>
+    <div class="label themed_text"><%= t('end_date') %>:</div>
     <div class="description">
       <%= @event.end_date %>
     </div>
@@ -120,9 +120,9 @@
     <% end %>
 
     <% unless @command == 'edit' %>
-      <%= link_to "► #{t('confirm')}",{ :action=>"confirm_event",:id=>@event.id}, :class=> 'create'%>  <%= link_to "► #{t('cancel')}", { :action=>"cancel_event" , :id=>@event.id },  :class=> 'create' %>
+      <%= link_to "► #{t('confirm')}",{ :action=>"confirm_event",:id=>@event.id}, :class=> 'create user_button'%>  <%= link_to "► #{t('cancel')}", { :action=>"cancel_event" , :id=>@event.id },  :class=> 'create user_button' %>
     <% else %>
-      <%= link_to "► #{t('confirm')}",{ :action=>"confirm_event",:id=>@event.id}, :class=> 'create'%>  <%= link_to "►  #{t('cancel')}", { :action=>"edit_event" , :id=>@event.id },  :class=> 'create' %>
+      <%= link_to "► #{t('confirm')}",{ :action=>"confirm_event",:id=>@event.id}, :class=> 'create user_button'%>  <%= link_to "►  #{t('cancel')}", { :action=>"edit_event" , :id=>@event.id },  :class=> 'create user_button' %>
     <% end %>
   </div>
 </div>

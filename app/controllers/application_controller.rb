@@ -18,6 +18,7 @@
 
 class ApplicationController < ActionController::Base
   helper :all
+  helper_method :can_access_request?
   protect_from_forgery # :secret => '434571160a81b5595319c859d32060c1'
   filter_parameter_logging :password
   
@@ -25,9 +26,23 @@ class ApplicationController < ActionController::Base
   before_filter :message_user
   before_filter :set_user_language
   before_filter :set_variables
+  before_filter :login_check
 
   before_filter :dev_mode
   include CustomInPlaceEditing
+
+  def login_check
+    if session[:user_id].present?
+      unless (controller_name == "user") and ["first_login_change_password","login","logout","forgot_password"].include? action_name
+        user = User.active.find(session[:user_id])
+        setting = Configuration.get_config_value('FirstTimeLoginEnable')
+        if setting == "1" and user.is_first_login != false
+          flash[:notice] = "#{t('first_login_attempt')}"
+          redirect_to :controller => "user",:action => "first_login_change_password",:id => user.username
+        end
+      end
+    end
+  end
 
 
   def dev_mode
@@ -66,6 +81,19 @@ class ApplicationController < ActionController::Base
       logger.info "[FedenaRescue] No method error #{exception.to_s}"
       log_error exception
       redirect_to :controller=>:user ,:action=>:dashboard
+    end
+
+    rescue_from ActionController::InvalidAuthenticityToken do|exception|
+      flash[:notice] = "#{t('flash_msg43')}"
+      logger.info "[FedenaRescue] Invalid Authenticity Token #{exception.to_s}"
+      log_error exception
+      if request.xhr?
+        render(:update) do|page|
+          page.redirect_to :controller => 'user', :action => 'dashboard'
+        end
+      else
+        redirect_to :controller => 'user', :action => 'dashboard'
+      end
     end
   end
 
@@ -108,7 +136,7 @@ class ApplicationController < ActionController::Base
   end
   
   def initialize
-    @title = FEDENA_SETTINGS[:company_name]
+    @title = FedenaSetting.company_details[:company_name]
   end
 
   def message_user
@@ -116,7 +144,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    User.find(session[:user_id]) unless session[:user_id].nil?
+    User.active.find(session[:user_id]) unless session[:user_id].nil?
   end
 
   
@@ -308,6 +336,10 @@ class ApplicationController < ActionController::Base
       end
     end
     return @local_tzone_time
+  end
+
+  def can_access_request? (action,controller)
+    permitted_to?(action,controller)
   end
 
   private
